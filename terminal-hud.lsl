@@ -52,6 +52,23 @@ default
 {
     state_entry()
     {
+		scanLinks();
+		
+		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "hello", <1,1,1>, 1.0]);
+
+		// Move text_row prims to correct positions
+		integer i;
+		for(i = 0; i < 24; i++)
+		{
+			vector pos = <0,0,-.05 - 0.015*i>;
+			integer link_num = llList2Integer(text_row_objects, i);
+			llOwnerSay("Moving linknum " + (string)link_num);
+			llSetLinkPrimitiveParamsFast(link_num, [PRIM_POSITION, pos]);
+		}
+
+		// Move background to correct position
+		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <0.1,0,-0.2>]);
+
         llSetColor(textColor, ALL_SIDES);
         llSetAlpha(1, ALL_SIDES);
         listener = llListen(activeChannel, "", llGetOwner(), "");
