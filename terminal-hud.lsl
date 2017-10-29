@@ -30,7 +30,7 @@ list text_row_objects = [];
 startText()
 {
     textAnimSpeed = .02;
-    textTypeAnim(1, FALSE, "> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
+    textTypeAnim(4, FALSE, "> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
         (string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
 }
 
