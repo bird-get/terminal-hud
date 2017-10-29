@@ -42,7 +42,7 @@ scanLinks()
 	{
 		if(llGetLinkName(i) == "text_row")
 		{
-			text_row_objects += llGetLinkName(i);
+			text_row_objects += i;
 			llSay(0, "Added linknum " + (string)i);
 		}
 	}
