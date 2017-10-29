@@ -26,6 +26,7 @@
 integer activeChannel = 42;
 integer listener;
 list text_row_objects = [];
+integer link_background;
 
 startText()
 {
