@@ -71,8 +71,12 @@ default
 			llSetLinkPrimitiveParamsFast(link_num, [PRIM_POSITION, pos]);
 		}
 
-		// Move background to correct position
-		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <0.1,0,-0.2>]);
+		// Move and scale background
+		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <0.1,0,-0.2>,
+			PRIM_SIZE, <0.01, 0.59, 0.40>]);
+
+		// Scale top bar to correct size
+		llSetLinkPrimitiveParams(1, [PRIM_SIZE, <0.01, 0.59, 0.02>]);
 
         llSetColor(textColor, ALL_SIDES);
         llSetAlpha(1, ALL_SIDES);
