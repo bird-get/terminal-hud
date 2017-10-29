@@ -33,6 +33,20 @@ startText()
         (string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
 }
 
+scanLinks()
+{
+	integer i;
+	integer prim_count = llGetNumberOfPrims();
+	for(i = 0; i < prim_count; i++)
+	{
+		if(llGetLinkName(i) == "text_row")
+		{
+			text_row_objects += llGetLinkName(i);
+			llSay(0, "Added linknum " + (string)i);
+		}
+	}
+}
+
 default
 {
     state_entry()
