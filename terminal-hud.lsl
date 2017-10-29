@@ -30,7 +30,7 @@ startText()
 {
     textAnimSpeed = .02;
     textTypeAnim(1, FALSE, "> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
-        (string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n© draeck.net 2015\n----------");
+        (string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
 }
 
 default
