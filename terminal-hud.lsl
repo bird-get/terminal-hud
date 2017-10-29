@@ -20,8 +20,8 @@
 #include "snippets/typeTextAnim.lsl"
 #include "snippets/formatDecimal.lsl"
 #include "terminal-hud/include/setColor.lsl"
-#include "terminal/include/rez.lsl"
-#include "terminal/include/avInfo.lsl"
+#include "terminal-hud/include/rez.lsl"
+#include "terminal-hud/include/avInfo.lsl"
 
 integer activeChannel = 42;
 integer listener;
