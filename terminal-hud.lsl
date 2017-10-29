@@ -85,7 +85,6 @@ default
 		{
 			vector pos = <0,0,-.05 - 0.015*i>;
 			integer link_num = llList2Integer(text_row_objects, i);
-			llOwnerSay("Moving linknum " + (string)link_num);
 			llSetLinkPrimitiveParamsFast(link_num, [PRIM_POSITION, pos]);
 		}
 
