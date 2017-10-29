@@ -38,12 +38,16 @@ scanLinks()
 {
 	integer i;
 	integer prim_count = llGetNumberOfPrims();
-	for(i = 0; i < prim_count; i++)
+	for(i = 0; i <= prim_count; i++)
 	{
-		if(llGetLinkName(i) == "text_row")
+		string link_name = llGetLinkName(i);
+		if(link_name == "text_row")
 		{
 			text_row_objects += i;
-			llSay(0, "Added linknum " + (string)i);
+		}
+		else if(link_name == "background")
+		{
+			link_background = i;
 		}
 	}
 }
