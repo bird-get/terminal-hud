@@ -144,7 +144,7 @@ default
     {
         textAnimSpeed = .02;
 
-        textTypeAnim(1, TRUE, "> " + msg);
+        printText("> " + msg);
         llSleep(.2);
 
         list params = llParseString2List(msg, [" "], [""]);
@@ -156,11 +156,11 @@ default
         if(param0 == "help")
         {
             if(param1 == "rez")
-                textTypeAnim(1, TRUE, HELP_REZ);
+                printText(HELP_REZ);
             else if(param1 == "avinfo")
-                textTypeAnim(1, TRUE, HELP_AVINFO);
+                printText(HELP_AVINFO);
             else
-                textTypeAnim(1, TRUE, HELP_COMMANDS);
+                printText(HELP_COMMANDS);
         }
         else if(param0 == "set")
         {
@@ -172,13 +172,13 @@ default
             {
                 llSleep(.1);
                 textVolume = (float)param1;
-                textTypeAnim(1, TRUE, "Volume set to " + (string)textVolume + ".");
+                printText("Volume set to " + (string)textVolume + ".");
             }
             else if(param0 == "channel")
             {
                 llSleep(.1);
                 activeChannel = (integer)param1;
-                textTypeAnim(1, TRUE, "Channel set to " + (string)activeChannel + ".");
+                printText("Channel set to " + (string)activeChannel + ".");
                 llListenRemove(listener);
                 listener = llListen(activeChannel, "", llGetOwner(), "");
             }
@@ -206,7 +206,7 @@ default
         }
         else
         {
-            textTypeAnim(1, TRUE, param0 + ": command not found");
+            printText(param0 + ": command not found");
         }
     }
 }
@@ -227,7 +227,7 @@ state disabled
         {
             if(msg == "enable")
             {
-                textTypeAnim(1, FALSE, "> enable");
+                printText("> enable");
                 llSetAlpha(1, ALL_SIDES);
                 llSleep(1);
                 state default;
