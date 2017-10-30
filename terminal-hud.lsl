@@ -55,17 +55,17 @@ scanLinks()
 
 list splitByLength(string str, integer max_length)
 {
-	integer string_length = llStringLength(str); // 57
+	integer string_length = llStringLength(str);
 	list lines;
 	integer index = 0;
 	while(TRUE)
 	{
-		if(index + max_length >= string_length) // 40 + 20 >= 57
+		if(index + max_length >= string_length)
 		{
-			lines += [llGetSubString(str, index, -1)]; // add 40 to 57
+			lines += [llGetSubString(str, index, -1)];
 			return lines;
 		}
-		lines += [llGetSubString(str, index, index + max_length - 1)]; // 0 to 20, 20 to 20
+		lines += [llGetSubString(str, index, index + max_length - 1)];
 		index += max_length;
 	}
 	return [];
