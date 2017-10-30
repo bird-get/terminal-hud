@@ -71,6 +71,35 @@ list splitByLength(string str, integer max_length)
 	return [];
 }
 
+list buffer = [];
+
+printLine(string raw_text)
+{
+	integer columns = 30;
+	integer rows = 24;
+
+	list lines = splitByLength(raw_text, columns);	
+
+	// Add lines to buffer
+	integer i;
+	for(i = 0; i < llGetListLength(lines); i++)
+	{
+		buffer = llList2List(buffer, 1, -1); // Remove first item
+		string text = llList2String(lines, i);
+		// TODO Fill text to <columns> chars
+		buffer += [text];
+	}
+	llOwnerSay(llList2CSV(buffer));
+
+	// Refresh all lines
+	for(i = 0; i < rows; i++)
+	{
+		string text = llList2String(buffer, i);
+		integer link_num = llList2Integer(text_row_objects, i);
+		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 1.0]);
+	}
+}
+
 default
 {
     state_entry()
