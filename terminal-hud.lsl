@@ -77,11 +77,11 @@ printText(string raw_text)
 {
 	integer columns = 30;
 	integer rows = 24;
+	integer i;
 
 	list lines = splitByLength(raw_text, columns);	
 
 	// Add lines to buffer
-	integer i;
 	for(i = 0; i < llGetListLength(lines); i++)
 	{
 		buffer = llList2List(buffer, 1, -1); // Remove first item
