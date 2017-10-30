@@ -89,7 +89,6 @@ printText(string raw_text)
 		// TODO Fill text to <columns> chars
 		buffer += [text];
 	}
-	llOwnerSay(llList2CSV(buffer));
 
 	// Refresh all lines
 	for(i = 0; i < rows; i++)
