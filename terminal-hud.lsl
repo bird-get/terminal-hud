@@ -94,7 +94,7 @@ printText(string raw_text)
 	{
 		string text = llList2String(buffer, i);
 		integer link_num = llList2Integer(text_row_objects, i);
-		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 1.0]);
+		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9]);
 	}
 }
 
