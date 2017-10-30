@@ -68,8 +68,17 @@ printText(string raw_text)
 	integer columns = 30;
 	integer rows = 24;
 	integer i;
+	list lines;
 
-	list lines = splitByLength(raw_text, columns);	
+	// Split raw_text at newline characters
+    list long_lines = llParseString2List(raw_text, ["\n"], [""]);
+    
+	// Split lines longer than 80 chars
+	for(i = 0; i < llGetListLength(long_lines); i++)
+	{
+		string text = llList2String(long_lines, i);
+		lines += splitByLength(text, rows);
+	}
 
 	// Add lines to buffer
 	for(i = 0; i < llGetListLength(lines); i++)
