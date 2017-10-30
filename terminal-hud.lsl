@@ -73,7 +73,7 @@ list splitByLength(string str, integer max_length)
 
 list buffer = [];
 
-print(string raw_text)
+printText(string raw_text)
 {
 	integer columns = 30;
 	integer rows = 24;
