@@ -1,6 +1,4 @@
-// TODO Make HUD look like terminal window
-// TODO Rename to 'Jetvogel HUD Terminal'
-// TODO Use one prim for llSetText per line, so we can left-justify using pos
+// TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
 // TODO Blinking cursor
 // TODO Move row object left and right depending on string length, to align to left
