@@ -87,7 +87,6 @@ printText(string raw_text)
 			buffer = llList2List(buffer, 1, -1); // Remove first item
 		
 		string text = llList2String(lines, i);
-		// TODO Fill text to <columns> chars
 		buffer += [text];
 	}
 
