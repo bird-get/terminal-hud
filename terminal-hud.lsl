@@ -2,7 +2,6 @@
 // TODO Rename to 'Jetvogel HUD Terminal'
 // TODO Use one prim for llSetText per line, so we can left-justify using pos
 // TODO Add command to list inventory
-// TODO Use 24 rows, 80 columns for text
 // TODO Blinking cursor
 // TODO Move row object left and right depending on string length, to align to left
 // TODO Find out length of each char
