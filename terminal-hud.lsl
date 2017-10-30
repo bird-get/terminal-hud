@@ -189,7 +189,7 @@ default
         }
         else if(param0 == "cls")
         {
-            textTypeAnim(1, FALSE, "");
+            // TODO Clear screen
         }
         else if(param0 == "rez")
         {
