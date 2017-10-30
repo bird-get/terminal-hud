@@ -75,6 +75,7 @@ default
 {
     state_entry()
     {
+		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "", <1,1,1>, 1.0]);
 		scanLinks();
 		
 		// Populate buffer with empty lines
