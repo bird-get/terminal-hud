@@ -25,13 +25,6 @@ integer listener;
 list text_row_objects = [];
 integer link_background;
 
-startText()
-{
-    textAnimSpeed = .02;
-    textTypeAnim(4, FALSE, "> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
-        (string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
-}
-
 scanLinks()
 {
 	integer i;
@@ -127,7 +120,10 @@ default
 		llSetLinkPrimitiveParams(1, [PRIM_SIZE, <0.01, 0.59, 0.02>]);
 		
         listener = llListen(activeChannel, "", llGetOwner(), "");
-        startText();
+
+		// Prrint starting text
+    	printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
+        	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
     }
 
     changed(integer change)
