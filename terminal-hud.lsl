@@ -94,9 +94,7 @@ default
 
 		// Scale top bar to correct size
 		llSetLinkPrimitiveParams(1, [PRIM_SIZE, <0.01, 0.59, 0.02>]);
-
-        llSetColor(textColor, ALL_SIDES);
-        llSetAlpha(1, ALL_SIDES);
+		
         listener = llListen(activeChannel, "", llGetOwner(), "");
         startText();
     }
