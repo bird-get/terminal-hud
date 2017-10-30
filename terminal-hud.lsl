@@ -86,7 +86,6 @@ default
 		}
 
 		// Move text_row prims to correct positions
-		integer i;
 		for(i = 0; i < 24; i++)
 		{
 			vector pos = <0,0,-.05 - 0.015*i>;
