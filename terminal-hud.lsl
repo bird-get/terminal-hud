@@ -77,7 +77,13 @@ default
     {
 		scanLinks();
 		
-		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "hello", <1,1,1>, 1.0]);
+		// Populate buffer with empty lines
+		integer rows = 24;
+		integer i;
+		for(i = 0; i <= rows; i++)
+		{
+			buffer += [i];
+		}
 
 		// Move text_row prims to correct positions
 		integer i;
