@@ -24,6 +24,7 @@ integer activeChannel = 42;
 integer listener;
 list text_row_objects = [];
 integer link_background;
+integer rows = 24;
 
 scanLinks()
 {
@@ -66,7 +67,6 @@ list buffer = [];
 printText(string raw_text)
 {
 	integer columns = 30;
-	integer rows = 24;
 	integer i;
 	list lines;
 
