@@ -94,8 +94,33 @@ printText(string raw_text)
 	for(i = 0; i < rows; i++)
 	{
 		string text = llList2String(buffer, i);
+	
+		// Estimate offset
+		float offset;
+		integer ii;
+		integer length = llStringLength(text);
+		list chars_by_length = ["IJ.,;:'ijl|", "[]()-\\/frt ", "\"!", "?_*`cskFLP", "EKRYT{}abnopquvxyzdgh", "ABCHNSUVXZe", "DGMOQw^&=+~<>", "m%W", "@"]	
+		
+		for(ii = 0; ii < length; ii++)
+		{
+			// TODO optimize
+			string char = llGetSubString(text, ii, ii);
+			
+			if(llSubStringIndex(".,;:'ijl|[]()-\\/", char) != -1) offset += .0044;
+			else if(llSubStringIndex(" frt", char) != -1) offset += .0039;
+			else if(llSubStringIndex("\"!?_*`csk", char) != -1) offset += .0034;
+			else if(llSubStringIndex("{}abnopquvxyzdgh", char) != -1) offset += .0024;
+			else if(llSubStringIndex("e", char) != -1) offset += .0019;
+			else if(llSubStringIndex("w^&=+~<>", char) != -1) offset += .0014;
+			else if(llSubStringIndex("m%", char) != -1) offset += .0005;
+			else if(llSubStringIndex("@", char) != -1) offset += .0051;
+		}
+		text += " " + (string)offset;
+		
+		// Update prim parameters
 		integer link_num = llList2Integer(text_row_objects, i);
-		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9]);
+		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9,
+			PRIM_POSITION, <0, -offset,-.05 - 0.015*i>]);
 	}
 }
 
