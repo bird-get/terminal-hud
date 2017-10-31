@@ -101,34 +101,35 @@ refresh()
 	for(i = 0; i < rows; i++)
 	{
 		string text = llList2String(buffer, i);
-	
-		// Estimate offset
-		float offset;
 		integer ii;
 		integer length = llStringLength(text);
 		list chars_by_length = ["IJ.,;:'ijl|", "[]()-\\/frt ", "\"!", "?_*`cskFLP", "EKRYT{}abnopquvxyzdgh", "ABCHNSUVXZe", "DGMOQw^&=+~<>", "m%W", "@"];
 		string chars = 
 		"IJ.,;:'ijl|[]()-\\/frt \"!?_*`cskFLPEKRYT{}abnopquvxyzdghABCHNSUVXZeDGMOQw^&=+~<>m%W@";
-		
+	
+		// Calculate approximate line length
+		float line_length;
 		for(ii = 0; ii < length; ii++)
 		{
 			// TODO optimize
 			string char = llGetSubString(text, ii, ii);
 			integer index = llSubStringIndex(chars, char);
 			
-			if(index == -1) offset += 0; // TODO error, char length not known
-			else if(index < 11) offset += .0044;
-			else if(index < 22) offset += .0039;
-			else if(index < 24) offset += .0034;
-			else if(index < 34) offset += .0024;
-			else if(index < 55) offset += .0019;
-			else if(index < 66) offset += .0014;
-			else if(index < 79) offset += .0005;
-			else if(index < 82) offset += .0051;
+			if(index == -1) line_length += 0; // TODO error, char length not known
+			else if(index < 11) line_length += .0044;
+			else if(index < 22) line_length += .0039;
+			else if(index < 24) line_length += .0034;
+			else if(index < 34) line_length += .0024;
+			else if(index < 55) line_length += .0019;
+			else if(index < 66) line_length += .0014;
+			else if(index < 79) line_length += .0005;
+			else if(index < 82) line_length += .0051;
 		}
-		text += " " + (string)offset;
+		text += " " + (string)line_length;
 		
 		// Update prim parameters
+		float offset = line_length;
+
 		integer link_num = llList2Integer(text_row_objects, i);
 		prim_params += [PRIM_LINK_TARGET, link_num, PRIM_TEXT, text, <1,1,1>, 0.9,
 		PRIM_POSITION, <0, -offset,-.05 - 0.015*i>];
