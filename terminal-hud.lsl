@@ -95,6 +95,9 @@ printText(string raw_text)
 refresh()
 {
 	// Refresh all lines
+	
+	list prim_params = [];
+
 	integer i;
 	for(i = 0; i < rows; i++)
 	{
@@ -124,9 +127,14 @@ refresh()
 		
 		// Update prim parameters
 		integer link_num = llList2Integer(text_row_objects, i);
-		llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9,
-			PRIM_POSITION, <0, -offset,-.05 - 0.015*i>]);
+		prim_params += [PRIM_LINK_TARGET, link_num, PRIM_TEXT, text, <1,1,1>, 0.9,
+		PRIM_POSITION, <0, -offset,-.05 - 0.015*i>];
 	}
+	
+	llSetLinkPrimitiveParamsFast(LINK_THIS, prim_params);
+
+	//llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9,
+	//	PRIM_POSITION, <0, -offset,-.05 - 0.015*i>]);
 }
 
 default
