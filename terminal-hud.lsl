@@ -25,6 +25,7 @@ integer listener;
 list text_row_objects = [];
 integer link_background;
 integer rows = 24;
+list buffer = [];
 
 scanLinks()
 {
@@ -61,8 +62,6 @@ list splitByLength(string str, integer max_length)
 	}
 	return [];
 }
-
-list buffer = [];
 
 printText(string raw_text)
 {
