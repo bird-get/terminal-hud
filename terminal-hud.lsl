@@ -107,20 +107,24 @@ refresh()
 		integer ii;
 		integer length = llStringLength(text);
 		list chars_by_length = ["IJ.,;:'ijl|", "[]()-\\/frt ", "\"!", "?_*`cskFLP", "EKRYT{}abnopquvxyzdgh", "ABCHNSUVXZe", "DGMOQw^&=+~<>", "m%W", "@"];
+		string chars = 
+		"IJ.,;:'ijl|[]()-\\/frt \"!?_*`cskFLPEKRYT{}abnopquvxyzdghABCHNSUVXZeDGMOQw^&=+~<>m%W@";
 		
 		for(ii = 0; ii < length; ii++)
 		{
 			// TODO optimize
 			string char = llGetSubString(text, ii, ii);
+			integer index = llSubStringIndex(chars, char);
 			
-			if(llSubStringIndex(".,;:'ijl|[]()-\\/", char) != -1) offset += .0044;
-			else if(llSubStringIndex(" frt", char) != -1) offset += .0039;
-			else if(llSubStringIndex("\"!?_*`csk", char) != -1) offset += .0034;
-			else if(llSubStringIndex("{}abnopquvxyzdgh", char) != -1) offset += .0024;
-			else if(llSubStringIndex("e", char) != -1) offset += .0019;
-			else if(llSubStringIndex("w^&=+~<>", char) != -1) offset += .0014;
-			else if(llSubStringIndex("m%", char) != -1) offset += .0005;
-			else if(llSubStringIndex("@", char) != -1) offset += .0051;
+			if(index == -1) offset += 0; // TODO error, char length not known
+			else if(index < 11) offset += .0044;
+			else if(index < 22) offset += .0039;
+			else if(index < 24) offset += .0034;
+			else if(index < 34) offset += .0024;
+			else if(index < 55) offset += .0019;
+			else if(index < 66) offset += .0014;
+			else if(index < 79) offset += .0005;
+			else if(index < 82) offset += .0051;
 		}
 		text += " " + (string)offset;
 		
