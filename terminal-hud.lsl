@@ -95,6 +95,7 @@ printText(string raw_text)
 refresh()
 {
 	// Refresh all lines
+	integer i;
 	for(i = 0; i < rows; i++)
 	{
 		string text = llList2String(buffer, i);
