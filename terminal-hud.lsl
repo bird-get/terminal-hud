@@ -88,8 +88,12 @@ printText(string raw_text)
 		
 		string text = llList2String(lines, i);
 		buffer += [text];
+		refresh();
 	}
+}
 
+refresh()
+{
 	// Refresh all lines
 	for(i = 0; i < rows; i++)
 	{
