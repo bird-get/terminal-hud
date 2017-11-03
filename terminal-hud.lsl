@@ -76,7 +76,7 @@ printText(string raw_text)
 	for(i = 0; i < llGetListLength(long_lines); i++)
 	{
 		string text = llList2String(long_lines, i);
-		lines += splitByLength(text, rows);
+		lines += splitByLength(text, columns);
 	}
 
 	// Add lines to buffer
