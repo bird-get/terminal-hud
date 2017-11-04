@@ -13,6 +13,7 @@
 #define HELP_REZ " \nRez an object from inventory.\n \n-p <x,y,z> can be added for custom position.\n \nex: \nrez tree\nrez tree -p <118,123,100>"
 #define HELP_AVINFO " \nRequest info about an avatar.\n \n-s for script info.\n-r for render info.\n \nex: \navinfo john.doe -s -r"
 
+#include "NexText-3.5.lsl"
 #include "snippets/debug.lsl"
 #include "snippets/typeTextAnim.lsl"
 #include "snippets/formatDecimal.lsl"
@@ -87,90 +88,63 @@ printText(string raw_text)
 		
 		string text = llList2String(lines, i);
 		buffer += [text];
-		refresh();
 	}
 }
 
+list prev_buffer;
 refresh()
 {
-	// Refresh all lines
-	
-	list prim_params = [];
+	// TODO Render from bottom up
+	// TODO Render per letter?
 
-	integer i;
-	for(i = 0; i < rows; i++)
+	// Refresh all lines if buffer has changed
+	if(prev_buffer != buffer)
 	{
-		string text = llList2String(buffer, i);
-		integer ii;
-		integer length = llStringLength(text);
-		list chars_by_length = ["IJ.,;:'ijl|", "[]()-\\/frt ", "\"!", "?_*`cskFLP", "EKRYT{}abnopquvxyzdgh", "ABCHNSUVXZe", "DGMOQw^&=+~<>", "m%W", "@"];
-		string chars = 
-		"IJ.,;:'ijl|[]()-\\/frt \"!?_*`cskFLPEKRYT{}abnopquvxyzdghABCHNSUVXZeDGMOQw^&=+~<>m%W@";
-	
-		// Calculate approximate line length
-		float line_length;
-		for(ii = 0; ii < length; ii++)
+		Clear();
+		FontSize = 0.013;
+    	LineHeight = 0.015;
+    	tOrigin(<.2, -.29, -.015>);
+ 
+ 		integer i;
+		for(i = 0; i < rows; i++)
 		{
-			// TODO optimize
-			string char = llGetSubString(text, ii, ii);
-			integer index = llSubStringIndex(chars, char);
-			
-			if(index == -1) line_length += 0; // TODO error, char length not known
-			else if(index < 11) line_length += .0044;
-			else if(index < 22) line_length += .0039;
-			else if(index < 24) line_length += .0034;
-			else if(index < 34) line_length += .0024;
-			else if(index < 55) line_length += .0019;
-			else if(index < 66) line_length += .0014;
-			else if(index < 79) line_length += .0005;
-			else if(index < 82) line_length += .0051;
+			string text = llList2String(buffer, i);
+    		t(text + "\n");
+			Render();
 		}
-		text += " " + (string)line_length;
-		
-		// Update prim parameters
-		float offset = line_length;
-
-		integer link_num = llList2Integer(text_row_objects, i);
-		prim_params += [PRIM_LINK_TARGET, link_num, PRIM_TEXT, text, <1,1,1>, 0.9,
-		PRIM_POSITION, <0, -offset,-.05 - 0.015*i>];
+		prev_buffer = buffer;
 	}
-	
-	llSetLinkPrimitiveParamsFast(LINK_THIS, prim_params);
-
-	//llSetLinkPrimitiveParamsFast(link_num, [PRIM_TEXT, text, <1,1,1>, 0.9,
-	//	PRIM_POSITION, <0, -offset,-.05 - 0.015*i>]);
 }
 
 default
 {
     state_entry()
     {
+		OptimiseForHUDs = TRUE;
+		Init();
+
 		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "", <1,1,1>, 1.0]);
 		scanLinks();
-		
-		integer i;
-
-		// Move text_row prims to correct positions
-		for(i = 0; i < 24; i++)
-		{
-			vector pos = <0,0,-.05 - 0.015*i>;
-			integer link_num = llList2Integer(text_row_objects, i);
-			llSetLinkPrimitiveParamsFast(link_num, [PRIM_POSITION, pos]);
-		}
 
 		// Move and scale background
-		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <0.1,0,-0.2>,
+		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <-0.1,0,-0.2>,
 			PRIM_SIZE, <0.01, 0.59, 0.40>]);
 
 		// Scale top bar to correct size
 		llSetLinkPrimitiveParams(1, [PRIM_SIZE, <0.01, 0.59, 0.02>]);
 		
         listener = llListen(activeChannel, "", llGetOwner(), "");
+		llSetTimerEvent(0.1);
 
 		// Prrint starting text
     	printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
         	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
     }
+
+	timer()
+	{
+		refresh();
+	}
 
     changed(integer change)
     {
