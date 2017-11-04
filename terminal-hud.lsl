@@ -83,8 +83,9 @@ printText(string raw_text)
 	// Add lines to buffer
 	for(i = 0; i < llGetListLength(lines); i++)
 	{
+		// Remove first item if buffer is full
 		if(llGetListLength(buffer) >= rows)
-			buffer = llList2List(buffer, 1, -1); // Remove first item
+			buffer = llList2List(buffer, 1, -1);
 		
 		string text = llList2String(lines, i);
 		buffer += [text];
