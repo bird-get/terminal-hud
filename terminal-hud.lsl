@@ -92,14 +92,15 @@ printText(string raw_text)
 	}
 }
 
-list prev_buffer;
+string prev_item;
 refresh()
 {
 	// TODO Render from bottom up
 	// TODO Render per letter?
 
-	// Refresh all lines if buffer has changed
-	if(prev_buffer != buffer)
+	// Refresh all lines if last item in buffer has changed
+	string last_item = llList2String(buffer, -1);
+	if(prev_item != last_item)
 	{
 		Clear();
 		FontSize = 0.013;
@@ -113,7 +114,7 @@ refresh()
     		t(text + "\n");
 			Render();
 		}
-		prev_buffer = buffer;
+		prev_item = last_item;
 	}
 }
 
