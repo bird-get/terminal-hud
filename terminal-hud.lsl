@@ -122,7 +122,7 @@ default
 {
     state_entry()
     {
-		OptimiseForHUDs = TRUE;
+		//OptimiseForHUDs = TRUE;
 		Init();
 
 		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "", <1,1,1>, 1.0]);
