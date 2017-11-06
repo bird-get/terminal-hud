@@ -1,3 +1,43 @@
+//Goal: Create a low lag, fast and efficient terminal screen HUD
+//80 columns, 24 rows = 1920 chars
+
+//Hovertext:
+//	+ cheap to display (24 prims, no textures)
+//	+ fast
+//	- HUD only
+//	- difficult and expensive to align
+//	- difficult to color
+//	- not monospace
+//	- tables impossible
+//	- not resizeable
+//	- quickly changing hovertext is heavy on server and client
+//	o optimization: store calculated length
+//	o optimization: move rows instead of refreshing everything
+
+//Primtext:
+//	* can use furware text + setChar.lsl
+//	+ easy to align
+//	+ easy to color
+//	+ monospace
+//	+ tables possible
+//	+ resizeable
+//	- expensive to display (1920/8=240 prims, textures)
+//	- HUD only (because 240 prim count)
+//	- slow
+
+//Media:
+//	+ cheap, fast
+//	+ html, js: nice rendering
+//	+ usable on inworld objects
+//	+ responsive
+//	+ no script lag
+//	+ wrap around display mesh
+//	+ selectable text (can be copy-pasted)
+//	- no session saving
+//	- urls can break
+//	? feedback to object
+//	? render per new line
+
 // TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
 // TODO Blinking cursor
@@ -5,6 +45,10 @@
 // TODO Find out length of each char
 // TODO Calculate length using occurences of each char in row
 // TODO Possibly overlay text over eachother for coloring?
+
+// TODO inventory stuff
+// 		- workshop
+// 		- 3d viewport, with camera and lighting
 
 #define DEBUG
 #define TIMEOUT 60
@@ -66,7 +110,7 @@ list splitByLength(string str, integer max_length)
 
 printText(string raw_text)
 {
-	integer columns = 30;
+	integer columns = 80;
 	integer i;
 	list lines;
 
@@ -139,8 +183,8 @@ default
 		llSetTimerEvent(0.1);
 
 		// Prrint starting text
-    	printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
-        	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
+    	//printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
+        //	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
     }
 
 	timer()
