@@ -20,6 +20,7 @@
 #include "terminal-hud/include/setColor.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
+#include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer activeChannel = 42;
 integer listener;
@@ -89,6 +90,21 @@ printText(string raw_text)
 		
 		string text = llList2String(lines, i);
 		buffer += [text];
+		
+		llOwnerSay("Sending message: " + text);
+        integer s = (integer)("0x" + llGetSubString((string)llGetOwner(), 0, 6));
+        string hue = (string)(s % 360);
+        string color = "hsl(" + hue + ",100%, 30%)";
+
+        string msg = "e('tbd').innerHTML += '{@0}';";
+        string m0 = "<tr style=\"color: {@4}\">";
+        m0 +=   "<td>{@1}</td>";
+        m0 +=   "<td>{@2}:</td>";
+        m0 +=   "<td>{@3}</td>";
+        m0 += "</tr>";
+
+        string t = llGetSubString(llGetTimestamp(), 11, 15);
+        sendMessageF(msg, [m0, "[" + t + "]", "you", addSlashes(text), color]);
 	}
 }
 
@@ -96,8 +112,14 @@ default
 {
     state_entry()
     {
-		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "", <1,1,1>, 1.0]);
 		scanLinks();
+		
+		// Setup media stuff
+		link = 2;
+		llClearLinkMedia(link, face);
+		llSetLinkMedia(link, face, [PRIM_MEDIA_WIDTH_PIXELS, 400, PRIM_MEDIA_HEIGHT_PIXELS, 600]);
+		llRequestURL();
+		webAppInit();
 
 		// Move and scale background
 		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <-0.1,0,-0.2>,
@@ -112,6 +134,31 @@ default
 		// Prrint starting text
     	//printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
         //	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
+    }
+
+    http_request(key id, string method, string body)
+    {
+        if(method == URL_REQUEST_GRANTED)
+		{
+            myURL = body;
+            llOwnerSay("myURL=" + myURL);
+            setDataURI(myURL);
+        }
+		else if(method == "GET")
+		{
+            // Either send some queued messages now with llHTTPResponse(),
+            // or if there's nothing to do now, save the GET id and
+            // wait for somebody to call sendMessage().
+            if(llGetListLength(msgQueue) > 0)
+			{
+                llHTTPResponse(id, 200, popQueuedMessages());
+                inId = NULL_KEY;
+            }
+			else
+			{
+                inId = id;
+            }
+		}
     }
 
     changed(integer change)
