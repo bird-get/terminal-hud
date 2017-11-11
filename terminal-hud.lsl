@@ -114,7 +114,7 @@ webAppInit()
     // to <head>, so we'll append it to an existing <div> tag in <body> instead.
 
     msg = "e('dv').innerHTML += \"{@0}\";";
-    m0 = "<style>body { font-family: monospace, monospace; color: white; background-color: #181818; } td:nth-child(2) { text-align:right }</style>";
+    m0 = "<style>body { font-family: monospace, monospace; color: white; background-color: #181818; } body { line-height: 12px; } td:nth-child(2) { text-align:right }</style>";
     sendMessageF(msg, [m0]);
 
     // Write a <table> element into element div#dv. The lines of chat will
