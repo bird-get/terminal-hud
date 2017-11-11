@@ -140,13 +140,13 @@ default
 		llClearLinkMedia(link, face);
 		llSetLinkMedia(link, face, [
 			PRIM_MEDIA_WIDTH_PIXELS, 800, 
-			PRIM_MEDIA_HEIGHT_PIXELS, 600]);
+			PRIM_MEDIA_HEIGHT_PIXELS, 400]);
 		llRequestURL();
 		webAppInit();
 
 		// Setup prims
 		float height = 0.4;
-		float width = height * 1.333; // 4:3 ratio
+		float width = height * 2; // 2:1 ratio
 
 		llSetLinkPrimitiveParams(1, [
 			PRIM_SIZE, <0.01, width, 0.02>,
