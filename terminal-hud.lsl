@@ -1,6 +1,6 @@
 // TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
-// TODO Blinking cursor
+// TODO Blinking cursor: _ or █ or |
 
 // TODO inventory stuff
 // 		- workshop
