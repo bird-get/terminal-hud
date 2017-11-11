@@ -1,43 +1,4 @@
-//Goal: Create a low lag, fast and efficient terminal screen HUD
-//80 columns, 24 rows = 1920 chars
-
-//Hovertext:
-//	+ cheap to display (24 prims, no textures)
-//	+ fast
-//	- HUD only
-//	- difficult and expensive to align
-//	- difficult to color
-//	- not monospace
-//	- tables impossible
-//	- not resizeable
-//	- quickly changing hovertext is heavy on server and client
-//	o optimization: store calculated length
-//	o optimization: move rows instead of refreshing everything
-
-//Primtext:
-//	* can use furware text + setChar.lsl
-//	+ easy to align
-//	+ easy to color
-//	+ monospace
-//	+ tables possible
-//	+ resizeable
-//	- expensive to display (1920/8=240 prims, textures)
-//	- HUD only (because 240 prim count)
-//	- slow
-
-//Media:
-//	+ cheap, fast
-//	+ html, js: nice rendering
-//	+ usable on inworld objects
-//	+ responsive
-//	+ no script lag
-//	+ wrap around display mesh
-//	+ selectable text (can be copy-pasted)
-//	- no session saving
-//	- urls can break
-//	? feedback to object
-//	? render per new line
-
+// TODO Use media for rendering
 // TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
 // TODO Blinking cursor
