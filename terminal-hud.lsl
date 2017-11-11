@@ -41,10 +41,6 @@
 // TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
 // TODO Blinking cursor
-// TODO Move row object left and right depending on string length, to align to left
-// TODO Find out length of each char
-// TODO Calculate length using occurences of each char in row
-// TODO Possibly overlay text over eachother for coloring?
 
 // TODO inventory stuff
 // 		- workshop
@@ -57,7 +53,6 @@
 #define HELP_REZ " \nRez an object from inventory.\n \n-p <x,y,z> can be added for custom position.\n \nex: \nrez tree\nrez tree -p <118,123,100>"
 #define HELP_AVINFO " \nRequest info about an avatar.\n \n-s for script info.\n-r for render info.\n \nex: \navinfo john.doe -s -r"
 
-#include "NexText-3.5.lsl"
 #include "snippets/debug.lsl"
 #include "snippets/typeTextAnim.lsl"
 #include "snippets/formatDecimal.lsl"
@@ -136,39 +131,10 @@ printText(string raw_text)
 	}
 }
 
-string prev_item;
-refresh()
-{
-	// TODO Render from bottom up
-	// TODO Render per letter?
-
-	// Refresh all lines if last item in buffer has changed
-	string last_item = llList2String(buffer, -1);
-	if(prev_item != last_item)
-	{
-		Clear();
-		FontSize = 0.013;
-    	LineHeight = 0.015;
-    	tOrigin(<.2, -.29, -.015>);
- 
- 		integer i;
-		for(i = 0; i < rows; i++)
-		{
-			string text = llList2String(buffer, i);
-    		t(text + "\n");
-			Render();
-		}
-		prev_item = last_item;
-	}
-}
-
 default
 {
     state_entry()
     {
-		//OptimiseForHUDs = TRUE;
-		Init();
-
 		llSetLinkPrimitiveParamsFast(LINK_SET, [PRIM_TEXT, "", <1,1,1>, 1.0]);
 		scanLinks();
 
@@ -186,11 +152,6 @@ default
     	//printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
         //	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
     }
-
-	timer()
-	{
-		refresh();
-	}
 
     changed(integer change)
     {
