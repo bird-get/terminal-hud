@@ -91,7 +91,6 @@ printText(string raw_text)
 		string text = llList2String(lines, i);
 		buffer += [text];
 		
-		llOwnerSay("Sending message: " + text);
         integer s = (integer)("0x" + llGetSubString((string)llGetOwner(), 0, 6));
         string hue = (string)(s % 360);
         string color = "hsl(" + hue + ",100%, 30%)";
