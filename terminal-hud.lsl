@@ -123,8 +123,6 @@ webAppInit()
     msg = "e('dv').innerHTML += \"{@0}\";";
     m0 = "<table><tbody id='tbd'></tbody></table>";
     sendMessageF(msg, [m0]);
-
-    //llListen(0, "", NULL_KEY, "");
 }
 
 default
