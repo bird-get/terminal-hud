@@ -2,6 +2,7 @@
 // Becky Pippen, 2010, contributed to the public domain.
 
 integer face = 4;          // Prim face for Shared Media
+integer link = 2;		   // Link number for media
 
 string  myURL;             // HTTP-in URL
 key inId = NULL_KEY;       // GET request id
