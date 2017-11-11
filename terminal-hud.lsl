@@ -149,7 +149,6 @@ default
 			PRIM_SIZE, <0.01, width, height>]);
 		
         listener = llListen(activeChannel, "", llGetOwner(), "");
-		llSetTimerEvent(0.1);
 
 		// Prrint starting text
 		string text;
