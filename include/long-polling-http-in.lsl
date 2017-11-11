@@ -29,7 +29,8 @@ s0.src='" + url + "/?r='+(seq++);sc.parentNode.replaceChild(s0,sc);sc=s0;},
 end:function(){clearTimeout(t2);t2=null;sc.onload=null;setTimeout('poll.beg()',500);},};}();</script>
 <button id='btn'onclick=poll.beg()>Start</button><div id='dv'></div></body></html>";
 
-    llSetPrimMediaParams(face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
+    //llSetPrimMediaParams(face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
+	llSetLinkMedia(link, face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
 }
 
 // Returns zero or more queued messages. Assumes no single message is
