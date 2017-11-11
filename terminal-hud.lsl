@@ -108,6 +108,36 @@ printText(string raw_text)
 	}
 }
 
+webAppInit()
+{
+    string msg;
+    string m0;
+
+    // First, send over a few handy function definitions:
+
+    msg = "function $$(t) { return document.getElementsByTagName(t)[0]; };";
+    msg += "function h() { return $$('head'); };";
+    msg += "function b() { return $$('body'); };";
+    msg += "function e(id) { return document.getElementById(id); };";
+    sendMessage(msg);
+
+    // Send some CSS. WebKit is sensitive about appending <style> elements
+    // to <head>, so we'll append it to an existing <div> tag in <body> instead.
+
+    msg = "e('dv').innerHTML += \"{@0}\";";
+    m0 = "<style>td:nth-child(2) { text-align:right } tr:nth-child(odd) { background-color:#f8e8f8 }</style>";
+    sendMessageF(msg, [m0]);
+
+    // Write a <table> element into element div#dv. The lines of chat will
+    // become rows in this table appended to tbody#tbd
+
+    msg = "e('dv').innerHTML += \"{@0}\";";
+    m0 = "<table><tbody id='tbd'></tbody></table>";
+    sendMessageF(msg, [m0]);
+
+    //llListen(0, "", NULL_KEY, "");
+}
+
 default
 {
     state_entry()
