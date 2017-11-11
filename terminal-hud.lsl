@@ -190,7 +190,7 @@ default
     {
         textAnimSpeed = .02;
 
-        printText("> " + msg);
+        printText("user@hostname > " + msg);
         llSleep(.2);
 
         list params = llParseString2List(msg, [" "], [""]);
