@@ -134,7 +134,9 @@ default
 		// Setup media stuff
 		link = 2;
 		llClearLinkMedia(link, face);
-		llSetLinkMedia(link, face, [PRIM_MEDIA_WIDTH_PIXELS, 400, PRIM_MEDIA_HEIGHT_PIXELS, 600]);
+		llSetLinkMedia(link, face, [
+			PRIM_MEDIA_WIDTH_PIXELS, 800, 
+			PRIM_MEDIA_HEIGHT_PIXELS, 600]);
 		llRequestURL();
 		webAppInit();
 
