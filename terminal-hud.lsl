@@ -152,8 +152,12 @@ default
 		llSetTimerEvent(0.1);
 
 		// Prrint starting text
-    	//printText("> slcmd\n----------\nchannel: " + (string)activeChannel + "\nmemory left: " +
-        //	(string)llGetFreeMemory() + "kb\nversion: v" + VERSION + "\n----------");
+		string text;
+		text += "Last login: Mon Nov 6 03:25:56 2017\n";
+		text += "Channel: " + (string)activeChannel + "\n";
+		text += "Memory left: " + (string)llGetFreeMemory() + "\n";
+		text += "Version: " + (string)VERSION + "\n";
+		printText(text);
     }
 
     http_request(key id, string method, string body)
