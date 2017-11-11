@@ -138,12 +138,15 @@ default
 		llRequestURL();
 		webAppInit();
 
-		// Move and scale background
-		llSetLinkPrimitiveParams(link_background, [PRIM_POSITION, <-0.1,0,-0.2>,
-			PRIM_SIZE, <0.01, 0.59, 0.40>]);
+		// Setup prims
+		float height = 0.4;
+		float width = height * 1.333; // 4:3 ratio
 
-		// Scale top bar to correct size
-		llSetLinkPrimitiveParams(1, [PRIM_SIZE, <0.01, 0.59, 0.02>]);
+		llSetLinkPrimitiveParams(1, [
+			PRIM_SIZE, <0.01, width, 0.02>,
+			PRIM_LINK_TARGET, link_background,
+			PRIM_POSITION, <-0.1,0,-height/2 - 0.01>,
+			PRIM_SIZE, <0.01, width, height>]);
 		
         listener = llListen(activeChannel, "", llGetOwner(), "");
 		llSetTimerEvent(0.1);
