@@ -89,20 +89,11 @@ printText(string raw_text)
 		
 		string text = llList2String(lines, i);
 		buffer += [text];
-		
-        integer s = (integer)("0x" + llGetSubString((string)llGetOwner(), 0, 6));
-        string hue = (string)(s % 360);
-        string color = "hsl(" + hue + ",100%, 30%)";
-
+	
+		// Send message to media
+		string row = "<tr><td>{@1}</td></tr>";
         string msg = "e('tbd').innerHTML += '{@0}';";
-        string m0 = "<tr style=\"color: {@4}\">";
-        m0 +=   "<td>{@1}</td>";
-        m0 +=   "<td>{@2}:</td>";
-        m0 +=   "<td>{@3}</td>";
-        m0 += "</tr>";
-
-        string t = llGetSubString(llGetTimestamp(), 11, 15);
-        sendMessageF(msg, [m0, "[" + t + "]", "you", addSlashes(text), color]);
+		sendMessageF(msg, [row, addSlashes(text)]);
 	}
 }
 
