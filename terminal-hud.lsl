@@ -161,7 +161,6 @@ default
         if(method == URL_REQUEST_GRANTED)
 		{
             myURL = body;
-            llOwnerSay("myURL=" + myURL);
             setDataURI(myURL);
         }
 		else if(method == "GET")
