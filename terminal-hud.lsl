@@ -1,4 +1,3 @@
-// TODO Use media for rendering
 // TODO Make commands and output more Linux-like
 // TODO Add command to list inventory
 // TODO Blinking cursor
