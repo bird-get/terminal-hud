@@ -29,6 +29,7 @@ integer listener;
 // User-tweakable
 integer activeChannel = 42;
 integer rows = 24;
+integer columns = 80;
 integer line_height = 12;
 integer font_size = 12;
 
@@ -70,7 +71,6 @@ list splitByLength(string str, integer max_length)
 
 printText(string raw_text)
 {
-	integer columns = 80;
 	integer i;
 	list lines;
 
