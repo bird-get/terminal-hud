@@ -120,7 +120,7 @@ webAppInit()
     msg = "e('dv').innerHTML += \"{@0}\";";
     m0 = "<style>";
 	m0 += "body { font-family: monospace, monospace;";
-	m0 += "font-size:{@1}px; line-height:{@2}px;";
+	m0 += "white-space: pre; font-size:{@1}px; line-height:{@2}px;";
 	m0 += "color: white; background-color: #181818;  }";
 	m0 += "td:nth-child(2) { text-align:right }";
 	m0 += "</style>";
