@@ -1,5 +1,15 @@
 // TODO Make commands and output more Linux-like
 // TODO Blinking cursor: _ or █ or |
+// TODO Automatically scroll down
+// TODO Hide media controls
+// TODO Remove Start button when started
+// TODO Add non-loaded media texture (click to use)
+// TODO Add command 'lsav' or 'avlist' to list all avatars in region
+// TODO Add command 'siminfo' to get all region details with llGetEnv
+// TODO Reset on login
+// TODO Reset on region change
+// TODO Reset on URL change
+// TODO Store last login time
 
 // TODO inventory stuff
 // 		- workshop
