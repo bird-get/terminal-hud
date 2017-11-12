@@ -95,9 +95,10 @@ printText(string raw_text)
 		buffer += [text];
 	
 		// Send message to media
-		string row = "<tr><td>{@1}</td></tr>";
+		string color_ = "color:rgb(255,0,0)";
+		string row = "<tr style=\"{@2}\"><td>{@1}</td></tr>";
         string msg = "e('tbd').innerHTML += '{@0}';";
-		sendMessageF(msg, [row, addSlashes(text)]);
+		sendMessageF(msg, [row, addSlashes(text), color_]);
 	}
 }
 
