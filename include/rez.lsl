@@ -9,7 +9,7 @@ rez(list params)
 
     if(pos == ZERO_VECTOR || llVecDist(pos, llGetPos()) > 10)
     {
-        textTypeAnim(1, TRUE, "error: invalid rez position");
+		printText("error: invalid rez position");
         return;
     }
 
@@ -18,10 +18,10 @@ rez(list params)
     if(llGetInventoryType(object_name) == INVENTORY_OBJECT)
     {
         llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
-        textTypeAnim(1, TRUE, "object '" + object_name + "' rezzed \n@ " + (string)pos);
+        printText("object \\\'" + object_name + "\\\' rezzed @ " + (string)pos);
     }
     else
     {
-        textTypeAnim(1, TRUE, "error: inventory not found");
+		printText("error: inventory not found");
     }
 }
