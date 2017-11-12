@@ -1,5 +1,4 @@
 // TODO Make commands and output more Linux-like
-// TODO Add command to list inventory
 // TODO Blinking cursor: _ or █ or |
 
 // TODO inventory stuff
@@ -262,6 +261,25 @@ default
         {
             avInfo(params);
         }
+		else if(param0 == "lsobj")
+		{
+			integer inv_count = llGetInventoryNumber(INVENTORY_OBJECT);
+			if(inv_count > 0)
+			{
+				integer i;
+				for(i=0; i < inv_count; i++)
+				{
+					string inv_name = llGetInventoryName(INVENTORY_OBJECT, i);
+					// TODO print into a table
+					// TODO print object permissions
+					printText(inv_name + " " + (string)ownerPerms);
+				}
+			}
+			else
+			{
+				printText("No objects in inventory.");
+			}
+		}
         else if(param0 == "reset")
         {
             llResetScript();
