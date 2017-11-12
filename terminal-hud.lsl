@@ -8,9 +8,32 @@
 #define DEBUG
 #define TIMEOUT 60
 #define VERSION "0.01"
-#define HELP_COMMANDS "Command list:\n \nhelp [func]\nset channel [c]\ncls\nreset\ndisable\nenable\nset color [<col>]\nset volume [v]\nrez [name] [-p <pos>]\navinfo [name] [-s] [-r]"
-#define HELP_REZ " \nRez an object from inventory.\n \n-p <x,y,z> can be added for custom position.\n \nex: \nrez tree\nrez tree -p <118,123,100>"
-#define HELP_AVINFO " \nRequest info about an avatar.\n \n-s for script info.\n-r for render info.\n \nex: \navinfo john.doe -s -r"
+#define HELP_COMMANDS "Command list:
+	help [func]
+	set channel [c]
+	cls
+	reset
+	disable
+	enable
+	set color [color]
+	set volume [v]
+	rez [-p pos] [name]
+	avinfo [-s] [-r] [name]"
+#define HELP_REZ "rez: rez [-p pos] [name]
+	Rez an object from inventory.
+	
+	Options:
+		-p pos	rez NAME at POS (max. 10m away from avatar)
+	
+	ex: rez -p <118,123,100> test_cube"
+#define HELP_AVINFO "avinfo: avinfo [-s] [-r] [name]
+	Request info about an avatar.
+	
+	Options:
+		-s		get script info
+		-r		get render info
+	
+	ex: avinfo john.doe -s -r"
 
 #include "snippets/debug.lsl"
 #include "snippets/typeTextAnim.lsl"
