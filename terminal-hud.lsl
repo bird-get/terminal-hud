@@ -206,7 +206,7 @@ default
     {
         textAnimSpeed = .02;
 
-        printText("user@hostname > " + msg);
+		printText("user@hostname > " + addSlashes(msg));
 
         list params = llParseString2List(msg, [" "], [""]);
 
