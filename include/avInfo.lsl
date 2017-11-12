@@ -4,6 +4,7 @@ avInfo(list params)
 
     list agent_list = llGetAgentList(AGENT_LIST_REGION, []);
 
+	// Check if avatar is in current region
     integer i;
     for(i = 0; i < llGetListLength(agent_list); i++)
     {
@@ -11,9 +12,12 @@ avInfo(list params)
         string name = llGetUsername(id);
         if(name == av_name)
         {
+			// Avatar is in current region; retrieve info
+
             string info = " \n";
 
-            if(llListFindList(params, ["-s"]) != -1) // Script info
+			// [-s] option: script info
+            if(llListFindList(params, ["-s"]) != -1)
             {
                 string running_scripts = (string)llGetObjectDetails(id, [OBJECT_RUNNING_SCRIPT_COUNT]);
                 string total_scripts = (string)llGetObjectDetails(id, [OBJECT_TOTAL_SCRIPT_COUNT]);
@@ -23,11 +27,15 @@ avInfo(list params)
                 info += "\nscr mem - " + script_memory + "kb";
                 info += "\nscr time - " + (string)((integer)((script_time*1000000)))+"μs";
             }
-            if(llListFindList(params, ["-r"]) != -1) // Render info
+
+			// [-r] option: render info
+            if(llListFindList(params, ["-r"]) != -1)
             {
                 float streaming_cost = llList2Float(llGetObjectDetails(id, [OBJECT_STREAMING_COST]), 0);
                 info += "\nstr cost - " + formatDecimal(streaming_cost, 2);
             }
+
+			// No options given
             if(info == "")
             {
                 printText("error: no parameters given");
