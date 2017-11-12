@@ -246,7 +246,9 @@ default
     {
         textAnimSpeed = .02;
 
-		printText("user@hostname > " + addSlashes(msg));
+		string hostname = llGetEnv("simulator_hostname");
+		string user = llGetUsername(llGetOwner());
+		printText(user + "@" + hostname + " > " + addSlashes(msg));
 
         list params = llParseString2List(msg, [" "], [""]);
 
