@@ -21,12 +21,14 @@
 #include "terminal-hud/include/avInfo.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
-integer activeChannel = 42;
-integer listener;
 list text_row_objects = [];
 integer link_background;
-integer rows = 24;
 list buffer = [];
+integer listener;
+
+// User-tweakable
+integer activeChannel = 42;
+integer rows = 24;
 integer line_height = 12;
 integer font_size = 12;
 
