@@ -15,8 +15,6 @@
 	reset
 	disable
 	enable
-	set color [color]
-	set volume [v]
 	rez [-p pos] [name]
 	lsobj
 	avinfo [-s] [-r] [name]"
