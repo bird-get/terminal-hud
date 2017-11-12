@@ -151,7 +151,7 @@ default
 		webAppInit();
 
 		// Setup prims
-		float height = 0.4;
+		float height = .4;
 		float width = height * 2; // 2:1 ratio
 
 		llSetLinkPrimitiveParams(1, [
