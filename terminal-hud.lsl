@@ -8,8 +8,8 @@
 #define DEBUG
 #define TIMEOUT 60
 #define VERSION "0.01"
-#define HELP_COMMANDS "Command list:
-	help [func]
+#define HELP_COMMANDS "Type \\\'help name\\\' for more help about function NAME.
+	help [name]
 	set channel [c]
 	cls
 	reset
