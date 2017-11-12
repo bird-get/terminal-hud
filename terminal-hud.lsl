@@ -98,7 +98,7 @@ printText(string raw_text)
 		string color_ = "color:rgb(255,0,0)";
 		string row = "<tr style=\"{@2}\"><td>{@1}</td></tr>";
         string msg = "e('tbd').innerHTML += '{@0}';";
-		sendMessageF(msg, [row, addSlashes(text), color_]);
+		sendMessageF(msg, [row, text, color_]);
 	}
 }
 
