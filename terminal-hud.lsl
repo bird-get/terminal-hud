@@ -27,6 +27,8 @@ list text_row_objects = [];
 integer link_background;
 integer rows = 24;
 list buffer = [];
+integer line_height = 12;
+integer font_size = 12;
 
 scanLinks()
 {
@@ -116,10 +118,11 @@ webAppInit()
     msg = "e('dv').innerHTML += \"{@0}\";";
     m0 = "<style>";
 	m0 += "body { font-family: monospace, monospace;";
-	m0 += "color: white; background-color: #181818; line-height: 12px; }";
+	m0 += "font-size:{@1}px; line-height:{@2}px;";
+	m0 += "color: white; background-color: #181818;  }";
 	m0 += "td:nth-child(2) { text-align:right }";
 	m0 += "</style>";
-    sendMessageF(msg, [m0]);
+    sendMessageF(msg, [m0, font_size, line_height]);
 
     // Write a <table> element into element div#dv. The lines of chat will
     // become rows in this table appended to tbody#tbd
