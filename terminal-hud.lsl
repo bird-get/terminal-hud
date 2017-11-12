@@ -28,6 +28,9 @@
 #define HELP_AVINFO "avinfo: avinfo [-s] [-r] [name]
 	Request info about an avatar.
 	
+	Arguments:
+		name	name of avatar
+	
 	Options:
 		-s		get script info
 		-r		get render info
