@@ -30,15 +30,15 @@ avInfo(list params)
             }
             if(info == "")
             {
-                textTypeAnim(1, TRUE, "error: no parameters given");
+                printText("error: no parameters given");
                 return;
             }
 
-            textTypeAnim(1, TRUE, info);
+            printText(info);
             return;
         }
     }
 
-    textTypeAnim(1, TRUE, "error: avatar not found");
+    printText("error: avatar not found");
     return;
 }
