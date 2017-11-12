@@ -14,7 +14,7 @@ avInfo(list params)
         {
 			// Avatar is in current region; retrieve info
 
-            string info = " \n";
+            string info;
 
 			// [-s] option: script info
             if(llListFindList(params, ["-s"]) != -1)
@@ -23,16 +23,16 @@ avInfo(list params)
                 string total_scripts = (string)llGetObjectDetails(id, [OBJECT_TOTAL_SCRIPT_COUNT]);
                 string script_memory = (string) llRound(llList2Float(llGetObjectDetails(id, [OBJECT_SCRIPT_MEMORY]), 0) / 1024);
                 float script_time = llList2Float(llGetObjectDetails(id,[OBJECT_SCRIPT_TIME]),0);
-                info += "\nscr count - " + running_scripts + " / " + total_scripts;
-                info += "\nscr mem - " + script_memory + "kb";
-                info += "\nscr time - " + (string)((integer)((script_time*1000000)))+"μs";
+                info += "scr count - " + running_scripts + " / " + total_scripts + "\n";
+                info += "scr mem - " + script_memory + "kb\n";
+                info += "scr time - " + (string)((integer)((script_time*1000000))) + "μs\n";
             }
 
 			// [-r] option: render info
             if(llListFindList(params, ["-r"]) != -1)
             {
                 float streaming_cost = llList2Float(llGetObjectDetails(id, [OBJECT_STREAMING_COST]), 0);
-                info += "\nstr cost - " + formatDecimal(streaming_cost, 2);
+                info += "str cost - " + formatDecimal(streaming_cost, 2) + "\n";
             }
 
 			// No options given
