@@ -149,8 +149,10 @@ default
 		float width = height * 2; // 2:1 ratio
 
 		llSetLinkPrimitiveParams(1, [
+			PRIM_TEXT, "", <1,1,1>, 1.0,
 			PRIM_SIZE, <0.01, width, 0.02>,
 			PRIM_LINK_TARGET, link_background,
+			PRIM_TEXT, "", <1,1,1>, 1.0,
 			PRIM_POSITION, <-0.1,0,-height/2 - 0.01>,
 			PRIM_SIZE, <0.01, width, height>]);
 		
