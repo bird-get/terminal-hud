@@ -39,7 +39,6 @@
 #include "snippets/debug.lsl"
 #include "snippets/typeTextAnim.lsl"
 #include "snippets/formatDecimal.lsl"
-#include "terminal-hud/include/setColor.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
@@ -255,19 +254,8 @@ default
         }
         else if(param0 == "set")
         {
-            if(param1 == "color")
+            if(param0 == "channel")
             {
-                setColor(param2);
-            }
-            else if(param0 == "volume")
-            {
-                llSleep(.1);
-                textVolume = (float)param1;
-                printText("Volume set to " + (string)textVolume + ".");
-            }
-            else if(param0 == "channel")
-            {
-                llSleep(.1);
                 activeChannel = (integer)param1;
                 printText("Channel set to " + (string)activeChannel + ".");
                 llListenRemove(listener);
