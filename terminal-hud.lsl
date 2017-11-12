@@ -272,7 +272,7 @@ default
 					string inv_name = llGetInventoryName(INVENTORY_OBJECT, i);
 					// TODO print into a table
 					// TODO print object permissions
-					printText(inv_name + " " + (string)ownerPerms);
+					printText(inv_name);
 				}
 			}
 			else
