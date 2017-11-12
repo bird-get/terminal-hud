@@ -18,6 +18,7 @@
 	set color [color]
 	set volume [v]
 	rez [-p pos] [name]
+	lsobj
 	avinfo [-s] [-r] [name]"
 #define HELP_REZ "rez: rez [-p pos] [name]
 	Rez an object from inventory.
