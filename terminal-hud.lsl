@@ -26,7 +26,7 @@
 	disable
 	enable
 	rez [-p pos] [name]
-	lsobj
+	lsinv
 	avinfo [-s] [-r] [name]"
 #define HELP_REZ "rez: rez [-p pos] [name]
 	Rez an object from inventory.
