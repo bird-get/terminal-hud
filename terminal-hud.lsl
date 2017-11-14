@@ -292,23 +292,25 @@ default
         {
             avInfo(params);
         }
-		else if(param0 == "lsobj")
+		else if(param0 == "lsinv")
 		{
-			integer inv_count = llGetInventoryNumber(INVENTORY_OBJECT);
-			if(inv_count > 0)
+			// List inventory
+			integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
+			if(inv_count > 1)
 			{
 				integer i;
 				for(i=0; i < inv_count; i++)
 				{
-					string inv_name = llGetInventoryName(INVENTORY_OBJECT, i);
+					string inv_name = llGetInventoryName(INVENTORY_ALL, i);
+					if(inv_name != llGetScriptName())
+						printText(inv_name);
 					// TODO print into a table
 					// TODO print object permissions
-					printText(inv_name);
 				}
 			}
 			else
 			{
-				printText("No objects in inventory.");
+				printText("No items in inventory.");
 			}
 		}
         else if(param0 == "reset")
