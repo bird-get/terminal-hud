@@ -47,9 +47,9 @@
 	
 	ex: avinfo john.doe -s -r"
 
-#include "snippets/debug.lsl"
-#include "snippets/typeTextAnim.lsl"
-#include "snippets/formatDecimal.lsl"
+#include "lsl-playground/snippets/debug.lsl"
+#include "lsl-playground/snippets/typeTextAnim.lsl"
+#include "lsl-playground/snippets/formatDecimal.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
