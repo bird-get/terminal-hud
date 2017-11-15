@@ -50,6 +50,7 @@
 #include "lsl-playground/snippets/debug.lsl"
 #include "lsl-playground/snippets/typeTextAnim.lsl"
 #include "lsl-playground/snippets/formatDecimal.lsl"
+#include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
