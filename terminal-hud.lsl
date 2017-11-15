@@ -4,7 +4,6 @@
 // TODO Hide media controls
 // TODO Remove Start button when started
 // TODO Add non-loaded media texture (click to use)
-// TODO Add command 'lsav' or 'avlist' to list all avatars in region
 // TODO Add command 'siminfo' to get all region details with llGetEnv
 // TODO Reset on login
 // TODO Reset on region change
@@ -27,7 +26,8 @@
 	enable
 	rez [-p pos] [name]
 	lsinv
-	avinfo [-s] [-r] [name]"
+	avinfo [-s] [-r] [name]
+	avlist [-s] [-r]"
 #define HELP_REZ "rez: rez [-p pos] [name]
 	Rez an object from inventory.
 	
@@ -52,6 +52,7 @@
 #include "lsl-playground/snippets/formatDecimal.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
+#include "terminal-hud/include/avList.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 list text_row_objects = [];
@@ -292,6 +293,10 @@ default
         {
             avInfo(params);
         }
+		else if(param0 == "avlist")
+		{
+			avList(params);
+		}
 		else if(param0 == "lsinv")
 		{
 			// List inventory
