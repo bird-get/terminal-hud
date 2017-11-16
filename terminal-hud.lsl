@@ -25,8 +25,8 @@
 	set channel [c]
 	cls
 	reset
-	disable
-	enable
+	show
+	hide
 	rez [-p pos] [name]
 	lsinv
 	avinfo [-s] [-r] [name]
