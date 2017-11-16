@@ -1,6 +1,7 @@
 rez(list params)
 {
-    vector pos;
+    // Parse position option
+	vector pos;
     integer pos_index = llListFindList(params, ["-p"]);
     if(pos_index == -1)
         pos = llGetPos();
@@ -48,7 +49,7 @@ rez(list params)
 	}
 	else if(llGetListLength(completions) > 1)
 	{
-		// More than one autocompletion: find exact matches in completions
+		// More than one autocompletion: find exact match in completions
 		integer i;
 		integer length = llGetListLength(completions);
 		integer match;
@@ -68,6 +69,7 @@ rez(list params)
 		}
 	}
 	
+	// Rez object and print message
     llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
     printText("object \\\'" + object_name + "\\\' rezzed @ " + (string)pos);
 }
