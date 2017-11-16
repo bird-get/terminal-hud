@@ -6,7 +6,6 @@
 // TODO Hide media controls
 // TODO Remove Start button when started
 // TODO Add non-loaded media texture (click to use)
-// TODO Add command 'siminfo' to get all region details with llGetEnv
 // TODO Reset on login
 // TODO Reset on URL change
 // TODO Store last login time
@@ -308,6 +307,29 @@ default
 		else if(param0 == "avlist")
 		{
 			avList(params);
+		}
+		else if(param0 == "siminfo")
+		{
+			list rows;
+			rows += ["agent_limit|" + llGetEnv("agent_limit")];
+			rows += ["dynamic_pathfinding|" + llGetEnv("dynamic_pathfinding")];
+			rows += ["estate_id|" + llGetEnv("estate_id")];
+			rows += ["estate_name|" + llGetEnv("estate_name")];
+			rows += ["frame_number|" + llGetEnv("frame_number")];
+			rows += ["region_cpu_ratio|" + llGetEnv("region_cpu_ratio")];
+			rows += ["region_idle|" + llGetEnv("region_idle")];
+			rows += ["region_product_name|" + llGetEnv("region_product_name")];
+			rows += ["region_product_sku|" + llGetEnv("region_product_sku")];
+			rows += ["region_start_time|" + llGetEnv("region_start_time")];
+			rows += ["sim_channel|" + llGetEnv("sim_channel")];
+			rows += ["sim_version|" + llGetEnv("sim_version")];
+			rows += ["simulator_hostname|" + llGetEnv("simulator_hostname")];
+			rows += ["region_max_prims|" + llGetEnv("region_max_prims")];
+			rows += ["region_object_bonus|" + llGetEnv("region_object_bonus")];
+
+			printText("Sim information:\n ");
+			list headers = ["key", "value"];
+			printText(tabulate(headers, rows));
 		}
 		else if(param0 == "lsinv")
 		{
