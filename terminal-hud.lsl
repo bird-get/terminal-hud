@@ -64,6 +64,7 @@ list text_row_objects = [];
 integer link_background;
 list buffer = [];
 integer listener;
+integer hud_hidden;
 
 // User-tweakable
 integer activeChannel = 42;
@@ -287,11 +288,24 @@ default
                 listener = llListen(activeChannel, "", llGetOwner(), "");
             }
         }
-
-        else if(param0 == "disable")
-        {
-            state disabled;
-        }
+		else if(param0 == "show")
+		{
+			// Show hud, if not already shown
+			if(hud_hidden)
+			{
+				hud_hidden = FALSE;
+				llSetPos(llGetLocalPos() + <0,0,1>);
+			}
+		}
+		else if(param0 == "hide")
+		{
+			// Hide hud, if not already hidden
+			if(!hud_hidden)
+			{
+				hud_hidden = TRUE;
+				llSetPos(llGetLocalPos() - <0,0,1>);
+			}
+		}
         else if(param0 == "cls")
         {
             // TODO Clear screen
@@ -359,31 +373,6 @@ default
         else
         {
             printText(param0 + ": command not found");
-        }
-    }
-}
-
-state disabled
-{
-    state_entry()
-    {
-        llSetLinkColor(LINK_SET, <1,1,1>, ALL_SIDES);
-        llSetAlpha(0.25, ALL_SIDES);
-        llSetText("", <1,1,1>, 0.0);
-        llListen(activeChannel, "", "", "enable");
-    }
-
-    listen(integer channel, string name, key id, string msg)
-    {
-        if(llGetOwnerKey(id) == llGetOwner())
-        {
-            if(msg == "enable")
-            {
-                printText("> enable");
-                llSetAlpha(1, ALL_SIDES);
-                llSleep(1);
-                state default;
-            }
         }
     }
 }
