@@ -8,7 +8,6 @@
 // TODO Add non-loaded media texture (click to use)
 // TODO Add command 'siminfo' to get all region details with llGetEnv
 // TODO Reset on login
-// TODO Reset on region change
 // TODO Reset on URL change
 // TODO Store last login time
 // TODO Colorize output
@@ -247,6 +246,8 @@ default
     changed(integer change)
     {
         if(change & CHANGED_OWNER)
+            llResetScript();
+		else if(change & CHANGED_REGION)
             llResetScript();
     }
 
