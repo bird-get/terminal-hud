@@ -13,15 +13,61 @@ rez(list params)
         return;
     }
 
-    string object_name = llList2String(params, 1);
-
-    if(llGetInventoryType(object_name) == INVENTORY_OBJECT)
-    {
-        llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
-        printText("object \\\'" + object_name + "\\\' rezzed @ " + (string)pos);
-    }
-    else
-    {
+	// Get inventory list
+	list inventory = [];
+	integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
+	if(inv_count > 1)
+	{
+		integer i;
+		for(i=0; i < inv_count; i++)
+		{
+			string inv_name = llGetInventoryName(INVENTORY_ALL, i);
+			if(inv_name != llGetScriptName())
+				inventory += inv_name;
+		}
+	}
+	else
+	{
+		printText("error: no items in inventory");
+		return;
+	}
+    
+	// Look for autocompletions
+	string object_name = llList2String(params, 1);
+	list completions = autocomplete(object_name, inventory);
+	integer length;
+	if(llGetListLength(completions) == 0)
+	{
+		// No autocompletions
 		printText("error: inventory not found");
-    }
+		return;
+	}
+	else if(llGetListLength(completions) == 1)
+	{
+		object_name = llList2String(completions, 0);
+	}
+	else if(llGetListLength(completions) > 1)
+	{
+		// More than one autocompletion: find exact matches in completions
+		integer i;
+		integer length = llGetListLength(completions);
+		integer match;
+		for(i=0; i < length; i++)
+		{
+			string completion = llList2String(completions, i);
+			if(completion == object_name)
+			{
+				match = TRUE;
+			}
+		}
+		if(!match)
+		{
+			printText("error: more than 1 autocompletion possible:\n" +
+				llDumpList2String(completions, "\n"));
+			return;
+		}
+	}
+	
+    llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
+    printText("object \\\'" + object_name + "\\\' rezzed @ " + (string)pos);
 }
