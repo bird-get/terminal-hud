@@ -31,12 +31,13 @@
 	lsinv
 	avinfo [-s] [-r] [name]
 	avlist [-s] [-r]"
-#define HELP_REZ "rez: rez [-p pos] [name]
+#define HELP_REZ "rez: rez [-g] [-p pos] [name]
 	Rez an object from inventory.
 	
 	Options:
 		-p pos	rez NAME at POS (max. 10m away from avatar)
-	
+		-g		align to grid
+
 	ex: rez -p <118,123,100> test_cube"
 #define HELP_AVINFO "avinfo: avinfo [-s] [-r] [name]
 	Request info about an avatar.
