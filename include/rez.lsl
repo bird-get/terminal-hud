@@ -14,6 +14,14 @@ rez(list params)
         return;
     }
 
+	// Parse grid align option
+	if(llListFindList(params, ["-g"]) > -1)
+	{
+		pos.x = (float)llRound(pos.x * 4) / 4;
+		pos.y = (float)llRound(pos.y * 4) / 4;
+		pos.z = (float)llRound(pos.z * 4) / 4;
+	}
+
 	// Get inventory list
 	list inventory = [];
 	integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
