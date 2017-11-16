@@ -1,6 +1,6 @@
 list autocomplete(string text, list items)
 {
-	// Find an autocompletion for supplied string.
+	// Find and return autocompletions for text in items
 	integer length = llGetListLength(items);
 	list completions = [];
 	integer i;
