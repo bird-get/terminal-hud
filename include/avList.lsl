@@ -1,5 +1,3 @@
-// TODO Tabulate output
-
 avList(list params)
 {
 	// Show a list of avatars in the current region
@@ -21,10 +19,12 @@ avList(list params)
 		headers += ["Streaming cost"];
 	}
 	
+	// Print agent count
 	list agents = llGetAgentList(AGENT_LIST_REGION, []);
 	integer agent_count = llGetListLength(agents);
-	string info = (string)agent_count + " avatars in current region.\n \n";
-	info += llDumpList2String(headers, "|") + "\n";
+	printText((string)agent_count + " avatars in current region.\n \n");
+	
+	list rows;
 
 	integer i;
 	for(i=0; i < agent_count; i++)
@@ -61,7 +61,7 @@ avList(list params)
     	    float streaming_cost = llList2Float(llGetObjectDetails(agent_key, [OBJECT_STREAMING_COST]), 0);
     	    agent_info += [formatDecimal(streaming_cost, 2)];
     	}
-		info += llList2CSV(agent_info) + "\n";
+		rows += [llDumpList2String(agent_info, "|")];
 	}
-	printText(info);
+	printText(tabulate(headers, rows));
 }
