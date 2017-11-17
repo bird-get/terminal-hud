@@ -72,7 +72,6 @@ default
 		printText(user + "@" + hostname + " > " + addSlashes(msg));
 
         list params = llParseString2List(msg, [" "], [""]);
-
         string param0 = llList2String(params, 0);
         string param1 = llList2String(params, 1);
         string param2 = llList2String(params, 2);
