@@ -147,4 +147,12 @@ default
             printText(param0 + ": command not found");
         }
     }
+
+	link_message(integer sender, integer num, string msg, key id)
+	{
+		if(msg == "display started")
+		{
+			printText("Display has been restarted.");
+		}
+	}
 }

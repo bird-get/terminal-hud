@@ -121,6 +121,9 @@ default
     {
 		scanLinks();
 		
+		// Announce script start
+		llMessageLinked(LINK_THIS, 2, "display started", "");
+
 		// Setup media stuff
 		link = 2;
 		llClearLinkMedia(link, face);
