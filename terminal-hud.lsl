@@ -325,7 +325,6 @@ default
 					string inv_name = llGetInventoryName(INVENTORY_ALL, i);
 					if(inv_name != llGetScriptName())
 						rows += [inv_name];
-					// TODO print into a table
 					// TODO option: print inventory permissions
 					// TODO option: print inventory description
 					// TODO option: print inventory key
