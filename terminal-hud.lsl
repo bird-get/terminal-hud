@@ -12,6 +12,8 @@
 // TODO Colorize output
 // TODO Allow putting options together (i.e. -rks)
 // TODO Regularly check if URL still works
+// TODO Add function to resize
+// TODO Handle region change in a better way, do not just reset
 
 // TODO inventory stuff
 // 		- workshop
