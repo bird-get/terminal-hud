@@ -1,6 +1,8 @@
 // Reverse Ajax: Long-polling HTTP-in.
 // Becky Pippen, 2010, contributed to the public domain.
 // http://wiki.secondlife.com/wiki/User:Becky_Pippen/Shared_Media_LSL_Recipes
+//
+// Edited by Bridget Littlebird.
 
 integer face = 4;          // Prim face for Shared Media
 integer link = 2;		   // Link number for media
