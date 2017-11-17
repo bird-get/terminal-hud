@@ -41,6 +41,14 @@ help(string function)
 		printText("lsinv: lsinv [-k] [-p]
 	List inventory.
 	
+	Option -p shows permissions: cmtcmtcmtge
+						 	    │  │  │  ││
+						  Base ──┘  │  │  ││
+						  Owner ────┘  │  ││
+						  Next owner ──┘  ││
+						  Group share ────┘│
+						  Everyone copy ───┘
+	
 	Options:
 		-k		get inventory key
 		-p		get inventory permissions");
