@@ -326,6 +326,8 @@ default
 						printText(inv_name);
 					// TODO print into a table
 					// TODO print object permissions
+					// TODO option: print inventory description
+					// TODO option: print inventory key
 				}
 			}
 			else
