@@ -190,7 +190,7 @@ default
      \" \" \n";
 		text += "Last login: Mon Nov 6 03:25:56 2017\n";
 		text += "Channel: " + (string)activeChannel + "\n";
-		text += "Memory: " + (string)(llGetFreeMemory()/1000) + "kb / 64 kb\n";
+		text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
 		text += "Version: " + (string)VERSION + "\n";
 		printText(text);
     }
