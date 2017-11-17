@@ -1,17 +1,10 @@
 // TODO Make commands and output more Linux-like
 //		- invalid option should show usage text
 //		- add option '--help' to commands
-// TODO Blinking cursor: _ or █ or |
-// TODO Automatically scroll down
-// TODO Hide media controls
-// TODO Remove Start button when started
-// TODO Add non-loaded media texture (click to use)
 // TODO Reset on login
 // TODO Reset on URL change
 // TODO Store last login time
-// TODO Colorize output
 // TODO Allow putting options together (i.e. -rks)
-// TODO Regularly check if URL still works
 // TODO Add function to resize
 // TODO Handle region change in a better way, do not just reset
 
