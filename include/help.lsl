@@ -36,6 +36,15 @@ help(string function)
 		-s		get script info
 		-r		get render info");
 	}
+	else if(function == "lsinv")
+	{
+		printText("lsinv: lsinv [-k] [-p]
+	List inventory.
+	
+	Options:
+		-k		get inventory key
+		-p		get inventory permissions");
+	}
 	else
 	{
 	    printText("Type \\\'help name\\\' for more help about function NAME.
@@ -46,7 +55,7 @@ help(string function)
 	show
 	hide
 	rez [-p pos] [name]
-	lsinv
+	lsinv [-k] [-p]
 	siminfo
 	avinfo [-s] [-r] [name]
 	avlist [-s] [-r]");
