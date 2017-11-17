@@ -27,6 +27,15 @@ help(string function)
 	
 	ex: avinfo john.doe -s -r");
 	}
+	else if(function == "avlist")
+	{
+		printText("avlist: avlist
+	Request info about all avatars in the current region.
+	
+	Options:
+		-s		get script info
+		-r		get render info");
+	}
 	else
 	{
 	    printText("Type \\\'help name\\\' for more help about function NAME.
