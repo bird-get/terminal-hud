@@ -112,7 +112,7 @@ default
 		}
         else if(param0 == "cls")
         {
-            // TODO Clear screen
+			llMessageLinked(LINK_THIS, 0, "clear screen", "");
         }
 		else if(param0 == "siminfo")
 		{

@@ -115,6 +115,12 @@ webAppInit()
     sendMessageF(msg, [m0]);
 }
 
+clearScreen()
+{
+    string msg = "e('tbd').innerHTML = [];";
+	sendMessage(msg);
+}
+
 default
 {
     state_entry()
@@ -155,6 +161,13 @@ default
 		if(num == 1)
 		{
 			printText(msg);
+		}
+		else
+		{
+			if(msg == "clear screen")
+			{
+				clearScreen();
+			}
 		}
 	}
 
