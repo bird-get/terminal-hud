@@ -38,6 +38,7 @@ help(string function)
 	hide
 	rez [-p pos] [name]
 	lsinv
+	siminfo
 	avinfo [-s] [-r] [name]
 	avlist [-s] [-r]");
 	}
