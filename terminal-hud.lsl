@@ -318,17 +318,20 @@ default
 			integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
 			if(inv_count > 1)
 			{
+				list rows = [];
 				integer i;
 				for(i=0; i < inv_count; i++)
 				{
 					string inv_name = llGetInventoryName(INVENTORY_ALL, i);
 					if(inv_name != llGetScriptName())
-						printText(inv_name);
+						rows += [inv_name];
 					// TODO print into a table
 					// TODO option: print inventory permissions
 					// TODO option: print inventory description
 					// TODO option: print inventory key
 				}
+				list headers = ["Name"];
+				printText(tabulate(headers, rows));
 			}
 			else
 			{
