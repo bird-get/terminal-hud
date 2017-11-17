@@ -2,7 +2,7 @@
 
 help(string function)
 {
-	if(param1 == "rez")
+	if(function == "rez")
 	{
 		printText("rez: rez [-g] [-p pos] [name]
 			Rez an object from inventory.
@@ -13,7 +13,7 @@ help(string function)
 			
 			ex: rez -p <118,123,100> test_cube");
 	}
-	else if(param1 == "avinfo")
+	else if(function == "avinfo")
 	{
 		printText("avinfo: avinfo [-s] [-r] [name]
 			Request info about an avatar.
