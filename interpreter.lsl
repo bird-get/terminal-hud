@@ -80,10 +80,11 @@ default
         string param1 = llList2String(params, 1);
         string param2 = llList2String(params, 2);
 
-        if(param0 == "help")
-        {
-			help(param1);
-        }
+        if(param0 == "help") help(param1);
+        else if(param0 == "rez") rez(params);
+        else if(param0 == "avinfo") avInfo(params);
+		else if(param0 == "avlist")	avList(params);
+		else if(param0 == "lsinv") lsInv(params);
         else if(param0 == "set")
         {
             if(param0 == "channel")
@@ -116,18 +117,6 @@ default
         {
             // TODO Clear screen
         }
-        else if(param0 == "rez")
-        {
-            rez(params);
-        }
-        else if(param0 == "avinfo")
-        {
-            avInfo(params);
-        }
-		else if(param0 == "avlist")
-		{
-			avList(params);
-		}
 		else if(param0 == "siminfo")
 		{
 			list rows;
@@ -150,10 +139,6 @@ default
 			printText("Sim information:\n ");
 			list headers = ["key", "value"];
 			printText(tabulate(headers, rows));
-		}
-		else if(param0 == "lsinv")
-		{
-			lsInv(params);
 		}
         else if(param0 == "reset")
         {
