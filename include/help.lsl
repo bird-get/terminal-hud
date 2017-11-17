@@ -29,7 +29,7 @@ help(string function)
 	}
 	else if(function == "avlist")
 	{
-		printText("avlist: avlist
+		printText("avlist: avlist [-s] [-r]
 	Request info about all avatars in the current region.
 	
 	Options:
