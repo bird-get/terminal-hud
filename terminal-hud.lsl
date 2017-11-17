@@ -20,42 +20,13 @@
 #define DEBUG
 #define TIMEOUT 60
 #define VERSION "0.01"
-#define HELP_COMMANDS "Type \\\'help name\\\' for more help about function NAME.
-	help [name]
-	set channel [c]
-	cls
-	reset
-	show
-	hide
-	rez [-p pos] [name]
-	lsinv
-	avinfo [-s] [-r] [name]
-	avlist [-s] [-r]"
-#define HELP_REZ "rez: rez [-g] [-p pos] [name]
-	Rez an object from inventory.
-	
-	Options:
-		-p pos	rez NAME at POS (max. 10m away from avatar)
-		-g		align to grid
-
-	ex: rez -p <118,123,100> test_cube"
-#define HELP_AVINFO "avinfo: avinfo [-s] [-r] [name]
-	Request info about an avatar.
-	
-	Arguments:
-		name	name of avatar
-	
-	Options:
-		-s		get script info
-		-r		get render info
-	
-	ex: avinfo john.doe -s -r"
 
 #include "lsl-playground/snippets/debug.lsl"
 #include "lsl-playground/snippets/typeTextAnim.lsl"
 #include "lsl-playground/snippets/formatDecimal.lsl"
 #include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
+#include "terminal-hud/include/help.lsl"
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
 #include "terminal-hud/include/avList.lsl"
@@ -272,12 +243,7 @@ default
 
         if(param0 == "help")
         {
-            if(param1 == "rez")
-                printText(HELP_REZ);
-            else if(param1 == "avinfo")
-                printText(HELP_AVINFO);
-            else
-                printText(HELP_COMMANDS);
+			help(param1);
         }
         else if(param0 == "set")
         {
