@@ -17,7 +17,6 @@
 #define VERSION "0.01"
 
 #include "lsl-playground/snippets/debug.lsl"
-#include "lsl-playground/snippets/typeTextAnim.lsl"
 #include "lsl-playground/snippets/formatDecimal.lsl"
 #include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
