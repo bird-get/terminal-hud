@@ -1,6 +1,27 @@
 avInfo(list params)
 {
-    string av_name = llList2String(params, 1);
+	integer options_mask;
+	if(llListFindList(params, ["-s"]) != -1) // option: script info
+	{
+		options_mask += 1;
+	}
+	if(llListFindList(params, ["-r"]) != -1) // option: render info
+	{
+		options_mask += 2;
+	}
+	if(llListFindList(params, ["-l"]) != -1) // option: language
+	{
+		options_mask += 4;
+	}
+	
+	// No options given
+   	if(options_mask == 0)
+   	{
+    	printText("error: no options given");
+       	return;
+    }
+    
+	string av_name = llList2String(params, 1);
     list agent_list = llGetAgentList(AGENT_LIST_REGION, []);
 	
 	// Build a list of agent names for autocompletion 
@@ -34,7 +55,7 @@ avInfo(list params)
     string info;
 
 	// [-s] option: script info
-    if(llListFindList(params, ["-s"]) != -1)
+ 	if(options_mask & 1)
     {
         string running_scripts = (string)llGetObjectDetails(id, [OBJECT_RUNNING_SCRIPT_COUNT]);
         string total_scripts = (string)llGetObjectDetails(id, [OBJECT_TOTAL_SCRIPT_COUNT]);
@@ -46,25 +67,18 @@ avInfo(list params)
     }
 
 	// [-r] option: render info
-    if(llListFindList(params, ["-r"]) != -1)
+ 	if(options_mask & 2)
     {
         float streaming_cost = llList2Float(llGetObjectDetails(id, [OBJECT_STREAMING_COST]), 0);
         info += "str cost - " + formatDecimal(streaming_cost, 2) + "\n";
     }
 
 	// [-l] option: language
-	if(llListFindList(params, ["-l"]) != -1)
+ 	if(options_mask & 4)
 	{
 		string language = llGetAgentLanguage(id);
 		info += "language - " + language;
 	}
-
-	// No options given
-   	if(info == "")
-   	{
-    	printText("error: no parameters given");
-       	return;
-    }
 
     printText(info);
 }
