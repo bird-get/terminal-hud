@@ -1,26 +1,5 @@
 avInfo(list params)
 {
-	integer options_mask;
-	if(llListFindList(params, ["-s"]) != -1) // option: script info
-	{
-		options_mask += 1;
-	}
-	if(llListFindList(params, ["-r"]) != -1) // option: render info
-	{
-		options_mask += 2;
-	}
-	if(llListFindList(params, ["-l"]) != -1) // option: language
-	{
-		options_mask += 4;
-	}
-	
-	// No options given
-   	if(options_mask == 0)
-   	{
-    	printText("error: no options given");
-       	return;
-    }
-    
 	string av_name = llList2String(params, 1);
     list agent_list = llGetAgentList(AGENT_LIST_REGION, []);
 	
@@ -53,33 +32,44 @@ avInfo(list params)
 	printText("Avatar information for " + av_name + ":\n ");
 
 	list rows = [];
+	
+	list details = llGetObjectDetails(id, [
+		OBJECT_RENDER_WEIGHT, OBJECT_STREAMING_COST,
+		OBJECT_HOVER_HEIGHT, OBJECT_BODY_SHAPE_TYPE, OBJECT_GROUP_TAG,
+		OBJECT_ATTACHED_SLOTS_AVAILABLE, 
+		OBJECT_RUNNING_SCRIPT_COUNT, OBJECT_TOTAL_SCRIPT_COUNT,
+		OBJECT_SCRIPT_MEMORY, OBJECT_SCRIPT_TIME]);
 
-	// [-s] option: script info
- 	if(options_mask & 1)
-    {
-        string running_scripts = (string)llGetObjectDetails(id, [OBJECT_RUNNING_SCRIPT_COUNT]);
-        string total_scripts = (string)llGetObjectDetails(id, [OBJECT_TOTAL_SCRIPT_COUNT]);
-        string script_memory = (string) llRound(llList2Float(llGetObjectDetails(id, [OBJECT_SCRIPT_MEMORY]), 0) / 1024);
-        float script_time = llList2Float(llGetObjectDetails(id,[OBJECT_SCRIPT_TIME]),0);
-        rows += ["scr count|" + running_scripts + " / " + total_scripts + ""];
-        rows += ["scr mem|" + script_memory + "kb"];
-        rows += ["scr time|" + (string)((integer)((script_time*1000000))) + "μs"];
-    }
-
-	// [-r] option: render info
- 	if(options_mask & 2)
-    {
-        float streaming_cost = llList2Float(llGetObjectDetails(id, [OBJECT_STREAMING_COST]), 0);
-        rows += ["str cost|" + formatDecimal(streaming_cost, 2)];
-    }
-
-	// [-l] option: language
- 	if(options_mask & 4)
-	{
-		string language = llGetAgentLanguage(id);
-		rows += ["language|" + language];
-	}
-
+	rows += ["display name|" + llGetDisplayName(id)];
+	rows += ["username|" + llGetUsername(id)];
+	rows += ["language|" + llGetAgentLanguage(id)];
+	
+	string group_tag = llList2String(details, 4);
+	if(group_tag == "") group_tag = "none";
+	rows += ["group tag|" + group_tag];
+	
+	float hover_height = llList2Float(details, 2);
+	float body_shape = llList2Float(details, 3);
+	rows += ["hover height|" + (string)hover_height];
+	rows += ["body shape|" + (string)body_shape];
+	
+	rows += ["attached slots|" + llList2String(details, 5)];
+	rows += ["size|" + (string)llGetAgentSize(id)];
+	
+	// Render info
+    float streaming_cost = llList2Float(details, 1);
+    string render_weight = llList2String(details, 0);
+	rows += ["streaming cost|" + formatDecimal(streaming_cost, 2)];
+	rows += ["render weight|" + (string)render_weight];
+	
+	string running_scripts = llList2String(details, 6);
+    string total_scripts = llList2String(details, 7);
+    string script_memory = (string)llRound(llList2Float(details, 8) / 1024);
+    float script_time = llList2Float(details, 9);
+    rows += ["script count|" + running_scripts + " / " + total_scripts + ""];
+    rows += ["script memory|" + script_memory + "kb"];
+    rows += ["script time|" + (string)((integer)((script_time*1000000))) + "μs"];
+	
 	list headers = ["key", "value"];
     printText(tabulate(headers, rows));
 }
