@@ -52,7 +52,7 @@ avInfo(list params)
 	av_name = llList2String(completions, 0);
 	// TODO tabulate output
 
-    string info;
+	list rows = [];
 
 	// [-s] option: script info
  	if(options_mask & 1)
@@ -61,24 +61,25 @@ avInfo(list params)
         string total_scripts = (string)llGetObjectDetails(id, [OBJECT_TOTAL_SCRIPT_COUNT]);
         string script_memory = (string) llRound(llList2Float(llGetObjectDetails(id, [OBJECT_SCRIPT_MEMORY]), 0) / 1024);
         float script_time = llList2Float(llGetObjectDetails(id,[OBJECT_SCRIPT_TIME]),0);
-        info += "scr count - " + running_scripts + " / " + total_scripts + "\n";
-        info += "scr mem - " + script_memory + "kb\n";
-        info += "scr time - " + (string)((integer)((script_time*1000000))) + "μs\n";
+        rows += ["scr count|" + running_scripts + " / " + total_scripts + ""];
+        rows += ["scr mem|" + script_memory + "kb"];
+        rows += ["scr time|" + (string)((integer)((script_time*1000000))) + "μs"];
     }
 
 	// [-r] option: render info
  	if(options_mask & 2)
     {
         float streaming_cost = llList2Float(llGetObjectDetails(id, [OBJECT_STREAMING_COST]), 0);
-        info += "str cost - " + formatDecimal(streaming_cost, 2) + "\n";
+        rows += ["str cost|" + formatDecimal(streaming_cost, 2)];
     }
 
 	// [-l] option: language
  	if(options_mask & 4)
 	{
 		string language = llGetAgentLanguage(id);
-		info += "language - " + language;
+		rows += ["language|" + language];
 	}
 
-    printText(info);
+	list headers = ["key", "value"];
+    printText(tabulate(headers, rows));
 }
