@@ -50,6 +50,7 @@ avInfo(list params)
 	}
 
 	av_name = llList2String(completions, 0);
+	printText("Avatar information for " + av_name + ":\n ");
 
 	list rows = [];
 
