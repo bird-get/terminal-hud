@@ -50,7 +50,6 @@ avInfo(list params)
 	}
 
 	av_name = llList2String(completions, 0);
-	// TODO tabulate output
 
 	list rows = [];
 
