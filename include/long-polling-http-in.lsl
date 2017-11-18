@@ -4,6 +4,8 @@
 //
 // Edited by Bridget Littlebird.
 
+integer refresh_rate = 250;	// How often a GET is exchanged
+
 integer face = 4;          // Prim face for Shared Media
 integer link = 2;		   // Link number for media
 
@@ -30,7 +32,7 @@ setDataURI(string url)
 var poll=function(){var sc=document.getElementById('sc'),t2,seq=0,s0;return{
 beg:function(){s0=document.createElement('script');s0.onload=poll.end;t2=setTimeout('poll.end()',20000);
 s0.src='" + url + "/?r='+(seq++);sc.parentNode.replaceChild(s0,sc);sc=s0;},
-end:function(){clearTimeout(t2);t2=null;sc.onload=null;setTimeout('poll.beg()',500);},};}();</script>
+end:function(){clearTimeout(t2);t2=null;sc.onload=null;setTimeout('poll.beg()'," + (string)refresh_rate + ");},};}();</script>
 <button id='btn'onclick=poll.beg()>Start</button><div id='dv'></div></body></html>";
 
     //llSetPrimMediaParams(face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
