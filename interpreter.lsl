@@ -67,6 +67,7 @@ default
 
     listen(integer channel, string name, key id, string msg)
     {
+		// Print prompt + escaped command
 		string hostname = llGetEnv("simulator_hostname");
 		string user = llGetUsername(llGetOwner());
 		printText(user + "@" + hostname + " > " + addSlashes(msg));
