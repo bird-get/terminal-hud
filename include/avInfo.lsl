@@ -35,6 +35,13 @@ avInfo(list params)
                 info += "str cost - " + formatDecimal(streaming_cost, 2) + "\n";
             }
 
+			// [-l] option: language
+			if(llListFindList(params, []) != -1)
+			{
+				string language = llGetAgentLanguage(id);
+				info += "language - " + language;
+			}
+
 			// No options given
             if(info == "")
             {
