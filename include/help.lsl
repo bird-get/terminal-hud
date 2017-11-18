@@ -15,18 +15,13 @@ help(string function)
 	}
 	else if(function == "avinfo")
 	{
-		printText("avinfo: avinfo [-s] [-r] [name]
+		printText("avinfo: avinfo [name]
 	Request info about an avatar.
 	
 	Arguments:
 		name	name of avatar
 	
-	Options:
-		-s		get script info
-		-r		get render info
-		-l		get language
-	
-	ex: avinfo john.doe -s -r");
+	ex: avinfo john.doe");
 	}
 	else if(function == "avlist")
 	{
@@ -66,7 +61,7 @@ help(string function)
 	rez [-p pos] [name]
 	lsinv [-k] [-p]
 	siminfo
-	avinfo [-s] [-r] [name]
+	avinfo [name]
 	avlist [-s] [-r]");
 	}
 }
