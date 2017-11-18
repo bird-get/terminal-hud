@@ -139,8 +139,30 @@ default
 		}
         else if(param0 == "reset")
         {
-			llResetOtherScript("display.lsl");
-            llResetScript();
+            if(param1 == "-a")
+			{
+				printText("Resetting all scripts...");
+				llSleep(0.5); // Sleep 2x, to process GET requests in between
+				llSleep(0.5);
+				integer script_count = llGetInventoryNumber(INVENTORY_SCRIPT);
+				integer i;
+				for(i=0; i < script_count; i++)
+				{
+					string script_name = llGetInventoryName(INVENTORY_SCRIPT, i);
+					if(script_name != llGetScriptName())
+					{
+						llResetOtherScript(script_name);
+					}
+				}
+				llResetScript();
+			}
+			else
+			{
+				printText("Resetting display...");
+				llSleep(0.5);
+				llSleep(0.5);
+				llResetOtherScript("display.lsl");
+			}
         }
         else
         {

@@ -61,13 +61,22 @@ optional arguments:
   -p			get inventory permissions
   -h, --help	show help and exit");
 	}
+	else if(function == "reset")
+	{
+		printText("usage: reset [-a]
+ 
+Reset the display.
+ 
+optional arguments:
+  -a			reset all, scripts");
+	}
 	else
 	{
 	    printText("Type \\\'help name\\\' for more help about function NAME.
 	help [name]
 	set channel [c]
 	cls
-	reset
+	reset [-a]
 	show
 	hide
 	rez [-p pos] [name]
