@@ -10,6 +10,7 @@
 
 integer link_background;
 list buffer = [];
+integer connected;
 
 // User-tweakable
 integer rows = 24;
@@ -180,6 +181,12 @@ default
         }
 		else if(method == "GET")
 		{
+			if(!connected)
+			{
+				// Connection has been established, remove the start button
+				connected = TRUE;
+				sendMessage("e('btn').outerHTML = \"\";");
+			}
             // Either send some queued messages now with llHTTPResponse(),
             // or if there's nothing to do now, save the GET id and
             // wait for somebody to call sendMessage().
