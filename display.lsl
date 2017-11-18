@@ -134,7 +134,7 @@ default
 		link = 2;
 		llClearLinkMedia(link, face);
 		llSetLinkMedia(link, face, [
-			PRIM_MEDIA_WIDTH_PIXELS, 800, 
+			PRIM_MEDIA_WIDTH_PIXELS, 600 + 15, // +15 for scrollbar
 			PRIM_MEDIA_HEIGHT_PIXELS, 400,
 			PRIM_MEDIA_CONTROLS, PRIM_MEDIA_CONTROLS_MINI,
 			PRIM_MEDIA_PERMS_INTERACT, PRIM_MEDIA_PERM_OWNER,
@@ -145,7 +145,7 @@ default
 
 		// Setup prims
 		float height = .4;
-		float width = height * 2; // 2:1 ratio
+		float width = .615;
 
 		llSetLinkPrimitiveParams(1, [
 			PRIM_TEXT, "", <1,1,1>, 1.0,
