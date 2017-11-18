@@ -1,6 +1,5 @@
 // TODO Blinking cursor: _ or █ or |
 // TODO Hide media controls
-// TODO Remove Start button when started
 // TODO Add non-loaded media texture (click to use)
 // TODO Automatically scroll down
 // TODO Regularly check if URL still works
