@@ -185,7 +185,7 @@ default
 			{
 				// Connection has been established, remove the start button
 				connected = TRUE;
-				sendMessage("e('btn').outerHTML = \"\";");
+				sendMessage("e('btn').outerHTML = \"\";delete e('btn');");
 			}
             // Either send some queued messages now with llHTTPResponse(),
             // or if there's nothing to do now, save the GET id and
