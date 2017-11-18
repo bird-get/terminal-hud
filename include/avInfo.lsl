@@ -1,5 +1,8 @@
 avInfo(list params)
 {
+	// Show a table with information about an avatar.
+
+	// Parse arguments
 	string av_name = llList2String(params, 1);
     list agent_list = llGetAgentList(AGENT_LIST_REGION, []);
 	
