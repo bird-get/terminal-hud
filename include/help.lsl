@@ -24,6 +24,7 @@ help(string function)
 	Options:
 		-s		get script info
 		-r		get render info
+		-l		get language
 	
 	ex: avinfo john.doe -s -r");
 	}
