@@ -24,15 +24,13 @@ rez(list params)
 
 	// Get inventory list
 	list inventory = [];
-	integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
+	integer inv_count = llGetInventoryNumber(INVENTORY_OBJECT);
 	if(inv_count > 1)
 	{
 		integer i;
 		for(i=0; i < inv_count; i++)
 		{
-			string inv_name = llGetInventoryName(INVENTORY_ALL, i);
-			if(inv_name != llGetScriptName())
-				inventory += inv_name;
+			inventory += llGetInventoryName(INVENTORY_OBJECT, i);
 		}
 	}
 	else
