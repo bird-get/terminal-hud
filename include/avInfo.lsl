@@ -9,11 +9,10 @@ avInfo(list params)
 	// Build a list of agent names for autocompletion 
 	integer length = llGetListLength(agent_list);
 	list agent_names = [];
-	key id;
 	integer i;
 	for(i=0; i < length; i++)
 	{
-		id = llList2Key(agent_list, i);
+		key id = llList2Key(agent_list, i);
 		agent_names += [llKey2Name(id)];
 	}
 	list completions = autocomplete(av_name, agent_names);
@@ -31,7 +30,13 @@ avInfo(list params)
 		return;
 	}
 
+	// Get autocompleted name
 	av_name = llList2String(completions, 0);
+	
+	// Find matching avatar key for autocompleted name
+	integer index = llListFindList(agent_names, [av_name]);
+	key id = llList2Key(agent_list, index);
+	
 	printText("Avatar information for " + av_name + ":\n ");
 
 	list rows = [];
