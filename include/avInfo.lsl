@@ -53,7 +53,7 @@ avInfo(list params)
     }
 
 	// [-l] option: language
-	if(llListFindList(params, []) != -1)
+	if(llListFindList(params, ["-l"]) != -1)
 	{
 		string language = llGetAgentLanguage(id);
 		info += "language - " + language;
