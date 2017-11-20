@@ -1,12 +1,15 @@
 // TODO Make commands and output more Linux-like
 //		- invalid option should show usage text
 //		- add option '--help' to commands
+// TODO Command to store HUD position in prim desc
+// TODO if -h or --help in supplied options, do 'help cmd_name'
 // TODO Reset on login
 // TODO Reset on URL change
 // TODO Store last login time
 // TODO Allow putting options together (i.e. -rks)
 // TODO Add function to resize
 // TODO Handle region change in a better way, do not just reset
+// TODO Add function (or program) to listen to a range of channels (sniffer)
 
 // TODO inventory stuff
 // 		- workshop
