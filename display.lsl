@@ -1,9 +1,11 @@
 // TODO Blinking cursor: _ or █ or |
 // TODO Hide media controls
 // TODO Add non-loaded media texture (click to use)
+// TODO Attempt to get rid of Start button (make it fill entire screen?)
 // TODO Automatically scroll down
 // TODO Regularly check if URL still works
-// TODO Colorize output
+// TODO Colorize output (split strings AFTER processing color escape characters)
+// TODO Catch all input on media prim, print to last row in table, submit on enter
 
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
