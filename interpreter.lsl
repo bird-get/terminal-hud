@@ -79,8 +79,7 @@ default
             }
             else if(param1 == "size")
             {
-                float size = (float)param2;
-                llMessageLinked(LINK_THIS, 0, "size " + (string)param2, "");
+                llMessageLinked(LINK_THIS, 0, "size " + param2, "");
                 printText("Size set to " + param2);
             }
         }
