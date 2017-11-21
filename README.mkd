@@ -48,3 +48,6 @@ For more help about functions, type `/42 help`.
 - [ ] Catch all input on media prim, print to prompt, submit on enter
 - [ ] Colorize output
 - [ ] Readme HUD screenshots/gifs
+
+## License
+Terminal HUD is provided under the [GPL-3.0 License](https://github.com/bird-get/terminal-hud/blob/master/LICENSE).
