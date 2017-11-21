@@ -1,4 +1,34 @@
 # Terminal HUD
+Terminal HUD is a virtual terminal inside Second Life.
+It listens for chat commands, parses the input and then displays its output
+using prim media.
+
+## How to use
+You can get a ready-to-use copy from [my SL Marketplace store](https://marketplace.secondlife.com/stores/63546).  
+If you would rather make your own HUD, follow the steps in the next chapter.
+
+Attach the HUD to a HUD slot and position it using the SL build tools.
+
+Type commands on channel 42. For example, `/42 avlist -s -r` will
+show a list of all avatars in the current region, along with their script
+and render information.
+
+For more help about functions, type `/42 help`.
+
+## Creating your own HUD
+*Note: LSL preprocessor is required for includes*
+
+1. Clone the repo.
+2. Add the cloned repo to Firestorm's LSL preprocessor include path.
+
+    I personally put the repo at `~/firestorm-preprocessor/terminal-hud/`
+    and use `~/firestorm-preprocessor` as the preprocessor include path.
+3. Create three scripts, call them `interpreter.lsl`, `display.lsl` and `creator.lsl`.
+4. Copy the contents of the scripts in the repo to their respective script in SL.
+5. Rez two cubes and link them together.
+6. Place the three scripts into the object's inventory.
+7. Attach the object to a HUD slot, and use as said in the previous chapter.
+
 ## Todo list
 - Arguments:
     - [ ] Parse args more intelligently
@@ -17,3 +47,4 @@
 - [ ] Prompt with blinking cursor
 - [ ] Catch all input on media prim, print to prompt, submit on enter
 - [ ] Colorize output
+- [ ] Readme HUD screenshots/gifs
