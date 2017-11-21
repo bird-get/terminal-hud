@@ -119,6 +119,7 @@ webAppInit()
 
 clearScreen()
 {
+    // Remove all items from the HTML table, to clear the screen
     string msg = "e('tbd').innerHTML = [];";
     sendMessage(msg);
 }
