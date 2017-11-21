@@ -1,7 +1,8 @@
 string tabulate(list headers, list rows)
 {
     // Format headers and rows of data into a nice looking table.
-
+    // for example..
+    //
     // Name               | Scripts   | Memory  | Time  | Streaming cost
     // -------------------|-----------|---------|-------|--------------
     // Bridget Littlebird | 15 / 15   | 960kb   | 172μs | 175.30
