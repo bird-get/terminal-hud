@@ -84,6 +84,7 @@ optional arguments:
     rez [-p pos] [name]
     lsinv [-k] [-p]
     siminfo
+    details [key]
     avinfo [name]
     avlist [-s] [-r]");
     }
