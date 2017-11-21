@@ -83,7 +83,7 @@ default
         else if(param0 == "lsinv") lsInv(params);
         else if(param0 == "set")
         {
-            if(param0 == "channel")
+            if(param1 == "channel")
             {
                 activeChannel = (integer)param1;
                 printText("Channel set to " + (string)activeChannel + ".");
