@@ -29,7 +29,7 @@ integer listener;
 integer hud_hidden;
 
 // User-tweakable
-integer activeChannel = 42;
+integer listen_channel = 42;
 
 printText(string raw_text)
 {
@@ -40,7 +40,7 @@ default
 {
     state_entry()
     {
-        listener = llListen(activeChannel, "", llGetOwner(), "");
+        listener = llListen(listen_channel, "", llGetOwner(), "");
 
         // Print starting text
         string text;
@@ -51,7 +51,7 @@ default
     <_/_/
      \" \" \n";
         text += "Last login: Mon Nov 6 03:25:56 2017\n";
-        text += "Channel: " + (string)activeChannel + "\n";
+        text += "Channel: " + (string)listen_channel + "\n";
         text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
         text += "Version: " + (string)VERSION + "\n";
         printText(text);
@@ -84,10 +84,10 @@ default
         {
             if(param1 == "channel")
             {
-                activeChannel = (integer)param1;
-                printText("Channel set to " + (string)activeChannel + ".");
+                listen_channel = (integer)param2;
+                printText("Channel set to " + (string)listen_channel + ".");
                 llListenRemove(listener);
-                listener = llListen(activeChannel, "", llGetOwner(), "");
+                listener = llListen(listen_channel, "", llGetOwner(), "");
             }
             else if(param1 == "size")
             {
