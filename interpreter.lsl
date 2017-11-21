@@ -43,7 +43,7 @@ default
     {
         listener = llListen(activeChannel, "", llGetOwner(), "");
 
-        // Prrint starting text
+        // Print starting text
         string text;
         text += "
       __
