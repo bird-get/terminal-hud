@@ -169,8 +169,7 @@ default
             }
             else if(param0 == "size")
             {
-                float size = (float)param1;
-                resize(size);
+                resize((float)param1);
             }
         }
     }
