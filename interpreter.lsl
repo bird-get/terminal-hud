@@ -11,10 +11,6 @@
 // TODO Handle region change in a better way, do not just reset
 // TODO Add function (or program) to listen to a range of channels (sniffer)
 
-// TODO inventory stuff
-// 		- workshop
-// 		- 3d viewport, with camera and lighting
-
 #define DEBUG
 #define TIMEOUT 60
 #define VERSION "0.01"
