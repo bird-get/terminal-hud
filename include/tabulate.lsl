@@ -5,7 +5,7 @@ string tabulate(list headers, list rows)
     // Name               | Scripts   | Memory  | Time  | Streaming cost
     // -------------------|-----------|---------|-------|--------------
     // Bridget Littlebird | 15 / 15   | 960kb   | 172μs | 175.30
-    // jasecool Resident  | 320 / 325 | 20094kb | 423μs | 159.09
+    //                    | 320 / 325 | 20094kb | 423μs | 159.09
 
     integer num_of_rows = llGetListLength(rows) + 1;
     integer num_of_columns = llGetListLength(headers);
