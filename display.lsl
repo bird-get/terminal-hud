@@ -124,6 +124,19 @@ clearScreen()
     sendMessage(msg);
 }
 
+resize(float size)
+{
+    float height = .4 * size;
+    float width = .615 * size;
+    llSetLinkPrimitiveParams(1, [
+        PRIM_TEXT, "", <1,1,1>, 1.0,
+        PRIM_SIZE, <0.01, width, 0.02>,
+        PRIM_LINK_TARGET, link_background,
+        PRIM_TEXT, "", <1,1,1>, 1.0,
+        PRIM_POSITION, <-0.1,0,-height/2 - 0.01>,
+        PRIM_SIZE, <0.01, width, height>]);
+}
+
 default
 {
     state_entry()
@@ -145,17 +158,6 @@ default
             ]);
         llRequestURL();
         webAppInit();
-
-        // Setup prims
-        float height = .4;
-        float width = .615;
-        llSetLinkPrimitiveParams(1, [
-            PRIM_TEXT, "", <1,1,1>, 1.0,
-            PRIM_SIZE, <0.01, width, 0.02>,
-            PRIM_LINK_TARGET, link_background,
-            PRIM_TEXT, "", <1,1,1>, 1.0,
-            PRIM_POSITION, <-0.1,0,-height/2 - 0.01>,
-            PRIM_SIZE, <0.01, width, height>]);
     }
 
     link_message(integer sender, integer num, string msg, key id)
@@ -166,9 +168,18 @@ default
         }
         else
         {
+            list params = llParseString2List(msg, [" "], [""]);
+            string param0 = llList2String(params, 0);
+            string param1 = llList2String(params, 1);
+            
             if(msg == "clear screen")
             {
                 clearScreen();
+            }
+            else if(param0 == "size")
+            {
+                float size = (float)param1;
+                resize(size);
             }
         }
     }

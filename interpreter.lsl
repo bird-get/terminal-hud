@@ -7,7 +7,6 @@
 // TODO Reset on URL change
 // TODO Store last login time
 // TODO Allow putting options together (i.e. -rks)
-// TODO Add function to resize
 // TODO Handle region change in a better way, do not just reset
 // TODO Add function (or program) to listen to a range of channels (sniffer)
 
@@ -89,6 +88,12 @@ default
                 printText("Channel set to " + (string)activeChannel + ".");
                 llListenRemove(listener);
                 listener = llListen(activeChannel, "", llGetOwner(), "");
+            }
+            else if(param1 == "size")
+            {
+                float size = (float)param2;
+                llMessageLinked(LINK_THIS, 0, "size " + (string)param2, "");
+                printText("Size set to " + param2);
             }
         }
         else if(param0 == "show")
