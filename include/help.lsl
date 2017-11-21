@@ -74,7 +74,9 @@ optional arguments:
     {
         printText("Type \\\'help name\\\' for more help about function NAME.
     help [name]
-    set channel [c]
+    set channel [channel]
+    set opacity [opacity]
+    set size [size]
     cls
     reset [-a]
     show
