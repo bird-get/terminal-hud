@@ -4,10 +4,10 @@
 //
 // Edited by Bridget Littlebird.
 
-integer refresh_rate = 250;	// How often a GET is exchanged
+integer refresh_rate = 250; // How often a GET is exchanged
 
 integer face = 4;          // Prim face for Shared Media
-integer link = 2;		   // Link number for media
+integer link = 2;          // Link number for media
 
 string  myURL;             // HTTP-in URL
 key inId = NULL_KEY;       // GET request id
@@ -36,7 +36,7 @@ end:function(){clearTimeout(t2);t2=null;sc.onload=null;setTimeout('poll.beg()',"
 <button id='btn'onclick=poll.beg()>Start</button><div id='dv'></div></body></html>";
 
     //llSetPrimMediaParams(face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
-	llSetLinkMedia(link, face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
+    llSetLinkMedia(link, face, [PRIM_MEDIA_CURRENT_URL, dataURI]);
 }
 
 // Returns zero or more queued messages. Assumes no single message is
