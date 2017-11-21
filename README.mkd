@@ -1,4 +1,6 @@
 # Terminal HUD
+![Terminal HUD](https://user-images.githubusercontent.com/33850042/33088552-352bc11e-ceee-11e7-9a7a-1961bd6dd097.png "HUD")
+
 Terminal HUD is a virtual terminal inside Second Life.
 It listens for chat commands, parses the input and then displays its output
 using prim media.
