@@ -115,6 +115,12 @@ clearScreen()
     sendMessage(msg);
 }
 
+setOpacity(float opacity)
+{
+    llSetLinkPrimitiveParams(link_background, [
+        PRIM_COLOR, ALL_SIDES, <1,1,1>, opacity]);
+}
+
 resize(float size)
 {
     float height = .4 * size;
@@ -170,6 +176,10 @@ default
             else if(param0 == "size")
             {
                 resize((float)param1);
+            }
+            else if(param0 == "opacity")
+            {
+                setOpacity((float)param1);
             }
         }
     }

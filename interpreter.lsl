@@ -82,6 +82,11 @@ default
                 llMessageLinked(LINK_THIS, 0, "size " + param2, "");
                 printText("Size set to " + param2);
             }
+            else if(param1 == "opacity")
+            {
+                llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
+                printText("Opacity set to " + param2);
+            }
         }
         else if(param0 == "show")
         {
