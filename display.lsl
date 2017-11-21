@@ -149,7 +149,6 @@ default
         // Setup prims
         float height = .4;
         float width = .615;
-
         llSetLinkPrimitiveParams(1, [
             PRIM_TEXT, "", <1,1,1>, 1.0,
             PRIM_SIZE, <0.01, width, 0.02>,
