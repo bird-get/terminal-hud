@@ -1,8 +1,3 @@
-// TODO Move help texts to their programs
-// TODO Make programs accept -h or --help as an option
-// TODO Make 'help' only show info about internal shell commands (do we have any?)
-// TODO Steal some ideas from py argparse
-
 #define HELP_COMMANDS 
 
 help(string function)
