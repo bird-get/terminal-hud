@@ -63,7 +63,7 @@ printText(string raw_text)
         string text = llList2String(lines, i);
         string color_ = "color:rgb(255,255,255)";
         string row = "<tr style=\"{@2}\"><td>{@1}</td></tr>";
-        string msg = "e('tbd').innerHTML += '{@0}';";
+        string msg = "e('tbd').innerHTML += '{@0}'; scrollToBottom();";
         sendMessageF(msg, [row, text, color_]);
     }
 }
@@ -79,6 +79,7 @@ webAppInit()
     msg += "function h() { return $$('head'); };";
     msg += "function b() { return $$('body'); };";
     msg += "function e(id) { return document.getElementById(id); };";
+    msg += "function scrollToBottom() { b().scrollTop = b().scrollHeight; };";
     sendMessage(msg);
 
     // Send some CSS. WebKit is sensitive about appending <style> elements
