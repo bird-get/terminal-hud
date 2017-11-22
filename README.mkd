@@ -46,7 +46,6 @@ could not find one, so I decided to make my own.
 - [ ] Regularly poll own URL to check if it still alive
 - [ ] Handle region change better (store history and reset display?)
 - [ ] Store last login time
-- [ ] Automatically scroll down
 - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
 - [ ] Add command to store HUD position
 - [ ] Try hiding media controls
