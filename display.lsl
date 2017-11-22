@@ -60,6 +60,7 @@ printText(string raw_text)
     for(i = 0; i < llGetListLength(lines); i++)
     {
         // Create table row and add to table
+        string text = llList2String(lines, i);
         string color_ = "color:rgb(255,255,255)";
         string row = "<tr style=\"{@2}\"><td>{@1}</td></tr>";
         string msg = "e('tbd').innerHTML += '{@0}';";
