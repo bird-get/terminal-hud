@@ -1,6 +1,6 @@
 #define DEBUG
 #define TIMEOUT 60
-#define VERSION "0.02"
+#define VERSION "0.03"
 
 #include "lsl-playground/snippets/debug.lsl"
 #include "lsl-playground/snippets/formatDecimal.lsl"
