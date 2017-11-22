@@ -1,7 +1,6 @@
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer link_background;
-list buffer = [];
 integer connected;
 
 // User-tweakable
@@ -57,16 +56,9 @@ printText(string raw_text)
         lines += splitByLength(text, columns);
     }
 
-    // Add lines to buffer
+    // Print all lines
     for(i = 0; i < llGetListLength(lines); i++)
     {
-        // Remove first item if buffer is full
-        if(llGetListLength(buffer) >= rows)
-            buffer = llList2List(buffer, 1, -1);
-        
-        string text = llList2String(lines, i);
-        buffer += [text];
-    
         // Create table row and add to table
         string color_ = "color:rgb(255,255,255)";
         string row = "<tr style=\"{@2}\"><td>{@1}</td></tr>";
