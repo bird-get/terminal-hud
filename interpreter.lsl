@@ -9,6 +9,7 @@
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/avInfo.lsl"
 #include "terminal-hud/include/avList.lsl"
+#include "terminal-hud/include/avAttached.lsl"
 #include "terminal-hud/include/objectDetails.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
@@ -65,6 +66,7 @@ default
         else if(param0 == "rez") rez(params);
         else if(param0 == "avinfo") avInfo(params);
         else if(param0 == "avlist") avList(params);
+        else if(param0 == "avattached") avAttached(params);
         else if(param0 == "details") objectDetails(params);
         else if(param0 == "lsinv") lsInv(params);
         else if(param0 == "set")

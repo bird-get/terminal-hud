@@ -43,6 +43,25 @@ optional arguments:
   -r            get render info
   -h, --help    show help and exit");
     }
+    else if(function == "avattached")
+    {
+        printText("usage: avattached [name] [-c] [-d] [-i] [-k] [-p] [-r] [-s] [-t]
+ 
+Request info about avatar NAME\\'s publicly visible attachments.
+ 
+positional arguments:
+  name          name of avatar
+ 
+optional arguments:
+  -c            get creator key
+  -d            get object description
+  -i            get inventory count
+  -k            get object key
+  -p            get attachment point
+  -r            get render info
+  -s            get script info
+  -t            get temp attachment");
+    }
     else if(function == "lsinv")
     {
         printText("usage: lsinv [-k] [-p]
@@ -86,6 +105,7 @@ optional arguments:
     siminfo
     details [key]
     avinfo [name]
+    avattached [name] [-c] [-d] [-i] [-k] [-p] [-r] [-s] [-t]
     avlist [-s] [-r]");
     }
 }
