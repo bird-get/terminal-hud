@@ -15,7 +15,6 @@
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer listener;
-integer hud_hidden;
 
 // User-tweakable
 integer listen_channel = 42;
@@ -90,23 +89,13 @@ default
                 printText("Opacity set to " + param2);
             }
         }
-        else if(param0 == "show")
+        else if(param0 == "enable")
         {
-            // Show hud, if not already shown
-            if(hud_hidden)
-            {
-                hud_hidden = FALSE;
-                llSetPos(llGetLocalPos() + <0,0,1>);
-            }
+            llMessageLinked(LINK_THIS, 0, "enable", "");
         }
-        else if(param0 == "hide")
+        else if(param0 == "disable")
         {
-            // Hide hud, if not already hidden
-            if(!hud_hidden)
-            {
-                hud_hidden = TRUE;
-                llSetPos(llGetLocalPos() - <0,0,1>);
-            }
+            llMessageLinked(LINK_THIS, 0, "disable", "");
         }
         else if(param0 == "cls")
         {

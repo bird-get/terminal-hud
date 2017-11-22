@@ -79,8 +79,8 @@ optional arguments:
     set size [size]
     cls
     reset [-a]
-    show
-    hide
+    enable
+    disable
     rez [-p pos] [name]
     lsinv [-k] [-p]
     siminfo

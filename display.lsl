@@ -134,12 +134,46 @@ resize(float size)
         PRIM_SIZE, <0.01, width, height>]);
 }
 
+integer hidden;
+integer disabled;
+
+show()
+{
+    if(hidden && !disabled)
+    {
+        hidden = FALSE;
+        llSetPos(llGetLocalPos() + <0,0,1>);
+    }
+}
+
+hide()
+{
+    if(!hidden && !disabled)
+    {
+        hidden = TRUE;
+        llSetPos(llGetLocalPos() - <0,0,1>);
+    }
+}
+
+disable()
+{
+    hide();
+    disabled = TRUE;
+}
+
+enable()
+{
+    show();
+    disabled = FALSE;
+}
+
 default
 {
     state_entry()
     {
         scanLinks();
-        
+        llSetTimerEvent(.5);
+
         // Announce script start
         llMessageLinked(LINK_THIS, 2, "display started", "");
 
@@ -157,6 +191,18 @@ default
         webAppInit();
     }
 
+    timer()
+    {
+        if(llGetAgentInfo(llGetOwner()) & AGENT_MOUSELOOK)
+        {
+            hide();
+        }
+        else
+        {
+            show();
+        }
+    }
+
     link_message(integer sender, integer num, string msg, key id)
     {
         if(num == 1)
@@ -172,6 +218,14 @@ default
             if(msg == "clear screen")
             {
                 clearScreen();
+            }
+            else if(param0 == "disable")
+            {
+                disable();
+            }
+            else if(param0 == "enable")
+            {
+                enable();
             }
             else if(param0 == "size")
             {
