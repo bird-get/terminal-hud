@@ -1,0 +1,3 @@
+# Todo
+- [ ] Move all TODO items here
+- [ ] Add link to github page to interpreter.lsl and display.lsl
