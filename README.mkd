@@ -33,7 +33,7 @@ For more help about functions, type `/42 help`.
 
 ## Motivation
 I switched to Linux a while ago, and fell in love with the command line due to
-the speed advantages. I looked for a command line tool for Second Life, but
+the speed advantages. I looked for a command line tool for Second Life but
 could not find one, so I decided to make my own.
 
 ## Todo list
