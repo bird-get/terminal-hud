@@ -12,6 +12,7 @@
 
 - [ ] Reset display on login
 - [ ] Reset on attach
+- [ ] Allow writing to previously printed line (for progress bars etc)
 - [ ] Regularly poll own URL to check if it still alive
 - [ ] Handle region change better (store history and reset display?)
 - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
