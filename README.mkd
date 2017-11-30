@@ -36,33 +36,5 @@ I switched to Linux a while ago, and fell in love with the command line due to
 the speed advantages. I looked for a command line tool for Second Life but
 could not find one, so I decided to make my own.
 
-## Todo list
-- Arguments:
-    - [ ] Parse args more intelligently
-    - [ ] Make putting optional args together (-la instead of -l -a) possible
-    - [ ] Handle help function differently, like <prog> --help
-    - [ ] Make invalid argument show usage text
-
-- Storage:
-    - [ ] Add some kind of storage, i.e. inside prim descriptions
-    - [ ] Store last login time
-    - [ ] Add command to store HUD position
-
-- [ ] Reset display on login
-- [ ] Reset on attach
-- [ ] Regularly poll own URL to check if it still alive
-- [ ] Handle region change better (store history and reset display?)
-- [ ] Attempt to get rid of Start button (fill entire screen and hide?)
-- [ ] Try hiding media controls
-- [ ] Finish HUD creation script
-- [ ] Prompt with blinking cursor
-- [ ] Catch all input on media prim, print to prompt, submit on enter
-- [ ] Colorize output
-- [ ] Readme HUD screenshots/gifs
-- [ ] Make it possible to 'execute' separate scripts
-- [ ] Function: collision detection?
-- [ ] Function: check avatar online status
-- [ ] Function: Laggy object finder (sensor)
-
 ## License
 Terminal HUD is provided under the [GPL-3.0 License](https://github.com/bird-get/terminal-hud/blob/master/LICENSE).

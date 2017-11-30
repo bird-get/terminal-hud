@@ -1,3 +1,28 @@
 # Todo
-- [ ] Move all TODO items here
+- Arguments:
+    - [ ] Parse args more intelligently
+    - [ ] Make putting optional args together (-la instead of -l -a) possible
+    - [ ] Handle help function differently, like <prog> --help
+    - [ ] Make invalid argument show usage text
+
+- Storage:
+    - [ ] Add some kind of storage, i.e. inside prim descriptions
+    - [ ] Store last login time
+    - [ ] Add command to store HUD position
+
+- [ ] Reset display on login
+- [ ] Reset on attach
+- [ ] Regularly poll own URL to check if it still alive
+- [ ] Handle region change better (store history and reset display?)
+- [ ] Attempt to get rid of Start button (fill entire screen and hide?)
+- [ ] Try hiding media controls
+- [ ] Finish HUD creation script
+- [ ] Prompt with blinking cursor
+- [ ] Catch all input on media prim, print to prompt, submit on enter
+- [ ] Colorize output
+- [ ] Readme HUD screenshots/gifs
+- [ ] Make it possible to 'execute' separate scripts
+- [ ] Function: collision detection?
+- [ ] Function: check avatar online status
+- [ ] Function: Laggy object finder (sensor)
 - [ ] Add link to github page to interpreter.lsl and display.lsl
