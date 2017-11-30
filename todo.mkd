@@ -10,6 +10,12 @@
     - [ ] Store last login time
     - [ ] Add command to store HUD position
 
+- Functions:
+    - [ ] Store current HUD position
+    - [ ] Collision detection?
+    - [ ] Check avatar online status
+    - [ ] Laggy object finder (sensor)
+
 - [ ] Reset display on login
 - [ ] Reset on attach
 - [ ] Allow writing to previously printed line (for progress bars etc)
@@ -23,7 +29,4 @@
 - [ ] Colorize output
 - [ ] Readme HUD screenshots/gifs
 - [ ] Make it possible to 'execute' separate scripts
-- [ ] Function: collision detection?
-- [ ] Function: check avatar online status
-- [ ] Function: Laggy object finder (sensor)
 - [ ] Add link to github page to interpreter.lsl and display.lsl
