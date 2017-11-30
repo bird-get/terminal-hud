@@ -15,6 +15,7 @@
     - [ ] Collision detection?
     - [ ] Check avatar online status
     - [ ] Laggy object finder (sensor)
+    - [ ] Resize (rows, columns)
 
 - [ ] Reset display on login
 - [ ] Reset on attach
