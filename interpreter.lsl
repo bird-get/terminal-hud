@@ -55,7 +55,9 @@ default
         // Print prompt + escaped command
         string hostname = llGetEnv("simulator_hostname");
         string user = llGetUsername(llGetOwner());
-        printText(user + "@" + hostname + " > " + addSlashes(msg));
+        printText("<span class=\\'color_3\\'>" + user +
+            "</span>@<span class=\\'color_3\\'>" + hostname +
+            "</span> > " + addSlashes(msg));
 
         list params = llParseString2List(msg, [" "], [""]);
         string param0 = llList2String(params, 0);
