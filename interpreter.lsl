@@ -1,3 +1,5 @@
+// https://github.com/bird-get/terminal-hud
+
 #define DEBUG
 #define TIMEOUT 60
 #define VERSION "0.05"

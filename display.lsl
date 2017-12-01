@@ -1,3 +1,5 @@
+// https://github.com/bird-get/terminal-hud
+
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer link_background;
