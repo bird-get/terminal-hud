@@ -49,11 +49,25 @@ printText(string raw_text)
     // Split raw_text at newline characters
     list long_lines = llParseString2List(raw_text, ["\n"], [""]);
     
-    // Split lines longer than 80 chars
+    // Split lines longer than 80 chars, excluding HTML tags
     for(i = 0; i < llGetListLength(long_lines); i++)
     {
         string text = llList2String(long_lines, i);
-        lines += splitByLength(text, columns);
+        
+        // Get total length of all HTML tags
+        list parsed = llParseString2List(text, [""], ["<", ">"]);
+        integer length;
+        integer index;
+        for(index=0; index < llGetListLength(parsed); index++)
+        {
+            if(llList2String(parsed, index) == "<"
+                && llList2String(parsed, index+2) == ">")
+            {
+                string tag = llList2String(parsed, index+1);
+                length += llStringLength(tag) + 2;
+            }
+        }
+        lines += splitByLength(text, columns + length);
     }
 
     // Print all lines
