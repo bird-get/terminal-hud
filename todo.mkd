@@ -16,6 +16,8 @@
     - [ ] Check avatar online status
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
+    - [ ] Sim monitor
+    - [ ] Easy prompt customization (and its CSS)
 
 - [ ] Reset display on login
 - [ ] Reset on attach
