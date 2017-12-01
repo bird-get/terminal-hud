@@ -1,6 +1,6 @@
 #define DEBUG
 #define TIMEOUT 60
-#define VERSION "0.04"
+#define VERSION "0.05"
 
 #include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
