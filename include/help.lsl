@@ -106,6 +106,7 @@ optional arguments:
     details [key]
     avinfo [name]
     avattached [name] [-c] [-d] [-i] [-k] [-p] [-r] [-s] [-t]
-    avlist [-s] [-r]");
+    avlist [-s] [-r]
+    colortest");
     }
 }

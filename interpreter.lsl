@@ -11,6 +11,7 @@
 #include "terminal-hud/include/avList.lsl"
 #include "terminal-hud/include/avAttached.lsl"
 #include "terminal-hud/include/objectDetails.lsl"
+#include "terminal-hud/include/colortest.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer listener;
@@ -71,6 +72,7 @@ default
         else if(param0 == "avattached") avAttached(params);
         else if(param0 == "details") objectDetails(params);
         else if(param0 == "lsinv") lsInv(params);
+        else if(param0 == "colortest") colortest();
         else if(param0 == "set")
         {
             if(param1 == "channel")
