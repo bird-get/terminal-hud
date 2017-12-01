@@ -28,7 +28,8 @@ string tabulate(list headers, list rows)
             list row_items = llParseString2List(llList2String(rows, ii), ["|"], [""]);
             string item = llList2String(row_items, i);
 
-            integer length = llStringLength(item);
+            // If this is longest item, update table column width
+            integer length = llStringLength(removeTags(item));
             if(length > width)
                 width = length;
         }
@@ -49,7 +50,7 @@ string tabulate(list headers, list rows)
         {
             string item = llList2String(row_items, ii);
             
-            while(llStringLength(item) < llList2Integer(column_widths, ii))
+            while(llStringLength(removeTags(item)) < llList2Integer(column_widths, ii))
             {
                 item += " ";
             }

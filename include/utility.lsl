@@ -33,6 +33,22 @@ string formatDecimal(float number, integer precision)
     return llGetSubString(strNumber, 0, llSubStringIndex(strNumber, ".") + precision);
 }
 
+string removeTags(string str)
+{
+    // Takes a string, and returns it with all HTML tags removed.
+    list parsed = llParseString2List(str, [""], ["<", ">"]);
+    integer index;
+    for(index=0; index < llGetListLength(parsed); index++)
+    {
+        if(llList2String(parsed, index) == "<"
+            && llList2String(parsed, index+2) == ">")
+        {
+            parsed = llListReplaceList(parsed, ["", "", ""], index, index+2);
+        }
+    }
+    return llDumpList2String(parsed, "");
+}
+
 float max(float x, float y)
 {
     if( y > x ) return y;

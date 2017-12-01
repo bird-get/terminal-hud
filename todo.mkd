@@ -22,7 +22,7 @@
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
     - [ ] Start button becomes unresponsive in certain situations
-    - [ ] Using colorization in a table breaks the layout
+    - [x] Using colorization in a table breaks the layout
 
 - [ ] Separate interpreter.lsl from functions (communicate by linkmessage)
 - [ ] Reset display on login
