@@ -67,6 +67,7 @@ printText(string raw_text)
                 length += llStringLength(tag) + 2;
             }
         }
+        
         lines += splitByLength(text, columns + length);
     }
 
