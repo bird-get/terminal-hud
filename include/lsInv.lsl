@@ -24,7 +24,20 @@ lsInv(list params)
             if(inv_name != llGetScriptName())
             {
                 string row;
-                row += inv_name;
+                
+                // Colorize inventory name
+                integer type = llGetInventoryType(inv_name);
+                integer color = 7; // White
+                if(type == INVENTORY_OBJECT) color = 3; // Yellow
+                else if(type == INVENTORY_SCRIPT) color = 2; // Green
+                else if(type == INVENTORY_NOTECARD) color = 4; // Blue
+                else if(type == INVENTORY_SOUND) color = 5; // Magenta
+                else if(type == INVENTORY_LANDMARK) color = 1; // Red
+                else if(type == INVENTORY_TEXTURE) color = 6; // Cyan
+                
+                row += "<span class=\\'color_" + (string)color + "\\'>" 
+                    + inv_name + "</span>";
+
                 if(options_mask & 1)
                     row += "|" + (string)llGetInventoryKey(inv_name);
                 if(options_mask & 2)
