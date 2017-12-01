@@ -21,7 +21,9 @@
 
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
+    - [ ] Start button becomes unresponsive in certain situations
 
+- [ ] Separate interpreter.lsl from functions (communicate by linkmessage)
 - [ ] Reset display on login
 - [ ] Reset on attach
 - [ ] Allow writing to previously printed line (for progress bars etc)
