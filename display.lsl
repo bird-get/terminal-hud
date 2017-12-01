@@ -104,6 +104,22 @@ webAppInit()
     m0 += "white-space: pre; font-size:{@1}px; line-height:{@2}px;";
     m0 += "color: white; background-color: #181818;  }";
     m0 += "td:nth-child(2) { text-align:right }";
+    m0 += ".color_0 { color:#181818; }";
+    m0 += ".color_1 { color:#ab4642; }";
+    m0 += ".color_2 { color:#a1b56c; }";
+    m0 += ".color_3 { color:#f7ca88; }";
+    m0 += ".color_4 { color:#7cafc2; }";
+    m0 += ".color_5 { color:#ba8baf; }";
+    m0 += ".color_6 { color:#86c1b9; }";
+    m0 += ".color_7 { color:#d8d8d8; }";
+    m0 += ".color_8 { color:#585858; }";
+    m0 += ".color_9 { color:#ab4642; }";
+    m0 += ".color_10 { color:#a1b56c; }";
+    m0 += ".color_11 { color:#f7ca88; }";
+    m0 += ".color_12 { color:#7cafc2; }";
+    m0 += ".color_13 { color:#ba8baf; }";
+    m0 += ".color_14 { color:#86c1b9; }";
+    m0 += ".color_15 { color:#f8f8f8; }";
     m0 += "</style>";
     sendMessageF(msg, [m0, font_size, line_height]);
 
