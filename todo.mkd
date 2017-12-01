@@ -19,6 +19,9 @@
     - [ ] Sim monitor
     - [ ] Easy prompt customization (and its CSS)
 
+- Bugs:
+    - [ ] Printing more than 80 characters does not break line correctly
+
 - [ ] Reset display on login
 - [ ] Reset on attach
 - [ ] Allow writing to previously printed line (for progress bars etc)
