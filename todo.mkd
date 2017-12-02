@@ -10,7 +10,8 @@
     - [ ] Store last login time
     - [ ] Add command to store HUD position
 
-- Functions:
+- Programs:
+    - [ ] Add -h arg to programs, remove entries from help.lsl
     - [ ] Store current HUD position
     - [ ] Collision detection?
     - [ ] Check avatar online status
