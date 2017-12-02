@@ -132,7 +132,7 @@ default
         }
         else if(param0 == "reset")
         {
-            if(param1 == "-a")
+            if(llListFindList(params, ["-a"]) != -1) // option: key
             {
                 printText("Resetting all scripts...");
                 llSleep(0.5); // Sleep 2x, to process GET requests in between
@@ -149,12 +149,22 @@ default
                 }
                 llResetScript();
             }
-            else
+            if(llListFindList(params, ["-d"]) != -1) // option: display
             {
                 printText("Resetting display...");
                 llSleep(0.5);
                 llSleep(0.5);
                 llResetOtherScript("display.lsl");
+            }
+            if(llListFindList(params, ["-i"]) != -1) // option: interpreter
+            {
+                printText("Resetting interpreter...");
+                llSleep(1.0);
+                llResetScript();
+            }
+            else
+            {
+                printText("reset: missing arguments");
             }
         }
         else
