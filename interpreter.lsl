@@ -7,13 +7,6 @@
 #include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
 #include "terminal-hud/include/help.lsl"
-#include "terminal-hud/include/lsInv.lsl"
-#include "terminal-hud/include/rez.lsl"
-#include "terminal-hud/include/avInfo.lsl"
-#include "terminal-hud/include/avList.lsl"
-#include "terminal-hud/include/avAttached.lsl"
-#include "terminal-hud/include/objectDetails.lsl"
-#include "terminal-hud/include/colortest.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer listener;
@@ -68,13 +61,6 @@ default
         string param2 = llList2String(params, 2);
 
         if(param0 == "help") help(param1);
-        else if(param0 == "rez") rez(params);
-        else if(param0 == "avinfo") avInfo(params);
-        else if(param0 == "avlist") avList(params);
-        else if(param0 == "avattached") avAttached(params);
-        else if(param0 == "details") objectDetails(params);
-        else if(param0 == "lsinv") lsInv(params);
-        else if(param0 == "colortest") colortest();
         else if(param0 == "set")
         {
             if(param1 == "channel")
@@ -106,29 +92,6 @@ default
         else if(param0 == "cls")
         {
             llMessageLinked(LINK_THIS, 0, "clear screen", "");
-        }
-        else if(param0 == "siminfo")
-        {
-            list rows;
-            rows += ["agent_limit|" + llGetEnv("agent_limit")];
-            rows += ["dynamic_pathfinding|" + llGetEnv("dynamic_pathfinding")];
-            rows += ["estate_id|" + llGetEnv("estate_id")];
-            rows += ["estate_name|" + llGetEnv("estate_name")];
-            rows += ["frame_number|" + llGetEnv("frame_number")];
-            rows += ["region_cpu_ratio|" + llGetEnv("region_cpu_ratio")];
-            rows += ["region_idle|" + llGetEnv("region_idle")];
-            rows += ["region_product_name|" + llGetEnv("region_product_name")];
-            rows += ["region_product_sku|" + llGetEnv("region_product_sku")];
-            rows += ["region_start_time|" + llGetEnv("region_start_time")];
-            rows += ["sim_channel|" + llGetEnv("sim_channel")];
-            rows += ["sim_version|" + llGetEnv("sim_version")];
-            rows += ["simulator_hostname|" + llGetEnv("simulator_hostname")];
-            rows += ["region_max_prims|" + llGetEnv("region_max_prims")];
-            rows += ["region_object_bonus|" + llGetEnv("region_object_bonus")];
-
-            printText("Sim information:\n ");
-            list headers = ["key", "value"];
-            printText(tabulate(headers, rows));
         }
         else if(param0 == "reset")
         {
@@ -169,7 +132,8 @@ default
         }
         else
         {
-            printText(param0 + ": command not found");
+            llMessageLinked(LINK_THIS, 0, msg, "");
+            //printText(param0 + ": command not found");
         }
     }
 
