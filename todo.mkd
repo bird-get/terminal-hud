@@ -29,13 +29,16 @@
     - [ ] Add screenshots/gifs
     - [ ] Add 'how to make your own extension program'
 
+- Usability:
+    - [ ] Allow dragging top bar to move HUD
+    - [ ] Reset display on login
+    - [ ] Reset on attach
+    - [ ] Handle region change better (store history and reset display?)
+    - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
+
 - [x] Separate interpreter.lsl from functions (communicate by linkmessage)
-- [ ] Reset display on login
-- [ ] Reset on attach
 - [ ] Allow writing to previously printed line (for progress bars etc)
 - [ ] Regularly poll own URL to check if it still alive
-- [ ] Handle region change better (store history and reset display?)
-- [ ] Attempt to get rid of Start button (fill entire screen and hide?)
 - [ ] Try hiding media controls
 - [ ] Finish HUD creation script
 - [ ] Prompt with blinking cursor
