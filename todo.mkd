@@ -41,5 +41,5 @@
 - [ ] Prompt with blinking cursor
 - [ ] Catch all input on media prim, print to prompt, submit on enter
 - [x] Colorize output
-- [ ] Make it possible to 'execute' separate scripts
+- [x] Make it possible to 'execute' separate scripts
 - [x] Add link to github page to interpreter.lsl and display.lsl
