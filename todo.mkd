@@ -19,6 +19,9 @@
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
     - [ ] Easy prompt customization (and its CSS)
+    - [ ] Wrapper for llRegionSayTo
+    - [ ] Wrapper for llListen
+        - Define a range of channels to listen to (max 64?)
 
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
