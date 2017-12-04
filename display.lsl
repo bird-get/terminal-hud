@@ -4,12 +4,17 @@
 
 integer link_background;
 integer connected;
+float touch_start_time;
+vector last_touch_pos;
+integer link_drag_prim;
+integer dragging;
 
 // User-tweakable
 integer rows = 24;
 integer columns = 80;
 integer line_height = 12;
 integer font_size = 12;
+float size = 1.0;
 
 scanLinks()
 {
@@ -21,6 +26,10 @@ scanLinks()
         if(link_name == "background")
         {
             link_background = i;
+        }
+        else if(link_name == "drag_prim")
+        {
+            link_drag_prim = i;
         }
     }
 }
@@ -147,10 +156,11 @@ setOpacity(float opacity)
         PRIM_COLOR, ALL_SIDES, <1,1,1>, opacity]);
 }
 
-resize(float size)
+resize(float s)
 {
-    float height = .4 * size;
-    float width = .615 * size;
+    size = s;
+    float height = .4 * s;
+    float width = .615 * s;
     llSetLinkPrimitiveParams(1, [
         PRIM_TEXT, "", <1,1,1>, 1.0,
         PRIM_SIZE, <0.01, width, 0.02>,
@@ -204,7 +214,7 @@ default
         llMessageLinked(LINK_THIS, 2, "display started", "");
 
         // Setup media stuff
-        link = 2;
+        link = link_background;
         llClearLinkMedia(link, face);
         llSetLinkMedia(link, face, [
             PRIM_MEDIA_WIDTH_PIXELS, 600 + 15, // +15 for scrollbar
@@ -227,6 +237,55 @@ default
         {
             show();
         }
+    }
+
+    touch_start(integer num)
+    {
+        if(llDetectedLinkNumber(0) == link_drag_prim)
+        {
+            // Start dragging; make drag-prim visible
+            dragging = TRUE;
+            llSetLinkPrimitiveParamsFast(link_drag_prim, [
+                PRIM_COLOR, ALL_SIDES, <0,0,0>, 0.2,
+                PRIM_SIZE, <0.01, 4.0, 4.0>]);
+            
+            // Store initial mouse position
+            vector touch_pos = llDetectedTouchPos(0);
+            last_touch_pos = touch_pos;
+            
+            touch_start_time = llGetTime();
+        }
+    }
+
+    touch(integer num)
+    {
+        if(llDetectedLinkNumber(0) == link_drag_prim)
+        {
+            if(dragging && llGetTime() - touch_start_time > 0.1)
+            {
+                // Get mouse position and move HUD
+                vector touch_pos = llDetectedTouchPos(0);
+                if(touch_pos == ZERO_VECTOR) return;
+                
+                vector delta_pos = touch_pos - last_touch_pos;
+                if(delta_pos == ZERO_VECTOR) return;
+                
+                llSetLinkPrimitiveParamsFast(LINK_THIS, [
+                    PRIM_POSITION, llGetLocalPos() + delta_pos]);
+                
+                last_touch_pos = touch_pos;
+            }
+        }
+    }
+
+    touch_end(integer num)
+    {
+        // Stop dragging; hide drag-prim
+        dragging = FALSE;
+        float width = .615 * size;
+        llSetLinkPrimitiveParams(link_drag_prim, [
+            PRIM_SIZE, <0.01, width, 0.02>,
+            PRIM_COLOR, ALL_SIDES, <0,0,0>, 0.0]);
     }
 
     link_message(integer sender, integer num, string msg, key id)

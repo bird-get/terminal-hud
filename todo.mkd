@@ -33,7 +33,7 @@
     - [ ] Add 'how to make your own extension program'
 
 - Usability:
-    - [ ] Allow dragging top bar to move HUD
+    - [x] Allow dragging top bar to move HUD
     - [ ] Reset display on login
     - [ ] Reset on attach
     - [ ] Handle region change better (store history and reset display?)
