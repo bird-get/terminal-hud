@@ -39,8 +39,10 @@
     - [ ] Reset on attach
     - [ ] Handle region change better (store history and reset display?)
     - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
+    - [ ] Add customizable MOTD (read from notecard, maybe?)
 
 - [x] Separate interpreter.lsl from functions (communicate by linkmessage)
+- [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
 - [ ] Regularly poll own URL to check if it still alive
 - [ ] Try hiding media controls
