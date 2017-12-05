@@ -23,6 +23,9 @@
     - [ ] Wrapper for llListen
         - Define a range of channels to listen to (max 64?)
     - [x] Echo command
+    - [ ] exit(integer exit_code)
+        - All programs call exit() when finished
+        - Interpreter waits for exit(), then prints prompt
 
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
