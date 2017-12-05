@@ -61,6 +61,11 @@ default
         string param2 = llList2String(params, 2);
 
         if(param0 == "help") help(param1);
+        else if(param0 == "echo")
+        {
+            params = llList2List(params, 1, -1);
+            printText(llDumpList2String(params, " "));
+        }
         else if(param0 == "set")
         {
             if(param1 == "channel")
