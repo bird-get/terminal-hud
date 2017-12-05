@@ -254,6 +254,7 @@ default
             last_touch_pos = touch_pos;
             
             touch_start_time = llGetTime();
+            llMinEventDelay(0.1); // To make dragging less taxing on the server
         }
     }
 
@@ -286,6 +287,7 @@ default
         llSetLinkPrimitiveParams(link_drag_prim, [
             PRIM_SIZE, <0.01, width, 0.02>,
             PRIM_COLOR, ALL_SIDES, <0,0,0>, 0.0]);
+        llMinEventDelay(0);
     }
 
     link_message(integer sender, integer num, string msg, key id)
