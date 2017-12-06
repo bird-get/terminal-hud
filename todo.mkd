@@ -43,6 +43,7 @@
     - [ ] Handle region change better (store history and reset display?)
     - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
     - [ ] Add customizable MOTD (read from notecard, maybe?)
+    - [ ] Make avattached name column wider
 
 - [x] Separate interpreter.lsl from functions (communicate by linkmessage)
 - [ ] Replace table with plaintext
