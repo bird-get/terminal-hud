@@ -19,7 +19,7 @@ colortest()
     rows += ["<span class=\\'color_15\\'>color_15</span>|Bright_White|<span class=\\'color_15\\'>██████████</span>"];
     
     list headers = ["class", "name", "color"];
-    printText(tabulate(headers, rows));
+    printText(tabulate(headers, rows), TRUE);
     
     exit(0);
 }

@@ -10,7 +10,7 @@ rez(list params)
 
     if(pos == ZERO_VECTOR || llVecDist(pos, llGetPos()) > 10)
     {
-        printText("error: invalid rez position");
+        printText("error: invalid rez position", TRUE);
         exit(1);
         return;
     }
@@ -36,7 +36,7 @@ rez(list params)
     }
     else
     {
-        printText("error: no items in inventory");
+        printText("error: no items in inventory", TRUE);
         exit(1);
         return;
     }
@@ -48,7 +48,7 @@ rez(list params)
     if(llGetListLength(completions) == 0)
     {
         // No autocompletions
-        printText("error: inventory not found");
+        printText("error: inventory not found", TRUE);
         exit(1);
         return;
     }
@@ -73,7 +73,7 @@ rez(list params)
         if(!match)
         {
             printText("error: more than 1 autocompletion possible:\n" +
-                llDumpList2String(completions, "\n"));
+                llDumpList2String(completions, "\n"), FALSE);
             exit(1);
             return;
         }
@@ -81,7 +81,8 @@ rez(list params)
     
     // Rez object and print message
     llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
-    printText("object \\\'" + object_name + "\\\' rezzed @ " + (string)pos);
+    printText("object \\\'" + object_name + "\\\' rezzed @ " + 
+        (string)pos, TRUE);
 
     exit(0);
 }

@@ -14,8 +14,9 @@ integer listener;
 // User-tweakable
 integer listen_channel = 42;
 
-printText(string raw_text)
+printText(string raw_text, integer new_line)
 {
+    if(new_line) raw_text = raw_text + "<br>";
     llMessageLinked(LINK_THIS, 1, raw_text, "");
 }
 
@@ -38,7 +39,7 @@ default
 
         // Print starting text
         string text;
-        text += "
+        text += "\n 
       __
      ( ->
      / )\\\\
@@ -47,11 +48,11 @@ default
         text += "Last login: Mon Nov 6 03:25:56 2017\n";
         text += "Channel: " + (string)listen_channel + "\n";
         text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
-        text += "Version: " + (string)VERSION + "\n";
-        printText(text);
+        text += "Version: " + (string)VERSION;
+        printText(text, TRUE);
         
         // Print prompt
-        printText(prompt());
+        printText(prompt(), FALSE);
     }
 
     changed(integer change)
@@ -63,7 +64,7 @@ default
     listen(integer channel, string name, key id, string msg)
     {
         // Print escaped command
-        if(id == llGetOwner()) printText(addSlashes(msg));
+        if(id == llGetOwner()) printText(addSlashes(msg), TRUE);
 
         list params = llParseString2List(msg, [" "], [""]);
         string param0 = llList2String(params, 0);
@@ -73,35 +74,35 @@ default
         if(param0 == "help")
         {
             help(param1);
-            printText(prompt());
+            printText(prompt(), FALSE);
         }
         else if(param0 == "echo")
         {
             params = llList2List(params, 1, -1);
-            printText(llDumpList2String(params, " "));
-            printText(prompt());
+            printText(llDumpList2String(params, " "), TRUE);
+            printText(prompt(), FALSE);
         }
         else if(param0 == "set")
         {
             if(param1 == "channel")
             {
                 listen_channel = (integer)param2;
-                printText("Channel set to " + (string)listen_channel + ".");
+                printText("Channel set to " + (string)listen_channel + ".", TRUE);
                 llListenRemove(listener);
                 listener = llListen(listen_channel, "", llGetOwner(), "");
-                printText(prompt());
+                printText(prompt(), TRUE);
             }
             else if(param1 == "size")
             {
                 llMessageLinked(LINK_THIS, 0, "size " + param2, "");
-                printText("Size set to " + param2);
-                printText(prompt());
+                printText("Size set to " + param2, TRUE);
+                printText(prompt(), TRUE);
             }
             else if(param1 == "opacity")
             {
                 llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
-                printText("Opacity set to " + param2);
-                printText(prompt());
+                printText("Opacity set to " + param2, TRUE);
+                printText(prompt(), TRUE);
             }
         }
         else if(param0 == "enable")
@@ -120,7 +121,7 @@ default
         {
             if(llListFindList(params, ["-a"]) != -1) // option: key
             {
-                printText("Resetting all scripts...");
+                printText("Resetting all scripts...", TRUE);
                 llSleep(0.5); // Sleep 2x, to process GET requests in between
                 llSleep(0.5);
                 integer script_count = llGetInventoryNumber(INVENTORY_SCRIPT);
@@ -137,20 +138,20 @@ default
             }
             if(llListFindList(params, ["-d"]) != -1) // option: display
             {
-                printText("Resetting display...");
+                printText("Resetting display...", TRUE);
                 llSleep(0.5);
                 llSleep(0.5);
                 llResetOtherScript("display.lsl");
             }
             if(llListFindList(params, ["-i"]) != -1) // option: interpreter
             {
-                printText("Resetting interpreter...");
+                printText("Resetting interpreter...", TRUE);
                 llSleep(1.0);
                 llResetScript();
             }
             else
             {
-                printText("reset: missing arguments");
+                printText("reset: missing arguments", TRUE);
             }
         }
         else
@@ -169,11 +170,11 @@ default
             string user = llGetUsername(llGetOwner());
             printText("<span class=\\'color_3\\'>" + user +
                 "</span>@<span class=\\'color_3\\'>" + hostname +
-                "</span> > ");
+                "</span> > ", FALSE);
         }
         else if(msg == "display started")
         {
-            printText("Display has been restarted.");
+            printText("Display has been restarted.", TRUE);
         }
     }
 }

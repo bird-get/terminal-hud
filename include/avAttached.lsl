@@ -60,14 +60,14 @@ avAttached(list params)
 
     if(llGetListLength(completions) == 0)
     {
-        printText("error: avatar not found");
+        printText("error: avatar not found", TRUE);
         exit(1);
         return;
     }
     else if(llGetListLength(completions) > 1)
     {
         printText("error: more than 1 autocompletion possible:\n" +
-            llDumpList2String(completions, "\n"));
+            llDumpList2String(completions, "\n"), FALSE);
         exit(1);
         return;
     }
@@ -79,7 +79,7 @@ avAttached(list params)
     integer index = llListFindList(agent_names, [av_name]);
     key id = llList2Key(agent_list, index);
     
-    printText("Attachment information for " + av_name + ":\n ");
+    printText("Attachment information for " + av_name + ":", TRUE);
     
     // Get attachments and their details
     list attached = llGetAttachedList(id);
@@ -143,7 +143,7 @@ avAttached(list params)
 
         rows += [llDumpList2String(row, "|")];
     }
-    printText(tabulate(headers, rows));
+    printText(tabulate(headers, rows), TRUE);
 
     exit(0);
 }

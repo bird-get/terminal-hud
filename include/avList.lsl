@@ -22,7 +22,7 @@ avList(list params)
     // Print agent count
     list agents = llGetAgentList(AGENT_LIST_REGION, []);
     integer agent_count = llGetListLength(agents);
-    printText((string)agent_count + " avatars in current region.\n \n");
+    printText((string)agent_count + " avatars in current region.\n ", TRUE);
     
     list rows;
 
@@ -63,7 +63,7 @@ avList(list params)
         }
         rows += [llDumpList2String(agent_info, "|")];
     }
-    printText(tabulate(headers, rows));
+    printText(tabulate(headers, rows), TRUE);
 
     exit(0);
 }

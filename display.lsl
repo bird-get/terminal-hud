@@ -12,7 +12,7 @@ integer dragging;
 // User-tweakable
 integer rows = 24;
 integer columns = 80;
-integer line_height = 12;
+integer line_height = 14;
 integer font_size = 12;
 float size = 1.0;
 
@@ -82,15 +82,18 @@ printText(string raw_text)
         lines += splitByLength(text, columns + length);
     }
 
+    string msg = "e('tbd').innerHTML += '{@0}'; scrollToBottom();";
+    sendMessageF(msg, [llDumpList2String(lines, "<br>")]);
+    //sendMessageF(msg, [llDumpList2String(lines, "\\n")]);
     // Print all lines
-    for(i = 0; i < llGetListLength(lines); i++)
-    {
-        // Create table row and add to table
-        string text = llList2String(lines, i);
-        string row = "<tr><td>{@1}</td></tr>";
-        string msg = "e('tbd').innerHTML += '{@0}'; scrollToBottom();";
-        sendMessageF(msg, [row, text]);
-    }
+    //for(i = 0; i < llGetListLength(lines); i++)
+    //{
+    //    // Create table row and add to table
+    //    string text = llList2String(lines, i);
+    //    //string row = "<tr><td>{@1}</td></tr>";
+    //    string msg = "e('tbd').innerHTML += '{@0}'; scrollToBottom();";
+    //    sendMessageF(msg, [text]);
+    //}
 }
 
 webAppInit()

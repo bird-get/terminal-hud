@@ -19,7 +19,7 @@ avInfo(list params)
 
     if(llGetListLength(completions) == 0)
     {
-        printText("error: avatar not found");
+        printText("error: avatar not found", TRUE);
         exit(1);
         return;
     }
@@ -27,7 +27,7 @@ avInfo(list params)
     {
         
         printText("error: more than 1 autocompletion possible:\n" +
-            llDumpList2String(completions, "\n"));
+            llDumpList2String(completions, "\n"), FALSE);
         exit(1);
         return;
     }
@@ -39,7 +39,7 @@ avInfo(list params)
     integer index = llListFindList(agent_names, [av_name]);
     key id = llList2Key(agent_list, index);
     
-    printText("Avatar information for " + av_name + ":\n ");
+    printText("Avatar information for " + av_name + ":", TRUE);
 
     list rows = [];
     
@@ -81,7 +81,7 @@ avInfo(list params)
     rows += ["script time|" + (string)((integer)((script_time*1000000))) + "μs"];
     
     list headers = ["key", "value"];
-    printText(tabulate(headers, rows));
+    printText(tabulate(headers, rows), TRUE);
 
     exit(0);
 }

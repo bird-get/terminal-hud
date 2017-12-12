@@ -82,11 +82,11 @@ lsInv(list params)
             rows += [row];
             // TODO option: print inventory description
         }
-        printText(tabulate(headers, rows));
+        printText(tabulate(headers, rows), TRUE);
     }
     else
     {
-        printText("No items in inventory.");
+        printText("No items in inventory.", TRUE);
     }
 
     exit(0);

@@ -8,8 +8,9 @@
 #include "terminal-hud/include/rez.lsl"
 #include "terminal-hud/include/colortest.lsl"
 
-printText(string raw_text)
+printText(string raw_text, integer new_line)
 {
+    if(new_line) raw_text = raw_text + "<br>";
     llMessageLinked(LINK_THIS, 1, raw_text, "");
 }
 
@@ -49,9 +50,9 @@ default
             rows += ["region_max_prims|" + llGetEnv("region_max_prims")];
             rows += ["region_object_bonus|" + llGetEnv("region_object_bonus")];
 
-            printText("Sim information:\n ");
+            printText("Sim information:", TRUE);
             list headers = ["key", "value"];
-            printText(tabulate(headers, rows));
+            printText(tabulate(headers, rows), TRUE);
             exit(0);
         }
     }

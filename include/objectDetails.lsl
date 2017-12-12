@@ -60,7 +60,7 @@ objectDetails(list params)
     rows += ["OBJECT_GROUP_TAG|" + getDetailString(id, 33)];
 
     list headers = ["key", "value"];
-    printText(tabulate(headers, rows));
+    printText(tabulate(headers, rows), TRUE);
 
     exit(0);
 }

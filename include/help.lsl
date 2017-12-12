@@ -16,7 +16,7 @@ optional arguments:
   -g            align to grid
   -h, --help    show help and exit
  
-ex: rez -p <118,123,100> test_cube");
+ex: rez -p <118,123,100> test_cube", TRUE);
     }
     else if(function == "avinfo")
     {
@@ -30,7 +30,7 @@ positional arguments:
 optional arguments:
   -h, --help    show help and exit
  
-ex: avinfo john.doe");
+ex: avinfo john.doe", TRUE);
     }
     else if(function == "avlist")
     {
@@ -41,7 +41,7 @@ Request info about all avatars in the current region.
 optional arguments:
   -s            get script info
   -r            get render info
-  -h, --help    show help and exit");
+  -h, --help    show help and exit", TRUE);
     }
     else if(function == "avattached")
     {
@@ -60,7 +60,7 @@ optional arguments:
   -p            get attachment point
   -r            get render info
   -s            get script info
-  -t            get temp attachment");
+  -t            get temp attachment", TRUE);
     }
     else if(function == "lsinv")
     {
@@ -78,7 +78,7 @@ Option -p shows permissions: cmtcmtcmtge
 optional arguments:
   -k            get inventory key
   -p            get inventory permissions
-  -h, --help    show help and exit");
+  -h, --help    show help and exit", TRUE);
     }
     else if(function == "reset")
     {
@@ -87,7 +87,7 @@ optional arguments:
 Reset the display.
  
 optional arguments:
-  -a            reset all, scripts");
+  -a            reset all, scripts", TRUE);
     }
     else
     {
@@ -107,6 +107,6 @@ optional arguments:
     avinfo [name]
     avattached [name] [-c] [-d] [-i] [-k] [-p] [-r] [-s] [-t]
     avlist [-s] [-r]
-    colortest");
+    colortest", TRUE);
     }
 }
