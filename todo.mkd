@@ -43,6 +43,7 @@
     - [ ] Printing more than 80 characters does not break line correctly
     - [ ] Start button becomes unresponsive in certain situations
     - [x] Using colorization in a table breaks the layout
+    - [ ] Manually resetting scripts does not work as expected
 
 - Readme:
     - [ ] Add screenshots/gifs
