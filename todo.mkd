@@ -18,7 +18,7 @@
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
-    - [ ] Easy prompt customization (and its CSS)
+    - [x] Easy prompt customization (and its CSS)
     - [ ] Wrapper for llRegionSayTo
     - [ ] Wrapper for llListen
         - Define a range of channels to listen to (max 64?)
