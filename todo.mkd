@@ -18,6 +18,7 @@
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
+    - [ ] Rez: Check if we can rez at our current location
     - [x] Easy prompt customization (and its CSS)
     - [ ] Wrapper for llRegionSayTo
     - [ ] Wrapper for llListen
