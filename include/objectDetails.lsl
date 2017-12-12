@@ -61,4 +61,6 @@ objectDetails(list params)
 
     list headers = ["key", "value"];
     printText(tabulate(headers, rows));
+
+    exit(0);
 }

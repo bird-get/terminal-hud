@@ -60,3 +60,10 @@ float min(float x, float y)
     if( y < x ) return y;
     return x;
 }
+
+exit(integer exit_code)
+{
+    // Tell the interpreter that the current program has finished
+    // 0 = OK, 1 = error
+    llMessageLinked(LINK_THIS, exit_code, "exit", "");
+}

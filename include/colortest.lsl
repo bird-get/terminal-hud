@@ -20,4 +20,6 @@ colortest()
     
     list headers = ["class", "name", "color"];
     printText(tabulate(headers, rows));
+    
+    exit(0);
 }

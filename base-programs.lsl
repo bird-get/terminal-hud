@@ -17,6 +17,8 @@ default
 {
     link_message(integer sender, integer num, string msg, key id)
     {
+        if(msg == "exit" || num == 1) return;
+        
         list params = llParseString2List(msg, [" "], [""]);
         string param0 = llList2String(params, 0);
         string param1 = llList2String(params, 1);
@@ -50,6 +52,7 @@ default
             printText("Sim information:\n ");
             list headers = ["key", "value"];
             printText(tabulate(headers, rows));
+            exit(0);
         }
     }
 }

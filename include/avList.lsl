@@ -64,4 +64,6 @@ avList(list params)
         rows += [llDumpList2String(agent_info, "|")];
     }
     printText(tabulate(headers, rows));
+
+    exit(0);
 }

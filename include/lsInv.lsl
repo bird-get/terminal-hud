@@ -88,4 +88,6 @@ lsInv(list params)
     {
         printText("No items in inventory.");
     }
+
+    exit(0);
 }

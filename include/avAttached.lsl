@@ -61,12 +61,14 @@ avAttached(list params)
     if(llGetListLength(completions) == 0)
     {
         printText("error: avatar not found");
+        exit(1);
         return;
     }
     else if(llGetListLength(completions) > 1)
     {
         printText("error: more than 1 autocompletion possible:\n" +
             llDumpList2String(completions, "\n"));
+        exit(1);
         return;
     }
 
@@ -142,4 +144,6 @@ avAttached(list params)
         rows += [llDumpList2String(row, "|")];
     }
     printText(tabulate(headers, rows));
+
+    exit(0);
 }

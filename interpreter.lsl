@@ -19,6 +19,18 @@ printText(string raw_text)
     llMessageLinked(LINK_THIS, 1, raw_text, "");
 }
 
+exit(integer exit_code)
+{
+    // 0 = OK, 1 = Error
+    
+    // Print prompt
+    string hostname = llGetEnv("simulator_hostname");
+    string user = llGetUsername(llGetOwner());
+    printText("<span class=\\'color_3\\'>" + user +
+        "</span>@<span class=\\'color_3\\'>" + hostname +
+        "</span> > ");
+}
+
 default
 {
     state_entry()
@@ -38,6 +50,13 @@ default
         text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
         text += "Version: " + (string)VERSION + "\n";
         printText(text);
+        
+        // Print prompt
+        string hostname = llGetEnv("simulator_hostname");
+        string user = llGetUsername(llGetOwner());
+        printText("<span class=\\'color_3\\'>" + user +
+            "</span>@<span class=\\'color_3\\'>" + hostname +
+            "</span> > ");
     }
 
     changed(integer change)
@@ -48,23 +67,24 @@ default
 
     listen(integer channel, string name, key id, string msg)
     {
-        // Print prompt + escaped command
-        string hostname = llGetEnv("simulator_hostname");
-        string user = llGetUsername(llGetOwner());
-        printText("<span class=\\'color_3\\'>" + user +
-            "</span>@<span class=\\'color_3\\'>" + hostname +
-            "</span> > " + addSlashes(msg));
+        // Print escaped command
+        if(id == llGetOwner()) printText(addSlashes(msg));
 
         list params = llParseString2List(msg, [" "], [""]);
         string param0 = llList2String(params, 0);
         string param1 = llList2String(params, 1);
         string param2 = llList2String(params, 2);
 
-        if(param0 == "help") help(param1);
+        if(param0 == "help")
+        {
+            help(param1);
+            exit(0);
+        }
         else if(param0 == "echo")
         {
             params = llList2List(params, 1, -1);
             printText(llDumpList2String(params, " "));
+            exit(0);
         }
         else if(param0 == "set")
         {
@@ -74,17 +94,24 @@ default
                 printText("Channel set to " + (string)listen_channel + ".");
                 llListenRemove(listener);
                 listener = llListen(listen_channel, "", llGetOwner(), "");
+                exit(0);
+                return;
             }
             else if(param1 == "size")
             {
                 llMessageLinked(LINK_THIS, 0, "size " + param2, "");
                 printText("Size set to " + param2);
+                exit(0);
+                return;
             }
             else if(param1 == "opacity")
             {
                 llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
                 printText("Opacity set to " + param2);
+                exit(0);
+                return;
             }
+            exit(1);
         }
         else if(param0 == "enable")
         {
@@ -144,7 +171,16 @@ default
 
     link_message(integer sender, integer num, string msg, key id)
     {
-        if(msg == "display started")
+        if(msg == "exit")
+        {
+            // Print prompt
+            string hostname = llGetEnv("simulator_hostname");
+            string user = llGetUsername(llGetOwner());
+            printText("<span class=\\'color_3\\'>" + user +
+                "</span>@<span class=\\'color_3\\'>" + hostname +
+                "</span> > ");
+        }
+        else if(msg == "display started")
         {
             printText("Display has been restarted.");
         }

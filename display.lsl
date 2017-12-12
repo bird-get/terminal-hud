@@ -292,6 +292,8 @@ default
 
     link_message(integer sender, integer num, string msg, key id)
     {
+        if(msg == "exit") return;
+
         if(num == 1)
         {
             printText(msg);
