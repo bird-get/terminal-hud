@@ -19,16 +19,15 @@ printText(string raw_text)
     llMessageLinked(LINK_THIS, 1, raw_text, "");
 }
 
-exit(integer exit_code)
+string prompt()
 {
-    // 0 = OK, 1 = Error
-    
-    // Print prompt
     string hostname = llGetEnv("simulator_hostname");
     string user = llGetUsername(llGetOwner());
-    printText("<span class=\\'color_3\\'>" + user +
+    string text = "<span class=\\'color_3\\'>" + user +
         "</span>@<span class=\\'color_3\\'>" + hostname +
-        "</span> > ");
+        "</span> > ";
+    
+    return text;
 }
 
 default
@@ -52,11 +51,7 @@ default
         printText(text);
         
         // Print prompt
-        string hostname = llGetEnv("simulator_hostname");
-        string user = llGetUsername(llGetOwner());
-        printText("<span class=\\'color_3\\'>" + user +
-            "</span>@<span class=\\'color_3\\'>" + hostname +
-            "</span> > ");
+        printText(prompt());
     }
 
     changed(integer change)
@@ -78,13 +73,13 @@ default
         if(param0 == "help")
         {
             help(param1);
-            exit(0);
+            printText(prompt());
         }
         else if(param0 == "echo")
         {
             params = llList2List(params, 1, -1);
             printText(llDumpList2String(params, " "));
-            exit(0);
+            printText(prompt());
         }
         else if(param0 == "set")
         {
@@ -94,24 +89,20 @@ default
                 printText("Channel set to " + (string)listen_channel + ".");
                 llListenRemove(listener);
                 listener = llListen(listen_channel, "", llGetOwner(), "");
-                exit(0);
-                return;
+                printText(prompt());
             }
             else if(param1 == "size")
             {
                 llMessageLinked(LINK_THIS, 0, "size " + param2, "");
                 printText("Size set to " + param2);
-                exit(0);
-                return;
+                printText(prompt());
             }
             else if(param1 == "opacity")
             {
                 llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
                 printText("Opacity set to " + param2);
-                exit(0);
-                return;
+                printText(prompt());
             }
-            exit(1);
         }
         else if(param0 == "enable")
         {
