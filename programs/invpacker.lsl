@@ -66,7 +66,17 @@ default
             if(llListFindList(params, ["-c"]) != -1) perm_mask += PERM_COPY;
             if(llListFindList(params, ["-m"]) != -1) perm_mask += PERM_MODIFY;
             if(llListFindList(params, ["-t"]) != -1) perm_mask += PERM_TRANSFER;
-           
+            
+            // Give error if no permissions or impossible perms are given
+            if((~perm_mask & PERM_COPY && ~perm_mask & PERM_MODIFY &&
+                ~perm_mask & PERM_TRANSFER) || (~perm_mask & PERM_COPY &&
+                perm_mask & PERM_MODIFY && ~perm_mask & PERM_TRANSFER))
+            {
+                printText("error: invalid permissions", TRUE);
+                exit(1);
+                return;
+            }
+
             printText("Rezzing package...", TRUE);
             llRezObject(PACKAGE_NAME, llGetPos(), ZERO_VECTOR, ZERO_ROTATION, perm_mask);
         }
