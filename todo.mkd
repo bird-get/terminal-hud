@@ -34,8 +34,8 @@
         - [ ] Options to set perms
         - [x] Package communicates with HUD
         - [ ] Warn on wrong permissions for added/changed inventory item
-        - [ ] automatically prevent newly added scripts from running
-        - [ ] wait for input (q=quit, c=continue/create)
+        - [x] automatically prevent newly added scripts from running
+        - [x] wait for input (q=quit, c=continue/create)
         - when finished:
             - [x] give feedback (that it's ready to pick up)
             - [ ] remove packer script
