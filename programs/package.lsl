@@ -39,7 +39,8 @@ checkInventory()
                 // New item has been added to inventory
                 llRegionSayTo(rezzer, -42,
                     inv_type + " \\'" + inv_name + 
-                    "\\' has been added, with perms: " + inv_perms);
+                    "\\' has been added, with perms: " + inv_perms + " (" +
+                    (string)(inv_count-1) + " total)");
                 
                 // If inventory is a script, disable it
                 if(type == INVENTORY_SCRIPT)
