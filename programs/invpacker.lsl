@@ -1,5 +1,5 @@
 #define PACKAGE_NAME "empty_package"
-#define HELP_MESSAGE "usage: invpacker [-c] [-m] [-t]
+#define HELP_MESSAGE "usage: invpacker [-h] [-c] [-m] [-t]
  
 Create an empty package. Checks if added inventory items have the 
 correct permission mask.
@@ -7,7 +7,8 @@ correct permission mask.
 optional arguments:
   -c            set copy permission
   -m            set modify permission
-  -t            set transfer permission"
+  -t            set transfer permission
+  -h, --help    show help and exit"
 
 #include "terminal-hud/include/utility.lsl"
 
@@ -55,7 +56,8 @@ default
         if(param0 == "invpacker")
         {
             integer options_mask;
-            if(llListFindList(params, ["-h"]) != -1)
+            if(llListFindList(params, ["-h"]) != -1 ||
+                llListFindList(params, ["--help"]) != -1)
             {
                 printText(HELP_MESSAGE, TRUE);
                 exit(0);
