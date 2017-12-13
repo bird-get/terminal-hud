@@ -42,11 +42,7 @@ default
             }
             else if(msg == "c" || msg == "C")
             {
-                printText("Deleting package script...", TRUE);
-                // TODO Tell package script to remove itself
-                llListenRemove(listener);
-                active = FALSE;
-                exit(0);
+                llRegionSayTo(package_key, -42, "continue");
                 return;
             }
         }
@@ -65,12 +61,14 @@ default
                 exit(0);
                 return;
             }
-            if(llListFindList(params, ["-c"]) != -1) options_mask += 1;
-            if(llListFindList(params, ["-m"]) != -1) options_mask += 2;
-            if(llListFindList(params, ["-t"]) != -1) options_mask += 4;
+
+            integer perm_mask;
+            if(llListFindList(params, ["-c"]) != -1) perm_mask += PERM_COPY;
+            if(llListFindList(params, ["-m"]) != -1) perm_mask += PERM_MODIFY;
+            if(llListFindList(params, ["-t"]) != -1) perm_mask += PERM_TRANSFER;
            
             printText("Rezzing package...", TRUE);
-            llRezObject(PACKAGE_NAME, llGetPos(), ZERO_VECTOR, ZERO_ROTATION, 0);
+            llRezObject(PACKAGE_NAME, llGetPos(), ZERO_VECTOR, ZERO_ROTATION, perm_mask);
         }
     }
 
@@ -92,6 +90,14 @@ default
             {
                 llListenRemove(listener);
                 active = FALSE;
+                exit(0);
+            }
+            else if(msg == "done")
+            {
+                llListenRemove(listener);
+                active = FALSE;
+                package_key = NULL_KEY;
+                printText("Packaging complete.", TRUE);
                 exit(0);
             }
             else

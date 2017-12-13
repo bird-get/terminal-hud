@@ -1,5 +1,6 @@
 key rezzer;
 list inventory_list;
+integer required_perms;
 
 checkInventory()
 {
@@ -54,10 +55,53 @@ checkInventory()
     inventory_list = inv_list;
 }
 
+createPackage()
+{
+    integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
+    integer i;
+    for(i=0; i < inv_count; i++)
+    {
+        string inv_name = llGetInventoryName(INVENTORY_ALL, i);
+        
+        if(inv_name != llGetScriptName())
+        {
+            string error = "";
+            integer perm_mask = llGetInventoryPermMask(inv_name, MASK_NEXT);
+            
+            if(required_perms & PERM_COPY && ~perm_mask & PERM_COPY)
+                error = "no copy";
+            else if(~required_perms & PERM_COPY && perm_mask & PERM_COPY)
+                error = "copy";
+            
+            if(required_perms & PERM_MODIFY && ~perm_mask & PERM_MODIFY)
+                error = "no modify";
+            else if(~required_perms & PERM_MODIFY && perm_mask & PERM_MODIFY)
+                error = "modify";
+            
+            if(required_perms & PERM_TRANSFER && ~perm_mask & PERM_TRANSFER)
+                error = "no transfer";
+            else if(~required_perms & PERM_TRANSFER && perm_mask & PERM_TRANSFER)
+                error = "transfer";
+            
+            if(error != "")
+            {
+                llRegionSayTo(rezzer, -42,
+                    "error: \\'" + inv_name + "\\' is " + error);
+                return;
+            }
+        }
+    }
+    
+    llRegionSayTo(rezzer, -42, "done");
+    llRemoveInventory(llGetScriptName());
+}
+
 default
 {
     on_rez(integer start_param)
     {
+        required_perms = start_param;
+
         list details = llGetObjectDetails(llGetKey(), [OBJECT_REZZER_KEY]);
         rezzer = llList2Key(details, 0);
         llListen(-42, "", rezzer, "");
@@ -82,6 +126,10 @@ default
         if(msg == "quit")
         {
             llDie();
+        }
+        else if(msg == "continue")
+        {
+            createPackage();
         }
     }
 }

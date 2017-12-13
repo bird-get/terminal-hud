@@ -31,9 +31,9 @@
         - Avatar drags inventory items into package
         - [ ] Set memory limit to something reasonable
         - [x] Rez a package containing packer script in front of avatar
-        - [ ] Options to set perms
+        - [x] Options to set perms
         - [x] Package communicates with HUD
-        - [ ] Warn on wrong permissions for added/changed inventory item
+        - [x] Warn on wrong permissions for added/changed inventory item
         - [x] automatically prevent newly added scripts from running
         - [x] wait for input (q=quit, c=continue/create)
         - when finished:
