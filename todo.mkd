@@ -28,17 +28,18 @@
         - All programs call exit() when finished
         - Interpreter waits for exit(), then prints prompt
     - [ ] invpacker: Inventory package creator
-        - Rezzes a package containing packer script in front of avatar
-        - Options to set perms
         - Avatar drags inventory items into package
-        - Package communicates with HUD, like 'Package: Added HDRI_Sky_Texture'
-        - Warns on wrong permissions for inventory item
-        - automatically prevents newly added scripts from running
-        - waits for input (q=quit, c=continue/create)
+        - [ ] Set memory limit to something reasonable
+        - [x] Rez a package containing packer script in front of avatar
+        - [ ] Options to set perms
+        - [x] Package communicates with HUD
+        - [ ] Warn on wrong permissions for added/changed inventory item
+        - [ ] automatically prevent newly added scripts from running
+        - [ ] wait for input (q=quit, c=continue/create)
         - when finished:
-            - give feedback (that it's ready to pick up)
-            - remove packer script
-            - exit()
+            - [x] give feedback (that it's ready to pick up)
+            - [ ] remove packer script
+            - [x] exit()
 
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
