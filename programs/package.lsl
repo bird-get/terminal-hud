@@ -6,6 +6,7 @@ default
     {
         list details = llGetObjectDetails(llGetKey(), [OBJECT_REZZER_KEY]);
         rezzer = llList2Key(details, 0);
+        llListen(-42, "", rezzer, "");
 
         llSleep(1);
         string text = "Package has been rezzed.";
@@ -17,5 +18,13 @@ default
     changed(integer change)
     {
         llRegionSayTo(rezzer, -42, "changed");
+    }
+
+    listen(integer channel, string name, key id, string msg)
+    {
+        if(msg == "quit")
+        {
+            llDie();
+        }
     }
 }

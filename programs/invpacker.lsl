@@ -33,8 +33,10 @@ default
             if(msg == "q")
             {
                 printText("Quitting; deleting package...", TRUE);
+                llRegionSayTo(package_key, -42, "quit");
                 llListenRemove(listener);
                 active = FALSE;
+                package_key = NULL_KEY;
                 exit(0);
                 return;
             }
