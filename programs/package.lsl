@@ -39,6 +39,13 @@ checkInventory()
                 llRegionSayTo(rezzer, -42,
                     inv_type + " \\'" + inv_name + 
                     "\\' has been added, with perms: " + inv_perms);
+                
+                // If inventory is a script, disable it
+                if(type == INVENTORY_SCRIPT)
+                {
+                    llSleep(.5);
+                    llSetScriptState(inv_name, FALSE);
+                }
             }
             
             inv_list += [inv_name];
