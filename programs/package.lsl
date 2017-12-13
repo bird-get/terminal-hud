@@ -6,7 +6,12 @@ default
     {
         list details = llGetObjectDetails(llGetKey(), [OBJECT_REZZER_KEY]);
         rezzer = llList2Key(details, 0);
-        llRegionSayTo(rezzer, -42, "rezzed");
+
+        llSleep(1);
+        string text = "Package has been rezzed.";
+        text += "You can now place items into its inventory.";
+        text += "\nC to continue, Q to quit";
+        llRegionSayTo(rezzer, -42, text);
     }
 
     changed(integer change)
