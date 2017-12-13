@@ -38,7 +38,7 @@
         - [x] wait for input (q=quit, c=continue/create)
         - when finished:
             - [x] give feedback (that it's ready to pick up)
-            - [ ] remove packer script
+            - [x] remove packer script
             - [x] exit()
 
 - Bugs:
