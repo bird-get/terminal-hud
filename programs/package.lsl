@@ -10,7 +10,7 @@ default
 
         llSleep(1);
         string text = "Package has been rezzed.";
-        text += "You can now place items into its inventory.";
+        text += " You can now place items into its inventory.";
         text += "\nC to continue, Q to quit";
         llRegionSayTo(rezzer, -42, text);
     }
