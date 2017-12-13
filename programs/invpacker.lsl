@@ -30,7 +30,7 @@ default
         
         if(active)
         {
-            if(msg == "q")
+            if(msg == "q" || msg == "Q")
             {
                 printText("Quitting; deleting package...", TRUE);
                 llRegionSayTo(package_key, -42, "quit");
@@ -40,7 +40,7 @@ default
                 exit(0);
                 return;
             }
-            else if(msg == "c")
+            else if(msg == "c" || msg == "C")
             {
                 printText("Deleting package script...", TRUE);
                 // TODO Tell package script to remove itself
