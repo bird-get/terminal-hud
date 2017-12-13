@@ -61,6 +61,7 @@
     - [ ] Make avattached name column wider
 
 - [x] Separate interpreter.lsl from functions (communicate by linkmessage)
+- [ ] Print prompt after display has been restarted
 - [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
 - [ ] Regularly poll own URL to check if it still alive
