@@ -6,9 +6,8 @@
     - [ ] Make invalid argument show usage text
 
 - Storage:
-    - [ ] Add some kind of storage, i.e. inside prim descriptions
-    - [ ] Store last login time
-    - [ ] Add command to store HUD position
+    - [x] Add some kind of storage, i.e. inside prim descriptions
+    - [x] Store last login time
 
 - Programs:
     - [ ] Add -h arg to programs, remove entries from help.lsl
