@@ -1,5 +1,6 @@
 // https://github.com/bird-get/terminal-hud
 
+#include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer link_background;
@@ -15,24 +16,6 @@ integer columns = 80;
 integer line_height = 14;
 integer font_size = 12;
 float size = 1.0;
-
-scanLinks()
-{
-    integer i;
-    integer prim_count = llGetNumberOfPrims();
-    for(i = 0; i <= prim_count; i++)
-    {
-        string link_name = llGetLinkName(i);
-        if(link_name == "background")
-        {
-            link_background = i;
-        }
-        else if(link_name == "drag_prim")
-        {
-            link_drag_prim = i;
-        }
-    }
-}
 
 list splitByLength(string str, integer max_length)
 {
@@ -210,7 +193,8 @@ default
 {
     state_entry()
     {
-        scanLinks();
+        link_background = getLinkIndex("background");
+        link_drag_prim = getLinkIndex("drag_prim");
         llSetTimerEvent(.5);
 
         // Announce script start
