@@ -22,7 +22,7 @@ integer getLinkIndex(string name)
         if(llGetLinkName(i) == name)
             return i;
     while(--i > 0);
-    return 0;
+    return -1;
 }
 
 string formatDecimal(float number, integer precision)
