@@ -82,7 +82,8 @@ rez(list params)
     // Rez object and print message
     llRezObject(object_name, pos, ZERO_VECTOR, ZERO_ROTATION, 0);
     printText("object \\\'" + object_name + "\\\' rezzed @ " + 
-        (string)pos, TRUE);
+        "<" + formatDecimal(pos.x, 2) + "," + formatDecimal(pos.y, 2) +
+        "," + formatDecimal(pos.z, 2) + ">", TRUE);
 
     exit(0);
 }
