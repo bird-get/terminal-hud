@@ -27,6 +27,7 @@
         - Interpreter waits for exit(), then prints prompt
     - [ ] invpacker: Inventory package creator
         - Avatar drags inventory items into package
+        - [ ] Integrate lsInv, to see package inventory + permissions
         - [x] Set memory limit to something reasonable
         - [x] Rez a package containing packer script in front of avatar
         - [x] Options to set perms
