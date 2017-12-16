@@ -41,43 +41,47 @@ lsInv(list params)
             if(options_mask & 2)
             {
                 row += "|";
+                string c = "c";
+                string m = "m";
+                string t = "t";
+                string x = "<span class=\\'color_8\\'>x</span>";
 
                 // Base
                 integer perms = llGetInventoryPermMask(inv_name, MASK_BASE);
-                if(perms & PERM_COPY) row += "c";
-                else row += "x";
-                if(perms & PERM_MODIFY) row += "m";
-                else row += "x";
-                if(perms & PERM_TRANSFER) row += "t";
-                else row += "x";
+                if(perms & PERM_COPY) row += c;
+                else row += x;
+                if(perms & PERM_MODIFY) row += m;
+                else row += x;
+                if(perms & PERM_TRANSFER) row += t;
+                else row += x;
                 
                 // Owner
                 perms = llGetInventoryPermMask(inv_name, MASK_OWNER);
-                if(perms & PERM_COPY) row += "c";
-                else row += "x";
-                if(perms & PERM_MODIFY) row += "m";
-                else row += "x";
-                if(perms & PERM_TRANSFER) row += "t";
-                else row += "x";
+                if(perms & PERM_COPY) row += c;
+                else row += x;
+                if(perms & PERM_MODIFY) row += m;
+                else row += x;
+                if(perms & PERM_TRANSFER) row += t;
+                else row += x;
                 
                 // Next owner
                 perms = llGetInventoryPermMask(inv_name, MASK_NEXT);
-                if(perms & PERM_COPY) row += "c";
-                else row += "x";
-                if(perms & PERM_MODIFY) row += "m";
-                else row += "x";
-                if(perms & PERM_TRANSFER) row += "t";
-                else row += "x";
+                if(perms & PERM_COPY) row += c;
+                else row += x;
+                if(perms & PERM_MODIFY) row += m;
+                else row += x;
+                if(perms & PERM_TRANSFER) row += t;
+                else row += x;
                 
                 // Group
                 perms = llGetInventoryPermMask(inv_name, MASK_GROUP);
                 if(perms & (PERM_COPY|PERM_MODIFY)) row += "g";
-                else row += "x";
+                else row += x;
                 
                 // Everyone
                 perms = llGetInventoryPermMask(inv_name, MASK_EVERYONE);
                 if(perms & PERM_COPY) row += "e";
-                else row += "x";
+                else row += x;
             }
             rows += [row];
             // TODO option: print inventory description
