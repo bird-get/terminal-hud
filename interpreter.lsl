@@ -38,12 +38,10 @@ default
         listener = llListen(listen_channel, "", llGetOwner(), "");
 
         // Retrieve last login time
-        integer link = getLinkIndex("login_time");
-        list details = llGetLinkPrimitiveParams(link, [PRIM_DESC]);
-        string login_time = llList2String(details, 0);
+        string login_time = getKeyValue("login_time");
 
         // Update login time
-        llSetLinkPrimitiveParams(link, [PRIM_DESC, llGetTimestamp()]);
+        setKeyValue("login_time", llGetTimestamp());
 
         // Print starting text
         string text;
