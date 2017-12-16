@@ -59,6 +59,7 @@
     - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
     - [ ] Add customizable MOTD (read from notecard, maybe?)
     - [ ] Make avattached name column wider
+    - [ ] Finetune HUD default size (make text size more accurate)
 
 - [x] Separate interpreter.lsl from functions (communicate by linkmessage)
 - [ ] Print prompt after display has been restarted
