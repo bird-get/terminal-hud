@@ -77,3 +77,18 @@ exit(integer exit_code)
     // 0 = OK, 1 = error
     llMessageLinked(LINK_THIS, exit_code, "exit", "");
 }
+
+string getKeyValue(string key_)
+{
+    integer link = getLinkIndex(key_);
+    if(link == -1) return "";
+    return llList2String(llGetLinkPrimitiveParams(link, [PRIM_DESC]), 0);
+}
+
+integer setKeyValue(string key_, string value)
+{
+    integer link = getLinkIndex(key_);
+    if(link == -1) return FALSE;
+    llSetLinkPrimitiveParams(link, [PRIM_DESC, value]);
+    return TRUE;
+}
