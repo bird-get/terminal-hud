@@ -37,6 +37,14 @@ default
     {
         listener = llListen(listen_channel, "", llGetOwner(), "");
 
+        // Retrieve last login time
+        integer link = getLinkIndex("login_time");
+        list details = llGetLinkPrimitiveParams(link, [PRIM_DESC]);
+        string login_time = llList2String(details, 0);
+
+        // Update login time
+        llSetLinkPrimitiveParams(link, [PRIM_DESC, llGetTimestamp()]);
+
         // Print starting text
         string text;
         text += "\n 
@@ -45,7 +53,8 @@ default
      / )\\\\
     <_/_/
      \" \" \n";
-        text += "Last login: Mon Nov 6 03:25:56 2017\n";
+        //text += "Last login: Mon Nov 6 03:25:56 2017\n";
+        text += "Last login: " + login_time + "\n";
         text += "Channel: " + (string)listen_channel + "\n";
         text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
         text += "Version: " + (string)VERSION;
