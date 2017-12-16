@@ -15,6 +15,16 @@ list autocomplete(string text, list items)
     return completions;
 }
 
+integer getLinkIndex(string name)
+{
+    integer i = llGetNumberOfPrims();
+    do
+        if(llGetLinkName(i) == name)
+            return i;
+    while(--i > 0);
+    return 0;
+}
+
 string formatDecimal(float number, integer precision)
 {
     float roundingValue = llPow(10, -precision) * .5;
