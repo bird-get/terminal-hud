@@ -24,6 +24,11 @@ printText(string raw_text, integer new_line)
 
 default
 {
+    state_entry()
+    {
+        llSetMemoryLimit(12000);
+    }
+
     link_message(integer sender, integer num, string msg, key id)
     {
         if(msg == "exit" || num == 1) return;
