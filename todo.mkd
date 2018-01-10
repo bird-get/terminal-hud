@@ -64,7 +64,7 @@
 - [ ] Print prompt after display has been restarted
 - [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
-- [ ] Regularly poll own URL to check if it still alive
+- [ ] Regularly poll own URL to check if it is still alive
 - [ ] Try hiding media controls
 - [ ] Finish HUD creation script
 - [ ] Prompt with blinking cursor

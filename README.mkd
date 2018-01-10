@@ -31,10 +31,5 @@ For more help about functions, type `/42 help`.
 6. Place the three scripts into the object's inventory.
 7. Attach the object to a HUD slot, and use as said in the previous chapter.
 
-## Motivation
-I switched to Linux a while ago, and fell in love with the command line due to
-the speed advantages. I looked for a command line tool for Second Life but
-could not find one, so I decided to make my own.
-
 ## License
 Terminal HUD is provided under the [GPL-3.0 License](https://github.com/bird-get/terminal-hud/blob/master/LICENSE).
