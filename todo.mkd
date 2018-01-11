@@ -29,6 +29,7 @@
             - ANGLE_EN PI
     - [ ] Collision detection?
     - [ ] Check avatar online status
+    - [ ] Parcel details and flags
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
