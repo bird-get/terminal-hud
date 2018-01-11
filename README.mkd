@@ -6,8 +6,8 @@ It listens for chat commands, parses the input and then displays its output
 using prim media.
 
 ## How to use
-You can get a ready-to-use copy from [my SL Marketplace store](https://marketplace.secondlife.com/stores/63546).  
-If you would rather make your own HUD, follow the steps in the next chapter.
+You can get a ready-to-use copy from [my SL Marketplace store](https://marketplace.secondlife.com/stores/63546). It contains useful objects in its inventory. 
+If you would rather make your own HUD, follow the steps in the next section.
 
 Attach the HUD to a HUD slot and position it using the SL build tools.
 
