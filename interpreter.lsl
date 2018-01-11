@@ -97,19 +97,19 @@ default
                 printText("Channel set to " + (string)listen_channel + ".", TRUE);
                 llListenRemove(listener);
                 listener = llListen(listen_channel, "", llGetOwner(), "");
-                printText(prompt(), TRUE);
+                printText(prompt(), FALSE);
             }
             else if(param1 == "size")
             {
                 llMessageLinked(LINK_THIS, 0, "size " + param2, "");
                 printText("Size set to " + param2, TRUE);
-                printText(prompt(), TRUE);
+                printText(prompt(), FALSE);
             }
             else if(param1 == "opacity")
             {
                 llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
                 printText("Opacity set to " + param2, TRUE);
-                printText(prompt(), TRUE);
+                printText(prompt(), FALSE);
             }
         }
         else if(param0 == "enable")
