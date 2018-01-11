@@ -33,7 +33,6 @@
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
-    - [ ] Rez: Check if we can rez at our current location
     - [ ] Wrapper for llRegionSayTo
     - [ ] Wrapper for llListen
         - Define a range of channels to listen to (max 64?)
