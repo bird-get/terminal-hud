@@ -2,6 +2,25 @@ avInfo(list params)
 {
     // Show a table with information about an avatar.
 
+    // Display help
+    if(llListFindList(params, ["-h"]) != -1 ||
+        llListFindList(params, ["--help"]) != -1)
+    {
+        printText("usage: avinfo [name] [-h]
+ 
+Request info about avatar NAME.
+ 
+positional arguments:
+  name          name of avatar
+ 
+optional arguments:
+  -h, --help    show help and exit
+ 
+ex: avinfo john.doe", TRUE);
+        exit(0);
+        return;
+    }
+    
     // Parse arguments
     string av_name = llList2String(params, 1);
     list agent_list = llGetAgentList(AGENT_LIST_REGION, []);

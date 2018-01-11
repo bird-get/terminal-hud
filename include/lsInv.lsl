@@ -1,6 +1,30 @@
 lsInv(list params)
 {
     // List inventory
+    
+    // Display help
+    if(llListFindList(params, ["-h"]) != -1 ||
+        llListFindList(params, ["--help"]) != -1)
+    {
+        printText("usage: lsinv [-h] [-k] [-p]
+ 
+List inventory.
+Option -p shows permissions: cmtcmtcmtge
+                            │  │  │  ││
+                      Base ──┘  │  │  ││
+                      Owner ────┘  │  ││
+                      Next owner ──┘  ││
+                      Group share ────┘│
+                      Everyone copy ───┘
+ 
+optional arguments:
+  -k            get inventory key
+  -p            get inventory permissions
+  -h, --help    show help and exit", TRUE);
+        exit(0);
+        return;
+    }
+    
     integer options_mask;
     list headers = ["Name"];
     if(llListFindList(params, ["-k"]) != -1) // option: key

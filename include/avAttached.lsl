@@ -1,5 +1,30 @@
 avAttached(list params)
 {
+    // Display help
+    if(llListFindList(params, ["-h"]) != -1 ||
+        llListFindList(params, ["--help"]) != -1)
+    {
+        printText("usage: avattached [name] [-h] [-c] [-d] [-i] [-k] [-p] [-r] [-s] [-t]
+ 
+Request info about avatar NAME\\'s publicly visible attachments.
+ 
+positional arguments:
+  name          name of avatar
+ 
+optional arguments:
+  -c            get creator key
+  -d            get object description
+  -i            get inventory count
+  -k            get object key
+  -p            get attachment point
+  -r            get render info
+  -s            get script info
+  -t            get temp attachment
+  -h, --help    show help and exit", TRUE);
+        exit(0);
+        return;
+    }
+    
     // Parse arguments
     string av_name = llList2String(params, 1);
     integer options_mask;

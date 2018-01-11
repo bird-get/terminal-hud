@@ -1,5 +1,26 @@
 rez(list params)
 {
+    // Display help
+    if(llListFindList(params, ["-h"]) != -1 ||
+        llListFindList(params, ["--help"]) != -1)
+    {
+        printText("usage: rez [-h] [-g] [-p POS] name
+ 
+Rez an object from inventory.
+ 
+positional arguments:
+  name          object name
+ 
+optional arguments:
+  -p POS        rez NAME at POS (max. 10m away from avatar)
+  -g            align to grid
+  -h, --help    show help and exit
+ 
+ex: rez -p <118,123,100> test_cube", TRUE);
+        exit(0);
+        return;
+    }
+    
     // Parse position option
     vector pos;
     integer pos_index = llListFindList(params, ["-p"]);

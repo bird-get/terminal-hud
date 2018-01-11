@@ -1,6 +1,23 @@
 avList(list params)
 {
     // Show a list of avatars in the current region
+    
+    // Display help
+    if(llListFindList(params, ["-h"]) != -1 ||
+        llListFindList(params, ["--help"]) != -1)
+    {
+        printText("usage: avlist [-h] [-s] [-r]
+ 
+Request info about all avatars in the current region.
+ 
+optional arguments:
+  -s            get script info
+  -r            get render info
+  -h, --help    show help and exit", TRUE);
+        exit(0);
+        return;
+    }
+    
     integer options_mask;
     list headers = ["Name"];
     if(llListFindList(params, ["-k"]) != -1) // option: key

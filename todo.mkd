@@ -2,7 +2,7 @@
 - Arguments:
     - [ ] Parse args more intelligently
     - [ ] Make putting optional args together (-la instead of -l -a) possible
-    - [ ] Handle help function differently, like <prog> --help
+    - [x] Handle help function differently, like <prog> --help
     - [ ] Make invalid argument show usage text
 
 - Storage:
