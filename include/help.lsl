@@ -11,6 +11,12 @@ Reset the display.
 optional arguments:
   -a            reset all, scripts", TRUE);
     }
+    else if(function == "echo")
+    {
+        printText("usage: echo [arg ...]
+ 
+Write arguments to output.", TRUE);
+    }
     else
     {
         printText("These commands are defined internally.
@@ -20,6 +26,7 @@ Type \\\'help name\\\' for more help about function NAME.
     set opacity [opacity]
     set size [size]
     cls
+    echo [arg ...]
     reset [-a] [-i] [-d]
     enable
     disable
