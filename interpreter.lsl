@@ -123,6 +123,7 @@ default
         else if(param0 == "cls")
         {
             llMessageLinked(LINK_THIS, 0, "clear screen", "");
+            printText(prompt(), FALSE);
         }
         else if(param0 == "reset")
         {
