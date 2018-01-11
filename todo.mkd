@@ -7,13 +7,8 @@
 - Arguments:
     - [ ] Parse args more intelligently
     - [ ] Make putting optional args together (-la instead of -l -a) possible
-    - [x] Handle help function differently, like <prog> --help
     - [ ] Make invalid argument show usage text
     - [ ] Error on invalid/unrecognized option
-
-- Storage:
-    - [x] Add some kind of storage, i.e. inside prim descriptions
-    - [x] Store last login time
 
 - Programs:
     - [ ] land: unsit, eject, ban, etc.
@@ -38,33 +33,16 @@
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
     - [ ] Rez: Check if we can rez at our current location
-    - [x] Easy prompt customization (and its CSS)
     - [ ] Wrapper for llRegionSayTo
     - [ ] Wrapper for llListen
         - Define a range of channels to listen to (max 64?)
-    - [x] Echo command
-    - [x] exit(integer exit_code)
-        - All programs call exit() when finished
-        - Interpreter waits for exit(), then prints prompt
     - [ ] invpacker: Inventory package creator
         - Avatar drags inventory items into package
         - [ ] Integrate lsInv, to see package inventory + permissions
-        - [x] Set memory limit to something reasonable
-        - [x] Rez a package containing packer script in front of avatar
-        - [x] Options to set perms
-        - [x] Package communicates with HUD
-        - [x] Warn on wrong permissions for added/changed inventory item
-        - [x] automatically prevent newly added scripts from running
-        - [x] wait for input (q=quit, c=continue/create)
-        - when finished:
-            - [x] give feedback (that it's ready to pick up)
-            - [x] remove packer script
-            - [x] exit()
 
 - Bugs:
     - [ ] Printing more than 80 characters does not break line correctly
     - [ ] Start button becomes unresponsive in certain situations
-    - [x] Using colorization in a table breaks the layout
     - [ ] Manually resetting scripts does not work as expected
 
 - Readme:
@@ -74,7 +52,6 @@
     - [ ] Add 'how to make your own extension program'
 
 - Usability:
-    - [x] Allow dragging top bar to move HUD
     - [ ] Reset display on login
     - [ ] Reset on attach
     - [ ] Handle region change better (store history and reset display?)
@@ -83,7 +60,6 @@
     - [ ] Make avattached name column wider
     - [ ] Finetune HUD default size (make text size more accurate)
 
-- [x] Separate interpreter.lsl from functions (communicate by linkmessage)
 - [ ] Print prompt after display has been restarted
 - [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
@@ -92,6 +68,3 @@
 - [ ] Finish HUD creation script
 - [ ] Prompt with blinking cursor
 - [ ] Catch all input on media prim, print to prompt, submit on enter
-- [x] Colorize output
-- [x] Make it possible to 'execute' separate scripts
-- [x] Add link to github page to interpreter.lsl and display.lsl
