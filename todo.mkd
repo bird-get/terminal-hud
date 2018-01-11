@@ -1,16 +1,37 @@
 # Todo
+- [ ] Marketplace release
+    - [ ] Must be in usable state
+    - [ ] Improve readme
+    - [ ] Updater
+
 - Arguments:
     - [ ] Parse args more intelligently
     - [ ] Make putting optional args together (-la instead of -l -a) possible
     - [x] Handle help function differently, like <prog> --help
     - [ ] Make invalid argument show usage text
+    - [ ] Error on invalid/unrecognized option
 
 - Storage:
     - [x] Add some kind of storage, i.e. inside prim descriptions
     - [x] Store last login time
 
 - Programs:
-    - [ ] Add -h arg to programs, remove entries from help.lsl
+    - [ ] land: unsit, eject, ban, etc.
+    - [ ] tp: tp to pos, avatar, sim or landmark
+    - [ ] camera: look at pos, follow av/object
+    - [ ] partgen: particle generator
+        - rapidly create particles, no ui that gets in the way
+        - command: rez particle prim
+        - command: list particle prims
+        - command: select particle prims
+        - command: list particle params
+        - command: poof (emit particles for 1 second, for explosions etc.)
+        - command: delete particle prim (are you sure? Y/N) (-f forces)
+        - adjust particles commands (key, field) with autocomplete
+            - ex. PSYS_SRC_BURST_PART_COUNT 1
+            - RATE 0.01
+            - ANGLE_BE 0.0
+            - ANGLE_EN PI
     - [ ] Collision detection?
     - [ ] Check avatar online status
     - [ ] Laggy object finder (sensor)
@@ -48,6 +69,8 @@
 
 - Readme:
     - [ ] Add screenshots/gifs
+    - [ ] Add features section
+    - [ ] Add quick start section
     - [ ] Add 'how to make your own extension program'
 
 - Usability:
