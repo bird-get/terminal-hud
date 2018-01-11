@@ -10,7 +10,7 @@ lsInv(list params)
  
 List inventory.
 Option -p shows permissions: cmtcmtcmtge
-                            │  │  │  ││
+                             │  │  │  ││
                       Base ──┘  │  │  ││
                       Owner ────┘  │  ││
                       Next owner ──┘  ││
