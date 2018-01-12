@@ -124,6 +124,18 @@ default
             {
                 llRegionSayTo(active_emitter, -42, msg);
             }
+            else if(param0 == "align")
+            {
+                float spacing = (float)param1;
+                integer i;
+                for(i=0; i < llGetListLength(emitters); i++)
+                {
+                    key emitter = llList2Key(emitters, i);
+                    vector pos = llGetPos() + <0,0,spacing*i>;
+                    llRegionSayTo(emitter, -42, "setpos " + (string)pos);
+                }
+                printText("Emitters aligned.", TRUE);
+            }
             else if(msg == "export")
             {
                 // Export active emitter's parameters to a LSL function

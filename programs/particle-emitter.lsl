@@ -98,6 +98,12 @@ default
             llSleep(.2);
             llDie();
         }
+        else if(param0 == "setpos")
+        {
+            params = llDeleteSubList(params, 0, 0);
+            vector pos = (vector)llDumpList2String(params, "");
+            llSetRegionPos(pos);
+        }
         else if(param0 == "export")
         {
             llRegionSayTo(rezzer, -42, "exported rules");
