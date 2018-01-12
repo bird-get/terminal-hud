@@ -43,7 +43,7 @@ list getPrograms()
 
         if(llSubStringIndex(name, ".lslp") != -1)
         {
-            programs += name;
+            programs += llGetSubString(name, 0, -6);
         }
     }
     return programs;
