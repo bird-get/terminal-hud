@@ -57,6 +57,11 @@
     - [ ] Make avattached name column wider
     - [ ] Finetune HUD default size (make text size more accurate)
 
+- Ideas:
+    - [ ] (temp) attach things
+    - [ ] RLV things
+    - [ ] Package manager
+
 - [ ] Print prompt after display has been restarted
 - [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
