@@ -187,8 +187,8 @@ default
         {
             if(active_program != "")
             {
-                // Relay message if a program is running
-                llMessageLinked(LINK_THIS, 0, msg, "");
+                // Relay message to active program
+                llMessageLinked(LINK_THIS, 0, msg, (key)active_program);
                 return;
             }
             else
@@ -203,8 +203,9 @@ default
                     string program = llList2String(programs, i);
                     if(param0 == program)
                     {
-                        llMessageLinked(LINK_THIS, 0, msg, "");
                         active_program = program;
+                        llMessageLinked(LINK_THIS, 0, msg,
+                            (key)active_program);
                         return;
                     }
                 }

@@ -1,3 +1,4 @@
+#define PROGRAM_NAME "invpacker"
 #define PACKAGE_NAME "empty_package"
 #define HELP_MESSAGE "usage: invpacker [-h] [-c] [-m] [-t]
  
@@ -31,7 +32,7 @@ default
 
     link_message(integer sender, integer num, string msg, key id)
     {
-        if(msg == "exit" || num == 1) return;
+        if(msg == "exit" || num == 1 || id != (key)PROGRAM_NAME) return;
         
         if(active)
         {

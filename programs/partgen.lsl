@@ -1,3 +1,4 @@
+#define PROGRAM_NAME "partgen"
 #define EMITTER_NAME "particle_emitter"
 #define HELP_MESSAGE "usage: partgen [-h]
 
@@ -37,7 +38,7 @@ default
 
     link_message(integer sender, integer num, string msg, key id)
     {
-        if(msg == "exit" || num == 1) return;
+        if(msg == "exit" || num == 1 || id != (key)PROGRAM_NAME) return;
         
         msg = llToLower(msg);
         list params = llParseString2List(msg, [" "], [""]);

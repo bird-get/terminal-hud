@@ -18,8 +18,12 @@ default
 {
     link_message(integer sender, integer num, string msg, key id)
     {
+        // Ignore message if not intended for one of our programs
         if(msg == "exit" || num == 1) return;
-        
+        list programs = ["avinfo", "avlist", "avattached", "details",
+            "colortest", "rez", "lsinv", "siminfo"];
+        if(llListFindList(programs, [(string)id]) == -1) return;
+
         list params = llParseString2List(msg, [" "], [""]);
         string param0 = llList2String(params, 0);
         string param1 = llList2String(params, 1);
