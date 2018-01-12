@@ -88,7 +88,12 @@ default
                 integer i;
                 for(i=0; i < llGetListLength(emitters); i++)
                 {
-                    rows += [(string)i + "|" + llList2String(emitters, i)];
+                    integer color = 7;
+                    if(llList2Key(emitters, i) == active_emitter) color = 4;
+                    string row = "<span class=\\'color_" + (string)color +
+                        "\\'>" + (string)i + "|" +
+                        llList2String(emitters, i) + "</span>";
+                    rows += [row];
                 }
 
                 printText(tabulate(headers, rows), TRUE);

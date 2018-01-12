@@ -21,9 +21,9 @@
         - [x] command: delete particle prim (are you sure? Y/N) (-f forces)
         - [x] command: enable/disable emitter
         - [x] command: align (align emitters vertically at owner pos)
-        - [ ] ls: show active emitter
+        - [x] ls: show active emitter
         - [ ] get: convert numbers to flag names (PSYS_PART_...)
-        - [ ] highlight selected emitter
+        - [x] highlight selected emitter
         - [ ] adjust particles commands (key, field) with autocomplete
             - ex. PSYS_SRC_BURST_PART_COUNT 1
             - RATE 0.01
