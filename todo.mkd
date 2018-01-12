@@ -16,9 +16,6 @@
     - [ ] camera: look at pos, follow av/object
     - [ ] partgen: particle generator
         - rapidly create particles, no ui that gets in the way
-        - [ ] command: rez particle prim
-        - [ ] command: list particle prims
-        - [ ] command: select particle prims
         - [ ] command: list particle params
         - [ ] command: poof (emit particles for 1 second, for explosions etc.)
         - [ ] command: delete particle prim (are you sure? Y/N) (-f forces)
