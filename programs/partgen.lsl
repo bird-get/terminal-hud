@@ -119,6 +119,10 @@ default
                     llRegionSayTo(active_emitter, -42, "get all");
                 }
             }
+            else if(msg == "poof")
+            {
+                llRegionSayTo(active_emitter, -42, "poof");
+            }
             else if(msg == "export")
             {
                 // Export active emitter's parameters to a LSL function

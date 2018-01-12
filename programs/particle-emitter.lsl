@@ -84,6 +84,12 @@ default
             //else
             //    llRegionSayTo(rezzer, -42, "error: invalid rule");
         }
+        else if(param0 == "poof")
+        {
+            llParticleSystem(rules);
+            llSleep(.2);
+            llParticleSystem([]);
+        }
         else if(param0 == "export")
         {
             llRegionSayTo(rezzer, -42, "exported rules");

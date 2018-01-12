@@ -17,7 +17,7 @@
     - [ ] partgen: particle generator
         - rapidly create particles, no ui that gets in the way
         - [ ] command: list particle params
-        - [ ] command: poof (emit particles for 1 second, for explosions etc.)
+        - [x] command: poof (emit particles for 1 second, for explosions etc.)
         - [ ] command: delete particle prim (are you sure? Y/N) (-f forces)
         - [ ] command: enable/disable emitter
         - [ ] get: convert numbers to flag names (PSYS_PART_...)
