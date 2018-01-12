@@ -218,12 +218,7 @@ default
         {
             active_program = "";
 
-            // Print prompt
-            string hostname = llGetEnv("simulator_hostname");
-            string user = llGetUsername(llGetOwner());
-            printText("<span class=\\'color_3\\'>" + user +
-                "</span>@<span class=\\'color_3\\'>" + hostname +
-                "</span> > ", FALSE);
+            printText(prompt(), FALSE);
         }
         else if(msg == "display started")
         {
