@@ -128,9 +128,13 @@ default
                     llRegionSayTo(active_emitter, -42, "get all");
                 }
             }
-            else if(msg == "poof" || msg == "on" || msg == "off")
+            else if(msg == "on" || msg == "off")
             {
                 llRegionSayTo(active_emitter, -42, msg);
+            }
+            else if(msg == "poof")
+            {
+                llRegionSay(-42, "poof");
             }
             else if(param0 == "align")
             {

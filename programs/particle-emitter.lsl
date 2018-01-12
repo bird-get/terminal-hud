@@ -3,6 +3,7 @@
 
 key rezzer;
 list rules;
+integer enabled = TRUE;
 
 default
 {
@@ -86,12 +87,21 @@ default
         }
         else if(param0 == "poof")
         {
+            if(!enabled) return;
             llParticleSystem(rules);
             llSleep(.2);
             llParticleSystem([]);
         }
-        else if(param0 == "on") llParticleSystem(rules);
-        else if(param0 == "off") llParticleSystem([]);
+        else if(param0 == "on")
+        {
+            enabled = TRUE;
+            llParticleSystem(rules);
+        }
+        else if(param0 == "off")
+        {
+            enabled = FALSE;
+            llParticleSystem([]);
+        }
         else if(param0 == "delete")
         {
             llRegionSayTo(rezzer, -42, "deleted");
