@@ -18,7 +18,7 @@
         - rapidly create particles, no ui that gets in the way
         - [ ] command: list particle params
         - [x] command: poof (emit particles for 1 second, for explosions etc.)
-        - [ ] command: delete particle prim (are you sure? Y/N) (-f forces)
+        - [x] command: delete particle prim (are you sure? Y/N) (-f forces)
         - [x] command: enable/disable emitter
         - [ ] ls: show active emitter
         - [ ] get: convert numbers to flag names (PSYS_PART_...)

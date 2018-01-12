@@ -74,6 +74,7 @@ default
             else if(msg == "del")
             {
                 // Delete active emitter
+                llRegionSayTo(active_emitter, -42, "delete");
             }
             else if(msg == "ls")
             {
@@ -169,6 +170,14 @@ default
                 //llListenRemove(listener);
                 //active = FALSE;
                 //exit(0);
+            }
+            else if(msg == "deleted")
+            {
+                // Remove emitter from list
+                integer num = llListFindList(emitters, [id]);
+                emitters = llDeleteSubList(emitters, num, num);
+                if(id == active_emitter) active_emitter = NULL_KEY;
+                printText("Emitter " + (string)num + " deleted.", TRUE);
             }
             else
             {
