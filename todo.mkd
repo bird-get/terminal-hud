@@ -19,7 +19,7 @@
         - [ ] command: list particle params
         - [x] command: poof (emit particles for 1 second, for explosions etc.)
         - [ ] command: delete particle prim (are you sure? Y/N) (-f forces)
-        - [ ] command: enable/disable emitter
+        - [x] command: enable/disable emitter
         - [ ] get: convert numbers to flag names (PSYS_PART_...)
         - [ ] highlight selected emitter
         - [ ] adjust particles commands (key, field) with autocomplete

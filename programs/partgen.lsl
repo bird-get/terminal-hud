@@ -119,9 +119,9 @@ default
                     llRegionSayTo(active_emitter, -42, "get all");
                 }
             }
-            else if(msg == "poof")
+            else if(msg == "poof" || msg == "on" || msg == "off")
             {
-                llRegionSayTo(active_emitter, -42, "poof");
+                llRegionSayTo(active_emitter, -42, msg);
             }
             else if(msg == "export")
             {

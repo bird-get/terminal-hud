@@ -90,6 +90,8 @@ default
             llSleep(.2);
             llParticleSystem([]);
         }
+        else if(param0 == "on") llParticleSystem(rules);
+        else if(param0 == "off") llParticleSystem([]);
         else if(param0 == "export")
         {
             llRegionSayTo(rezzer, -42, "exported rules");
