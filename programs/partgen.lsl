@@ -12,6 +12,9 @@ built-in commands:
   ls                    list emitters
   set [rule] [value]    set particle rule
   get [rule]            get particle rule (if rule=all, list all rules)
+  select [num]          select emitter NUM
+  del                   delete selected emitter
+  align [spacing]       align emitters at owner pos with spacing
   quit                  quit program
   export                export to LSL function"
 
