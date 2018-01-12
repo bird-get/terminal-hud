@@ -64,7 +64,8 @@ default
                 integer i;
                 for(i=0; i < llGetListLength(rules); i+=2)
                 {
-                    rows += [llList2String(rules, i) + "|" + llList2String(rules, i+1)];
+                    rows += [llList2String(rules, i) + "|" +
+                        llList2String(rules, i+1)];
                 }
                 llRegionSayTo(rezzer, -42, tabulate(headers, rows));
             }
