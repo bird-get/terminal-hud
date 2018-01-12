@@ -201,7 +201,7 @@ default
                 for(i=0; i < llGetListLength(programs); i++)
                 {
                     string program = llList2String(programs, i);
-                    if(llSubStringIndex(program, param0) != -1)
+                    if(param0 == program)
                     {
                         llMessageLinked(LINK_THIS, 0, msg, "");
                         active_program = program;
