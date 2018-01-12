@@ -10,6 +10,7 @@
 #include "terminal-hud/include/long-polling-http-in.lsl"
 
 integer listener;
+string active_program;
 
 // User-tweakable
 integer listen_channel = 42;
@@ -31,11 +32,30 @@ string prompt()
     return text;
 }
 
+list getPrograms()
+{
+    // Returns a list of scripts that are programs
+    list programs = [];
+    integer i;
+    for(i=0; i < llGetInventoryNumber(INVENTORY_SCRIPT); i++)
+    {
+        string name = llGetInventoryName(INVENTORY_SCRIPT, i);
+
+        if(llSubStringIndex(name, ".lslp") != -1)
+        {
+            programs += name;
+        }
+    }
+    return programs;
+}
+
 default
 {
     state_entry()
     {
         listener = llListen(listen_channel, "", llGetOwner(), "");
+
+        integer program_count = llGetListLength(getPrograms());
 
         // Retrieve last login time
         string login_time = getKeyValue("login_time");
@@ -164,8 +184,31 @@ default
         }
         else
         {
-            llMessageLinked(LINK_THIS, 0, msg, "");
-            //printText(param0 + ": command not found");
+            if(active_program != "")
+            {
+                // Relay message if a program is running
+                llMessageLinked(LINK_THIS, 0, msg, "");
+                return;
+            }
+            else
+            {
+                // Give error if command is unknown
+                list programs = getPrograms();
+                integer i;
+                for(i=0; i < llGetListLength(programs); i++)
+                {
+                    string program = llList2String(programs, i);
+                    string name = llGetSubString(program, 0, -6);
+                    if(llSubStringIndex(name, param0) != -1)
+                    {
+                        llMessageLinked(LINK_THIS, 0, msg, "");
+                        active_program = name;
+                        return;
+                    }
+                }
+                printText(param0 + ": command not found", TRUE);
+                printText(prompt(), FALSE);
+            }
         }
     }
 
@@ -173,6 +216,8 @@ default
     {
         if(msg == "exit")
         {
+            active_program = "";
+
             // Print prompt
             string hostname = llGetEnv("simulator_hostname");
             string user = llGetUsername(llGetOwner());
