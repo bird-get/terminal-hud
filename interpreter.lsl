@@ -193,7 +193,9 @@ default
             else
             {
                 // Give error if command is unknown
-                list programs = getPrograms();
+                list programs = getPrograms() + 
+                    ["rez", "lsinv", "siminfo", "details", "avinfo",
+                    "avattached", "avlist", "colortest"];
                 integer i;
                 for(i=0; i < llGetListLength(programs); i++)
                 {
