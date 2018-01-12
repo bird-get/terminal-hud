@@ -201,11 +201,10 @@ default
                 for(i=0; i < llGetListLength(programs); i++)
                 {
                     string program = llList2String(programs, i);
-                    string name = llGetSubString(program, 0, -6);
-                    if(llSubStringIndex(name, param0) != -1)
+                    if(llSubStringIndex(program, param0) != -1)
                     {
                         llMessageLinked(LINK_THIS, 0, msg, "");
-                        active_program = name;
+                        active_program = program;
                         return;
                     }
                 }
