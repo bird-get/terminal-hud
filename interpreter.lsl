@@ -75,7 +75,8 @@ default
         text += "Last login: " + login_time + "\n";
         text += "Channel: " + (string)listen_channel + "\n";
         text += "Memory: " + (string)(llGetUsedMemory()/1000) + "kb / 64 kb\n";
-        text += "Version: " + (string)VERSION;
+        text += "Version: " + (string)VERSION + "\n";
+        text += "Programs: " + (string)program_count;
         printText(text, TRUE);
         
         // Print prompt
