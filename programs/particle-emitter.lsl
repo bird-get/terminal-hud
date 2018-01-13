@@ -116,10 +116,6 @@ default
                     {
                         data = [PI];
                     }
-                    //else if()
-                    //{
-                    //    // TODO replace PSYS_PART_BF_SOURCE_COLOR, PSYS_SRC_PATTERN_EXPLODE, etc. with their respective values
-                    //}
                     else
                     {
                         string first_char = llGetSubString(param2, 0, 0);
@@ -160,12 +156,45 @@ default
                         {
                             integer a = llList2Integer(old_data, 0);
                             integer b = (integer)llGetSubString(param2, 1, -1);
+                           
+                            // Get name of constant
+                            string constant;
+                            if(first_char == "+" || first_char == "-" ||
+                                first_char == "*" || first_char == "/")
+                            {
+                                constant = llToUpper(llGetSubString(param2, 1, -1));
+                            }
+                            else
+                            {
+                                constant = llToUpper(param2);
+                            }
+
+                            // Find autocomplete for constant
+                            as
+                            
+                            // Find value of constant. If found, set b to value
+                            if(llListFindList(PSYS_FLAGS, [constant]) != -1)
+                            {
+                                integer index = llListFindList(PSYS_FLAGS, [constant]);
+                                b = llList2Integer(PSYS_FLAGS, index+1);
+                            }
+                            else if(llListFindList(PSYS_PATTERNS, [constant]) != -1)
+                            {
+                                integer index = llListFindList(PSYS_PATTERNS, [constant]);
+                                b = llList2Integer(PSYS_PATTERNS, index+1);
+                            }
+                            else if(llListFindList(PSYS_BLENDING, [constant]) != -1)
+                            {
+                                integer index = llListFindList(PSYS_BLENDING, [constant]);
+                                b = llList2Integer(PSYS_BLENDING, index+1);
+                            }
+                            
                             integer result;
                             if(first_char == "+") result = a + b;
                             else if(first_char == "-") result = a - b;
                             else if(first_char == "*") result = a * b;
                             else if(first_char == "/" && b != 0) result = a / b;
-                            else result = (integer)param2;
+                            else result = b;
                             data = [result];
                         }
                     }
