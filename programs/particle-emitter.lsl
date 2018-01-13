@@ -113,25 +113,25 @@ default
                 {
                     // TODO handle param1 = +1, -1, *3, /2, etc.
                     
-                    // Convert value to correct type
-                    list value_ = [];
+                    // Convert input data to correct type
+                    list data = [];
                     if(llSubStringIndex(param2, "<") != -1)
-                        value_ = [(vector)param2];
+                        data = [(vector)param2];
                     else if(llSubStringIndex(param2, ".") != -1)
-                        value_ = [(float)param2];
+                        data = [(float)param2];
                     else if(llSubStringIndex(param2, "\"") != -1 ||
                         llSubStringIndex(param2, "\'") != -1)
-                        value_ = [llGetSubString(param2, 1, -2)];
+                        data = [llGetSubString(param2, 1, -2)];
                     else
-                        value_ = [(integer)param2];
+                        data = [(integer)param2];
                     
                     // Update rules and effect
-                    rules = llListReplaceList(rules, value_, i+1, i+1);
+                    rules = llListReplaceList(rules, data, i+1, i+1);
                     llParticleSystem(rules);
 
                     // Get updated data and return it
-                    string data = llList2String(rules, i+1);
-                    llRegionSayTo(rezzer, -42, (string)rule_name + " | " + data);
+                    string new_data = llList2String(rules, i+1);
+                    llRegionSayTo(rezzer, -42, (string)rule_name + " | " + new_data);
                     return;
                 }
             }
