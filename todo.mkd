@@ -19,6 +19,7 @@
         - [ ] command: cp (duplicate emitter)
         - [ ] get: fix 'get all' returning cut off results
         - [x] fix: only single digit values are handled
+        - [ ] export: give functionality
         - [ ] command: import (takes LSL func, parses to effect)
         - [ ] Set a reasonable memory limit
     - [ ] Collision detection?
