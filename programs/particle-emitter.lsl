@@ -155,7 +155,7 @@ default
                         else
                         {
                             integer a = llList2Integer(old_data, 0);
-                            integer b = (integer)llGetSubString(param2, 1, -1);
+                            integer b;
                            
                             // Get name of constant
                             string constant;
@@ -163,10 +163,12 @@ default
                                 first_char == "*" || first_char == "/")
                             {
                                 constant = llToUpper(llGetSubString(param2, 1, -1));
+                                b = (integer)llGetSubString(param2, 1, -1);
                             }
                             else
                             {
                                 constant = llToUpper(param2);
+                                b = (integer)param2;
                             }
                             
                             // Find value of constant. If found, set b to value

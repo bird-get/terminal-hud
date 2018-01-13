@@ -18,7 +18,7 @@
         - rapidly create particles, no ui that gets in the way
         - [ ] command: cp (duplicate emitter)
         - [ ] get: fix 'get all' returning cut off results
-        - [ ] fix: only single digit values are handled
+        - [x] fix: only single digit values are handled
         - [ ] command: import (takes LSL func, parses to effect)
         - [ ] Set a reasonable memory limit
     - [ ] Collision detection?
