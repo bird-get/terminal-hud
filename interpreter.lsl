@@ -99,49 +99,8 @@ default
         string param1 = llList2String(params, 1);
         string param2 = llList2String(params, 2);
 
-        if(param0 == "help")
-        {
-            help(param1);
-            printText(prompt(), FALSE);
-        }
-        else if(param0 == "echo")
-        {
-            params = llList2List(params, 1, -1);
-            printText(llDumpList2String(params, " "), TRUE);
-            printText(prompt(), FALSE);
-        }
-        else if(param0 == "set")
-        {
-            if(param1 == "channel")
-            {
-                listen_channel = (integer)param2;
-                printText("Channel set to " + (string)listen_channel + ".", TRUE);
-                llListenRemove(listener);
-                listener = llListen(listen_channel, "", llGetOwner(), "");
-                printText(prompt(), FALSE);
-            }
-            else if(param1 == "size")
-            {
-                llMessageLinked(LINK_THIS, 0, "size " + param2, "");
-                printText("Size set to " + param2, TRUE);
-                printText(prompt(), FALSE);
-            }
-            else if(param1 == "opacity")
-            {
-                llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
-                printText("Opacity set to " + param2, TRUE);
-                printText(prompt(), FALSE);
-            }
-        }
-        else if(param0 == "enable")
-        {
-            llMessageLinked(LINK_THIS, 0, "enable", "");
-        }
-        else if(param0 == "disable")
-        {
-            llMessageLinked(LINK_THIS, 0, "disable", "");
-        }
-        else if(param0 == "cls")
+        // Functions that should always be interpreted
+        if(param0 == "cls")
         {
             llMessageLinked(LINK_THIS, 0, "clear screen", "");
             printText(prompt(), FALSE);
@@ -183,13 +142,51 @@ default
                 printText("reset: missing arguments", TRUE);
             }
         }
-        else
+        
+        // Commands that are only interpreted if no program is active
+        if(active_program == "")
         {
-            if(active_program != "")
+            if(param0 == "help")
             {
-                // Relay message to active program
-                llMessageLinked(LINK_THIS, 0, msg, (key)active_program);
-                return;
+                help(param1);
+                printText(prompt(), FALSE);
+            }
+            else if(param0 == "echo")
+            {
+                params = llList2List(params, 1, -1);
+                printText(llDumpList2String(params, " "), TRUE);
+                printText(prompt(), FALSE);
+            }
+            else if(param0 == "set")
+            {
+                if(param1 == "channel")
+                {
+                    listen_channel = (integer)param2;
+                    printText("Channel set to " + (string)listen_channel + ".", TRUE);
+                    llListenRemove(listener);
+                    listener = llListen(listen_channel, "", llGetOwner(), "");
+                    printText(prompt(), FALSE);
+                }
+                else if(param1 == "size")
+                {
+                    llMessageLinked(LINK_THIS, 0, "size " + param2, "");
+                    printText("Size set to " + param2, TRUE);
+                    printText(prompt(), FALSE);
+                }
+                else if(param1 == "opacity")
+                {
+                    llMessageLinked(LINK_THIS, 0, "opacity " + param2, "");
+                    printText("Opacity set to " + param2, TRUE);
+                    printText(prompt(), FALSE);
+                }
+            }
+            else if(param0 == "enable")
+            {
+                llMessageLinked(LINK_THIS, 0, "enable", "");
+            }
+            else if(param0 == "disable")
+            {
+                llMessageLinked(LINK_THIS, 0, "disable", "");
             }
             else
             {
@@ -212,6 +209,14 @@ default
                 printText(param0 + ": command not found", TRUE);
                 printText(prompt(), FALSE);
             }
+        }
+        
+        // If a program is running, forward input to it
+        else if(active_program != "")
+        {
+            // Relay message to active program
+            llMessageLinked(LINK_THIS, 0, msg, (key)active_program);
+            return;
         }
     }
 
