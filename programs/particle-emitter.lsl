@@ -99,11 +99,43 @@ default
         }
         else if(param0 == "set")
         {
-            llRegionSayTo(rezzer, -42, "rule is set");
-            //if param in rules:
-            //    return rule, value
-            //else
-            //    llRegionSayTo(rezzer, -42, "error: invalid rule");
+            // Get rule value (ex. PSYS_SRC_PATTERN=9)
+            string rule_name = param1;
+            integer index = llListFindList(PSYS, [rule_name]);
+            integer rule_value = llList2Integer(PSYS, index+1);
+            
+            // Find rule_value in rules and set its data
+            integer i;
+            for(i=0; i < llGetListLength(rules); i+=2)
+            {
+                integer value = llList2Integer(rules, i);
+                if(value == rule_value)
+                {
+                    // TODO handle param1 = +1, -1, *3, /2, etc.
+                    
+                    // Convert value to correct type
+                    list value_ = [];
+                    if(llSubStringIndex(param2, "<") != -1)
+                        value_ = [(vector)param2];
+                    else if(llSubStringIndex(param2, ".") != -1)
+                        value_ = [(float)param2];
+                    else if(llSubStringIndex(param2, "\"") != -1 ||
+                        llSubStringIndex(param2, "\'") != -1)
+                        value_ = [llGetSubString(param2, 1, -2)];
+                    else
+                        value_ = [(integer)param2];
+                    
+                    // Update rules and effect
+                    rules = llListReplaceList(rules, value_, i+1, i+1);
+                    llParticleSystem(rules);
+
+                    // Get updated data and return it
+                    string data = llList2String(rules, i+1);
+                    llRegionSayTo(rezzer, -42, (string)rule_name + " | " + data);
+                    return;
+                }
+            }
+            llRegionSayTo(rezzer, -42, "error: rule_value not found in rules");
         }
         else if(param0 == "poof")
         {

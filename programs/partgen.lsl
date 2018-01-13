@@ -134,8 +134,20 @@ default
             }
             else if(param0 == "set")
             {
-                // Set parameter for active emitter
-                llRegionSayTo(active_emitter, -42, "set " + param1 + param2);
+                // Set particle rule for selected emitter
+                string rule = param1;
+                string value = param2;
+                list completions = autocomplete_(llToUpper(rule), PSYS);
+                integer count = llGetListLength(completions);
+                if(count == 0)
+                    printText("error: no autocompletions found", TRUE);
+                else if(count > 1)
+                    printText("error: more than one autocompletion found", TRUE);
+                else
+                {
+                    string completed_rule = llList2String(completions, 0);
+                    llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + param2);
+                }
             }
             else if(param0 == "get")
             {
