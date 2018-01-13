@@ -14,6 +14,8 @@ commands:
   ls                    list emitters
   set [rule] [value]    set particle rule
   get [rule]            get particle rule (if rule=all, list all rules)
+  on [num]              enable emitter NUM
+  off [num]             disable emitter NUM
   select [num]          select emitter NUM
   del                   delete selected emitter
   align [spacing]       align emitters at owner pos with spacing
