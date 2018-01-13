@@ -143,10 +143,17 @@ default
             else if(param0 == "select")
             {
                 // Select emitter
-                // TODO Check if param1 is valid
+                integer count = llGetListLength(emitters);
                 integer num = (integer)param1;
-                active_emitter = llList2Key(emitters, num);
-                printText("Selected emitter " + (string)num + ".", TRUE);
+                if(num < count && num >= 0)
+                {
+                    active_emitter = llList2Key(emitters, num);
+                    printText("Selected emitter " + (string)num + ".", TRUE);
+                }
+                else
+                {
+                    printText("error: invalid number", TRUE);
+                }
             }
             else if(param0 == "set")
             {
