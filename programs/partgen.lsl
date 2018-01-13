@@ -52,7 +52,7 @@ printText(string raw_text, integer new_line)
 integer listener;
 integer active;
 list emitters;
-key active_emitter;
+key active_emitter = NULL_KEY;
 
 default
 {
@@ -98,6 +98,12 @@ default
             }
             else if(msg == "del")
             {
+                if(active_emitter == NULL_KEY)
+                {
+                    printText("error: no emitter selected", TRUE);
+                    return;
+                }
+
                 // Delete active emitter
                 llRegionSayTo(active_emitter, -42, "delete");
             }
@@ -134,6 +140,12 @@ default
             }
             else if(param0 == "set")
             {
+                if(active_emitter == NULL_KEY)
+                {
+                    printText("error: no emitter selected", TRUE);
+                    return;
+                }
+
                 // Set particle rule for selected emitter
                 string rule = param1;
                 string value = param2;
@@ -151,6 +163,12 @@ default
             }
             else if(param0 == "get")
             {
+                if(active_emitter == NULL_KEY)
+                {
+                    printText("error: no emitter selected", TRUE);
+                    return;
+                }
+
                 if(param1 == "all")
                 {
                     llRegionSayTo(active_emitter, -42, "get all");
@@ -178,6 +196,12 @@ default
             }
             else if(msg == "on" || msg == "off")
             {
+                if(active_emitter == NULL_KEY)
+                {
+                    printText("error: no emitter selected", TRUE);
+                    return;
+                }
+                
                 llRegionSayTo(active_emitter, -42, msg);
             }
             else if(msg == "poof")
@@ -198,6 +222,12 @@ default
             }
             else if(msg == "export")
             {
+                if(active_emitter == NULL_KEY)
+                {
+                    printText("error: no emitter selected", TRUE);
+                    return;
+                }
+                
                 // Export active emitter's parameters to a LSL function
                 llRegionSayTo(active_emitter, -42, "export");
             }

@@ -18,7 +18,7 @@
         - rapidly create particles, no ui that gets in the way
         - [ ] command: cp (duplicate emitter)
         - [ ] command: help
-        - [ ] set/get/del: error if no selected emitter
+        - [x] set/get/del: error if no selected emitter
         - [ ] get: fix 'get all' returning cut off results
         - [ ] del: del [num] (if no NUM, delete selected emitter)
         - [ ] set: fix autocorrect on _
