@@ -192,7 +192,40 @@ default
                 else
                 {
                     string completed_rule = llList2String(completions, 0);
-                    llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + param2);
+
+                    // Get autocompletions for constant
+                    string first_char = llGetSubString(value, 0, 0);
+                    string constant;
+                    if(first_char == "+" || first_char == "-" ||
+                        first_char == "*" || first_char == "/")
+                    {
+                        constant = llToUpper(llGetSubString(value, 1, -1));
+                    }
+                    else
+                    {
+                        constant = llToUpper(value);
+                    }
+                    list psys_all = PSYS_FLAGS + PSYS_PATTERNS + PSYS_BLENDING;
+                    list psys_constants;
+                    integer i;
+                    for(i=0; i < llGetListLength(psys_all); i+=2)
+                    {
+                        psys_constants += [llList2String(psys_all, i)];
+                    }
+                    list completions_ = autocomplete_(constant, psys_constants);
+                    integer count_ = llGetListLength(completions_);
+                    if(count_ == 0)
+                        llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + value);
+                    else if(count_ == 1)
+                    {
+                        value = llList2String(completions_, 0);
+                        if(first_char == "+" || first_char == "-" ||
+                            first_char == "*" || first_char == "/")
+                            value = first_char + value;
+                        llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + value);
+                    }
+                    else if(count_ > 1)
+                        printText("error: more than one autocompletion found for value", TRUE);
                 }
             }
             else if(param0 == "get")
