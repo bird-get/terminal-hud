@@ -25,6 +25,10 @@
         - [x] del: error if invalid NUM
         - [x] set: fix autocorrect on _
         - [ ] set: interpret maths (like +1, -2, *6, *0.5, /2, PI, etc.)
+        - [ ] Add easy way to add/remove flags (with autocomplete)
+        - [ ] Add autocomplete for pattern
+        - [ ] Add autocomplete for blend
+        - [ ] Set a reasonable memory limit
     - [ ] Collision detection?
     - [ ] Check avatar online status
     - [ ] Parcel details and flags
