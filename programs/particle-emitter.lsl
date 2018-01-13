@@ -1,3 +1,8 @@
+#define PSYS ["PSYS_PART_FLAGS", 0, "PSYS_SRC_PATTERN", 9, "PSYS_PART_BLEND_FUNC_SOURCE", 24, "PSYS_PART_BLEND_FUNC_DEST", 25, "PSYS_SRC_TARGET_KEY", 20, "PSYS_SRC_TEXTURE", 12, "PSYS_SRC_BURST_PART_COUNT", 15, "PSYS_SRC_BURST_RATE", 13, "PSYS_SRC_BURST_RADIUS", 16, "PSYS_PART_MAX_AGE", 7, "PSYS_SRC_MAX_AGE", 19, "PSYS_SRC_ANGLE_BEGIN", 22, "PSYS_SRC_ANGLE_END", 23, "PSYS_SRC_BURST_SPEED_MIN", 17, "PSYS_SRC_BURST_SPEED_MAX", 18, "PSYS_PART_START_ALPHA", 2, "PSYS_PART_END_ALPHA", 4, "PSYS_PART_START_GLOW", 26, "PSYS_PART_END_GLOW", 27, "PSYS_SRC_OMEGA", 21, "PSYS_SRC_ACCEL", 8, "PSYS_PART_START_SCALE", 5, "PSYS_PART_END_SCALE", 6, "PSYS_PART_START_COLOR", 1, "PSYS_PART_END_COLOR", 3]
+#define PSYS_FLAGS ["PSYS_PART_BOUNCE_MASK", 4, "PSYS_PART_EMISSIVE_MASK", 256, "PSYS_PART_FOLLOW_SRC_MASK", 16, "PSYS_PART_FOLLOW_VELOCITY_MASK", 32, "PSYS_PART_INTERP_COLOR_MASK", 1, "PSYS_PART_INTERP_SCALE_MASK", 2, "PSYS_PART_RIBBON_MASK", 1024, "PSYS_PART_TARGET_LINEAR_MASK", 128, "PSYS_PART_TARGET_POS_MASK", 64, "PSYS_PART_WIND_MASK", 8]
+#define PSYS_PATTERNS ["PSYS_SRC_PATTERN_EXPLODE", 2, "PSYS_SRC_PATTERN_ANGLE_CONE", 8, "PSYS_SRC_PATTERN_ANGLE", 4, "PSYS_SRC_PATTERN_DROP", 1, "PSYS_SRC_PATTERN_ANGLE_CONE_EMPTY", 16]
+#define PSYS_BLENDING ["PSYS_PART_BF_ONE", 0, "PSYS_PART_BF_ZERO", 1, "PSYS_PART_BF_DEST_COLOR", 2, "PSYS_PART_BF_SOURCE_COLOR", 3, "PSYS_PART_BF_ONE_MINUS_DEST_COLOR", 4, "PSYS_PART_BF_ONE_MINUS_SOURCE_COLOR", 5, "PSYS_PART_BF_SOURCE_ALPHA", 7, "PSYS_PART_BF_ONE_MINUS_SOURCE_ALPHA", 9]
+
 #include "terminal-hud/include/utility.lsl"
 #include "terminal-hud/include/tabulate.lsl"
 
@@ -72,11 +77,24 @@ default
             }
             else
             {
-                llRegionSayTo(rezzer, -42, "just one rule and its value");
-                //if param in rules:
-                //    return rule, value
-                //else
-                //    llRegionSayTo(rezzer, -42, "error: invalid rule");
+                // Get rule value (ex. PSYS_SRC_PATTERN=9)
+                string rule_name = param1;
+                integer index = llListFindList(PSYS, [rule_name]);
+                integer rule_value = llList2Integer(PSYS, index+1);
+
+                // Find rule_value in rules and return its data
+                integer i;
+                for(i=0; i < llGetListLength(rules); i+=2)
+                {
+                    integer value = llList2Integer(rules, i);
+                    if(value == rule_value)
+                    {
+                        string data = llList2String(rules, i+1);
+                        llRegionSayTo(rezzer, -42, (string)rule_name + " | " + data);
+                        return;
+                    }
+                }
+                llRegionSayTo(rezzer, -42, "error: rule_value not found in rules");
             }
         }
         else if(param0 == "set")
