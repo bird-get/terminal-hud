@@ -111,19 +111,64 @@ default
                 integer value = llList2Integer(rules, i);
                 if(value == rule_value)
                 {
-                    // TODO handle param1 = +1, -1, *3, /2, etc.
-                    
-                    // Convert input data to correct type
                     list data = [];
-                    if(llSubStringIndex(param2, "<") != -1)
-                        data = [(vector)param2];
-                    else if(llSubStringIndex(param2, ".") != -1)
-                        data = [(float)param2];
-                    else if(llSubStringIndex(param2, "\"") != -1 ||
-                        llSubStringIndex(param2, "\'") != -1)
-                        data = [llGetSubString(param2, 1, -2)];
+                    if(llToLower(param2) == "pi")
+                    {
+                        data = [PI];
+                    }
+                    //else if()
+                    //{
+                    //    // TODO replace PSYS_PART_BF_SOURCE_COLOR, PSYS_SRC_PATTERN_EXPLODE, etc. with their respective values
+                    //}
                     else
-                        data = [(integer)param2];
+                    {
+                        string first_char = llGetSubString(param2, 0, 0);
+                        list old_data = llList2List(rules, i+1, i+1);
+                        
+                        // Convert input data to correct type and handle maths
+                        if(llSubStringIndex(param2, "<") != -1)
+                        {
+                            vector a = llList2Vector(old_data, 0);
+                            vector b = (vector)llGetSubString(param2, 1, -1);
+                            vector result;
+                            if(first_char == "+") result = a + b;
+                            else if(first_char == "-") result = a - b;
+                            else if(first_char == "*")
+                                result = <a.x*b.x, a.y*b.y, a.z*b.z>;
+                            else if(first_char == "/" && b.x != 0.0 &&
+                                b.y != 0.0 && b.z != 0.0)
+                                result = <a.x/b.x, a.y/b.y, a.z/b.z>;
+                            else result = (vector)param2;
+                            data = [result];
+                        }
+                        else if(llSubStringIndex(param2, ".") != -1)
+                        {
+                            float a = llList2Float(old_data, 0);
+                            float b = (float)llGetSubString(param2, 1, -1);
+                            float result;
+                            if(first_char == "+") result = a + b;
+                            else if(first_char == "-") result = a - b;
+                            else if(first_char == "*") result = a * b;
+                            else if(first_char == "/" && b != 0.0) result = a / b;
+                            else result = (float)param2;
+                            data = [result];
+                        }
+                        else if(llSubStringIndex(param2, "\"") != -1 ||
+                            llSubStringIndex(param2, "\'") != -1)
+                            data = [llGetSubString(param2, 1, -2)];
+                        else
+                        {
+                            integer a = llList2Integer(old_data, 0);
+                            integer b = (integer)llGetSubString(param2, 1, -1);
+                            integer result;
+                            if(first_char == "+") result = a + b;
+                            else if(first_char == "-") result = a - b;
+                            else if(first_char == "*") result = a * b;
+                            else if(first_char == "/" && b != 0) result = a / b;
+                            else result = (integer)param2;
+                            data = [result];
+                        }
+                    }
                     
                     // Update rules and effect
                     rules = llListReplaceList(rules, data, i+1, i+1);
