@@ -8,7 +8,7 @@ optional arguments:
   -h, --help    show help and exit"
 
 #define HELP_MESSAGE2 "partgen usage:
-
+ 
 commands:
   new                   rez new emitter
   ls                    list emitters
