@@ -216,7 +216,7 @@ default
                     integer count_ = llGetListLength(completions_);
                     if(count_ == 0)
                         llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + value);
-                    else if(count_ == 1)
+                    else if(count_ > 0)
                     {
                         value = llList2String(completions_, 0);
                         if(first_char == "+" || first_char == "-" ||
@@ -224,8 +224,6 @@ default
                             value = first_char + value;
                         llRegionSayTo(active_emitter, -42, "set " + completed_rule + " " + value);
                     }
-                    else if(count_ > 1)
-                        printText("error: more than one autocompletion found for value", TRUE);
                 }
             }
             else if(param0 == "get")
