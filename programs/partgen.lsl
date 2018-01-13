@@ -17,7 +17,7 @@ commands:
   on [num]              enable emitter NUM
   off [num]             disable emitter NUM
   select [num]          select emitter NUM
-  del                   delete selected emitter
+  del [num]             delete emitter NUM (if no NUM, delete selected emitter)
   align [spacing]       align emitters at owner pos with spacing
   help                  show this help message
   quit                  quit program
