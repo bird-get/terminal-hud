@@ -17,7 +17,7 @@
     - [ ] partgen: particle generator
         - rapidly create particles, no ui that gets in the way
         - [ ] command: cp (duplicate emitter)
-        - [ ] command: help
+        - [x] command: help
         - [x] select: error if invalid NUM
         - [x] set/get/del: error if no selected emitter
         - [ ] get: fix 'get all' returning cut off results

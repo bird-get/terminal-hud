@@ -5,9 +5,11 @@
 A particle generator. Creates particle emitters with tweakable parameters.
  
 optional arguments:
-  -h, --help    show help and exit
-  
-built-in commands:
+  -h, --help    show help and exit"
+
+#define HELP_MESSAGE2 "partgen usage:
+
+commands:
   new                   rez new emitter
   ls                    list emitters
   set [rule] [value]    set particle rule
@@ -15,6 +17,7 @@ built-in commands:
   select [num]          select emitter NUM
   del                   delete selected emitter
   align [spacing]       align emitters at owner pos with spacing
+  help                  show this help message
   quit                  quit program
   export                export to LSL function"
 
@@ -88,6 +91,10 @@ default
                 active_emitter = NULL_KEY;
                 emitters = [];
                 exit(0);
+            }
+            else if(msg == "help")
+            {
+                printText(HELP_MESSAGE2, TRUE);
             }
             else if(msg == "new")
             {
@@ -275,7 +282,7 @@ default
                 
                 active = TRUE;
                 listener = llListen(-42, "", "", "");
-                printText("Particle generator ready. Type \\'partgen -h\\' for help.", TRUE);
+                printText("Particle generator ready. Type \\'help\\' for help.", TRUE);
             }
         }
     }
