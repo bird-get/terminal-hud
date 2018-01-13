@@ -16,20 +16,10 @@
     - [ ] camera: look at pos, follow av/object
     - [ ] partgen: particle generator
         - rapidly create particles, no ui that gets in the way
-        - [x] command: list particle params
-        - [x] command: poof (emit particles for 1 second, for explosions etc.)
-        - [x] command: delete particle prim (are you sure? Y/N) (-f forces)
-        - [x] command: enable/disable emitter
-        - [x] command: align (align emitters vertically at owner pos)
-        - [x] ls: show active emitter
-        - [x] get: convert numbers to flag names (PSYS_PART_...)
-        - [x] highlight selected emitter
+        - [ ] command: cp (duplicate emitter)
+        - [ ] get: fix 'get all' returning cut off results
         - [ ] set: fix autocorrect on _
-        - [x] adjust particles commands (key, field) with autocomplete
-            - ex. PSYS_SRC_BURST_PART_COUNT 1
-            - RATE 0.01
-            - ANGLE_BE 0.0
-            - ANGLE_EN PI
+        - [ ] set: interpret maths (like +1, -2, *6, *0.5, /2, PI, etc.)
     - [ ] Collision detection?
     - [ ] Check avatar online status
     - [ ] Parcel details and flags
