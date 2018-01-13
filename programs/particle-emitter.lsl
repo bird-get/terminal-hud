@@ -59,6 +59,7 @@ default
         {
             if(param1 == "all")
             {
+                // Return all rules
                 list headers = ["rule", "value"];
                 list rows;
                 integer i;
