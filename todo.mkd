@@ -23,7 +23,7 @@
         - [ ] get: fix 'get all' returning cut off results
         - [x] del: del [num] (if no NUM, delete selected emitter)
         - [x] del: error if invalid NUM
-        - [ ] set: fix autocorrect on _
+        - [x] set: fix autocorrect on _
         - [ ] set: interpret maths (like +1, -2, *6, *0.5, /2, PI, etc.)
     - [ ] Collision detection?
     - [ ] Check avatar online status
