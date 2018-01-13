@@ -154,6 +154,8 @@ default
                             data = [llGetSubString(param2, 1, -2)];
                         else
                         {
+                            // integer or constant (e.g. PSYS_SRC_PATTERN_EXPLODE)
+                            
                             integer a = llList2Integer(old_data, 0);
                             integer b;
                            
