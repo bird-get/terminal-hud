@@ -168,9 +168,6 @@ default
                             {
                                 constant = llToUpper(param2);
                             }
-
-                            // Find autocomplete for constant
-                            as
                             
                             // Find value of constant. If found, set b to value
                             if(llListFindList(PSYS_FLAGS, [constant]) != -1)
