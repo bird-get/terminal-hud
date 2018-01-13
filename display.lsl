@@ -354,4 +354,10 @@ default
         else if(change & CHANGED_REGION)
             llResetScript();
     }
+
+    attach(key id)
+    {
+        if(id)
+            llResetScript();
+    }
 }

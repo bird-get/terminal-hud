@@ -45,8 +45,8 @@
     - [ ] Add 'how to make your own extension program'
 
 - Usability:
-    - [ ] Reset display on login
-    - [ ] Reset on attach
+    - [x] Reset display on login
+    - [x] Reset on attach
     - [ ] Handle region change better (store history and reset display?)
     - [ ] Attempt to get rid of Start button (fill entire screen and hide?)
     - [ ] Add customizable MOTD (read from notecard, maybe?)
