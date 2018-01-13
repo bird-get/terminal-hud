@@ -112,9 +112,17 @@ default
                 else
                 {
                     // Delete emitter NUM
+                    integer count = llGetListLength(emitters);
                     integer num = (integer)param1;
-                    key emitter = llList2Key(emitters, num);
-                    llRegionSayTo(emitter, -42, "delete");
+                    if(num < count && num >= 0)
+                    {
+                        key emitter = llList2Key(emitters, num);
+                        llRegionSayTo(emitter, -42, "delete");
+                    }
+                    else
+                    {
+                        printText("error: invalid number", TRUE);
+                    }
                 }
             }
             else if(msg == "ls")
