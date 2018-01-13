@@ -96,16 +96,26 @@ default
                 integer num = llGetListLength(emitters);
                 printText("Emitter " + (string)num + " rezzed.", TRUE);
             }
-            else if(msg == "del")
+            else if(param0 == "del")
             {
-                if(active_emitter == NULL_KEY)
+                if(param1 == "")
                 {
-                    printText("error: no emitter selected", TRUE);
-                    return;
+                    if(active_emitter == NULL_KEY)
+                    {
+                        printText("error: no emitter selected", TRUE);
+                        return;
+                    }
+                
+                    // Delete active emitter
+                    llRegionSayTo(active_emitter, -42, "delete");
                 }
-
-                // Delete active emitter
-                llRegionSayTo(active_emitter, -42, "delete");
+                else
+                {
+                    // Delete emitter NUM
+                    integer num = (integer)param1;
+                    key emitter = llList2Key(emitters, num);
+                    llRegionSayTo(emitter, -42, "delete");
+                }
             }
             else if(msg == "ls")
             {
@@ -265,26 +275,18 @@ default
     
     listen(integer channel, string name, key id, string msg)
     {
-        if(id == active_emitter)
+        if(msg == "deleted")
         {
-            if(msg == "quit")
-            {
-                //llListenRemove(listener);
-                //active = FALSE;
-                //exit(0);
-            }
-            else if(msg == "deleted")
-            {
-                // Remove emitter from list
-                integer num = llListFindList(emitters, [id]);
-                emitters = llDeleteSubList(emitters, num, num);
-                if(id == active_emitter) active_emitter = NULL_KEY;
-                printText("Emitter " + (string)num + " deleted.", TRUE);
-            }
-            else
-            {
+            // Remove emitter from list
+            integer num = llListFindList(emitters, [id]);
+            emitters = llDeleteSubList(emitters, num, num);
+            if(id == active_emitter) active_emitter = NULL_KEY;
+            printText("Emitter " + (string)num + " deleted.", TRUE);
+        }
+        else
+        {
+            if(id == active_emitter)
                 printText(msg, TRUE);
-            }
         }
     }
 }
