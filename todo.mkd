@@ -24,6 +24,7 @@
         - [x] del: del [num] (if no NUM, delete selected emitter)
         - [x] del: error if invalid NUM
         - [x] set: fix autocorrect on _
+        - [ ] command: import (takes LSL func, parses to effect)
         - [ ] set: interpret maths (like +1, -2, *6, *0.5, /2, PI, etc.)
         - [ ] Add easy way to add/remove flags (with autocomplete)
         - [ ] Add autocomplete for pattern
