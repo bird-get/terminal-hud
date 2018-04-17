@@ -68,5 +68,5 @@
 - [ ] Regularly poll own URL to check if it is still alive
 - [ ] Try hiding media controls
 - [ ] Finish HUD creation script
-- [ ] Prompt with blinking cursor
+- [ ] Prompt with blinking cursor and text input (javascript)
 - [ ] Catch all input on media prim, print to prompt, submit on enter
