@@ -21,13 +21,18 @@
         - [x] fix: only single digit values are handled
         - [ ] export: give functionality
         - [ ] command: import (takes LSL func, parses to effect)
+            - [ ] Extract key value pairs (i.e. "PSYS_SRC_TEXTURE", 12)
         - [ ] Set a reasonable memory limit
     - [ ] Collision detection?
+    - [ ] Timers, alarms
+    - [ ] Rezzable 'shell' (for remotely getting av list, rezzing things, etc.)
     - [ ] Check avatar online status
     - [ ] Parcel details and flags
     - [ ] Laggy object finder (sensor)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
+    - [ ] Wrapper for HTTP request (and response handling)
+    - [ ] Wrapper for llEmail
     - [ ] Wrapper for llRegionSayTo
     - [ ] Wrapper for llListen
         - Define a range of channels to listen to (max 64?)
