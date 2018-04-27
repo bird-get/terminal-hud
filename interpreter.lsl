@@ -190,7 +190,7 @@ default
             }
             else
             {
-                // Give error if command is unknown
+                // Check if command is meant for a program
                 list programs = getPrograms() + 
                     ["rez", "lsinv", "siminfo", "details", "avinfo",
                     "avattached", "avlist", "colortest"];
@@ -206,6 +206,8 @@ default
                         return;
                     }
                 }
+                
+                // Command is unknown; give an error
                 printText(param0 + ": command not found", TRUE);
                 printText(prompt(), FALSE);
             }
