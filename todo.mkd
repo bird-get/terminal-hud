@@ -11,6 +11,7 @@
     - [ ] Error on invalid/unrecognized option
 
 - Programs:
+    - [ ] help: add .lslp programs with their options to help output
     - [ ] land: unsit, eject, ban, etc.
     - [ ] tp: tp to pos, avatar, sim or landmark
     - [ ] camera: look at pos, follow av/object
