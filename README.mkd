@@ -18,7 +18,7 @@ and render information.
 For more help about functions, type `/42 help`.
 
 ## Creating your own HUD
-*Note: LSL preprocessor is required for includes*
+*Note: The LSL preprocessor is required to compile these scripts.*
 
 1. Clone the repo.
 2. Add the cloned repo to Firestorm's LSL preprocessor include path.
