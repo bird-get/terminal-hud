@@ -4,12 +4,14 @@ help(string function)
 {
     if(function == "reset")
     {
-        printText("usage: reset [-a]
+        printText("usage: reset [-a] [-i] [-d]
  
-Reset the display.
+Reset scripts inside inventory.
  
 optional arguments:
-  -a            reset all, scripts", TRUE);
+  -a            reset all scripts
+  -i            reset interpreter
+  -d            reset display", TRUE);
     }
     else if(function == "echo")
     {
