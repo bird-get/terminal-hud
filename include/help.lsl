@@ -27,6 +27,7 @@ Type \\\'help name\\\' for more help about function NAME.
     set channel [channel]
     set opacity [opacity]
     set size [size]
+    set vocal [true|false]
     cls
     echo [arg ...]
     reset [-a] [-i] [-d]
