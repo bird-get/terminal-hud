@@ -9,6 +9,7 @@ float touch_start_time;
 vector last_touch_pos;
 integer link_drag_prim;
 integer dragging;
+integer vocal = 0;
 
 // User-tweakable
 integer rows = 24;
@@ -16,6 +17,55 @@ integer columns = 80;
 integer line_height = 14;
 integer font_size = 12;
 float size = 1.0;
+
+printTextVocal(string raw_text)
+{
+    if(vocal != 1) return;
+    
+    list parsed = llParseString2List(raw_text, [""], ["<", ">"]);
+    integer length;
+    integer index;
+    for(index=0; index < llGetListLength(parsed); index++)
+    {
+        if(llList2String(parsed, index) == "<"
+            && llList2String(parsed, index+2) == ">")
+        {
+            string tag = llList2String(parsed, index+1);
+            parsed = llDeleteSubList(parsed, index, index+2);
+        }
+    }
+    raw_text = (string)parsed;
+
+    integer i;
+    list lines;
+    
+    // Split raw_text at newline characters
+    list long_lines = llParseString2List(raw_text, ["\n"], [""]);
+    
+    // Split lines longer than 80 chars, excluding HTML tags
+    for(i = 0; i < llGetListLength(long_lines); i++)
+    {
+        string text = llList2String(long_lines, i);
+        
+        // Get total length of all HTML tags
+        list parsed = llParseString2List(text, [""], ["<", ">"]);
+        integer length;
+        integer index;
+        for(index=0; index < llGetListLength(parsed); index++)
+        {
+            if(llList2String(parsed, index) == "<"
+                && llList2String(parsed, index+2) == ">")
+            {
+                string tag = llList2String(parsed, index+1);
+                length += llStringLength(tag) + 2;
+            }
+        }
+        
+        lines += splitByLength(text, columns + length);
+    }
+
+    llOwnerSay(llDumpList2String(lines, "\n"));
+}
 
 list splitByLength(string str, integer max_length)
 {
@@ -37,6 +87,8 @@ list splitByLength(string str, integer max_length)
 
 printText(string raw_text)
 {
+    printTextVocal(raw_text);
+    
     integer i;
     list lines;
 
@@ -305,6 +357,11 @@ default
             else if(param0 == "enable")
             {
                 enable();
+            }
+            else if(param0 == "vocal")
+            {
+                if(param1 == "true") vocal = 1;
+                else if(param1 == "false") vocal = 0;
             }
             else if(param0 == "size")
             {

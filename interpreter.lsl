@@ -179,6 +179,13 @@ default
                     printText("Opacity set to " + param2, TRUE);
                     printText(prompt(), FALSE);
                 }
+                else if(param1 == "vocal")
+                {
+                    llMessageLinked(LINK_THIS, 0, "vocal " + param2, "");
+                    if(param2 == "true"||param2 == "false")
+                        printText("Vocal mode set to " + param2, TRUE);
+                    printText(prompt(), FALSE);
+                }
             }
             else if(param0 == "enable")
             {
