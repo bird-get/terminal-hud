@@ -2,13 +2,21 @@
 - [ ] Marketplace release
     - [ ] Must be in usable state
     - [ ] Improve readme
-    - [ ] Updater
+    - [ ] Updater (self-updating script, update command?)
+        - Option 1: Go to GitHub and copy/save/compile the scripts
+        - Option 2: Get an updated version from in-world server
 
 - Arguments:
     - [ ] Parse args more intelligently
     - [ ] Make putting optional args together (-la instead of -l -a) possible
     - [ ] Make invalid argument show usage text
     - [ ] Error on invalid/unrecognized option
+
+- Security:
+    - [ ] Secure method of input
+        - Allows real-time display of typed characters
+        - [ ] Display blinking _ if window has focus
+        - [ ] Still allow chat input for fallback and ease of use
 
 - Programs:
     - [ ] help: add .lslp programs with their options to help output
