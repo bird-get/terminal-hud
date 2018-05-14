@@ -1,21 +1,44 @@
 # Terminal HUD
+<!--<insert gif here>-->
 ![Terminal HUD](https://user-images.githubusercontent.com/33850042/33088552-352bc11e-ceee-11e7-9a7a-1961bd6dd097.png "HUD")
 
-Terminal HUD is a virtual terminal inside Second Life.
+Terminal HUD is a powerful virtual terminal inside Second Life.
+It's made for advanced users who know their way around a CLI.
+
+It is kind of hacked together and something I work on for fun in my spare time.
+
 It listens for chat commands, parses the input and then displays its output
 using prim media.
 
+## Features
+- colorized output
+- autocompletion
+
+programs:
+- inventory packer
+- object rezzer
+- particle generator
+- get information about avatars, objects, attachments and sims
+
+## Quick start
+
 ## How to use
-You can get a ready-to-use copy from [my SL Marketplace store](https://marketplace.secondlife.com/stores/63546). It contains useful objects in its inventory. 
+You can get a ready-to-use copy from [my SL Marketplace store](https://marketplace.secondlife.com/stores/63546). It contains useful objects in its inventory.
 If you would rather make your own HUD, follow the steps in the next section.
 
-Attach the HUD to a HUD slot and position it using the SL build tools.
+Attach the HUD to a HUD slot. Position it using the SL build tools or by
+clicking and dragging the top bar.
 
 Type commands on channel 42. For example, `/42 avlist -s -r` will
 show a list of all avatars in the current region, along with their script
 and render information.
 
 For more help about functions, type `/42 help`.
+
+## Making add-ons
+You can create your own add-on programs.
+Create a script and call it `[name].lslp` (i.e. `partgen.lslp`).
+Put it into the HUD. You can use your add-on like any other program in the HUD.
 
 ## Creating your own HUD
 *Note: The LSL preprocessor is required to compile these scripts.*
