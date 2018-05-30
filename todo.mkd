@@ -47,6 +47,7 @@
         - Define a range of channels to listen to (max 64?)
     - [ ] invpacker: Inventory package creator
         - Avatar drags inventory items into package
+        - [ ] -i NAME: inventory item to use as package
         - [ ] Integrate lsInv, to see package inventory + permissions
 
 - Bugs:
