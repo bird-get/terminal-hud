@@ -1,5 +1,4 @@
 #define PROGRAM_NAME "invpacker"
-#define PACKAGE_NAME "empty_package"
 #define HELP_MESSAGE "usage: invpacker [-h] [-c] [-m] [-t]
  
 Create an empty package. Checks if added inventory items have the 
@@ -13,6 +12,7 @@ optional arguments:
 
 #include "terminal-hud/include/utility.lsl"
 
+string package_name = "empty_package";
 key package_key;
 integer listener;
 integer active;
@@ -73,6 +73,10 @@ default
             if(llListFindList(params, ["-m"]) != -1) perm_mask += PERM_MODIFY;
             if(llListFindList(params, ["-t"]) != -1) perm_mask += PERM_TRANSFER;
             
+            integer index = llListFindList(params, ["-i"]);
+            if(index != -1)
+                package_name = llList2String(params, index + 1);
+
             // Give error if no permissions or impossible perms are given
             if((~perm_mask & PERM_COPY && ~perm_mask & PERM_MODIFY &&
                 ~perm_mask & PERM_TRANSFER) || (~perm_mask & PERM_COPY &&
@@ -84,13 +88,13 @@ default
             }
 
             printText("Rezzing package...", TRUE);
-            llRezObject(PACKAGE_NAME, llGetPos(), ZERO_VECTOR, ZERO_ROTATION, perm_mask);
+            llRezObject(package_name, llGetPos(), ZERO_VECTOR, ZERO_ROTATION, perm_mask);
         }
     }
 
     object_rez(key id)
     {
-        if(llKey2Name(id) == PACKAGE_NAME)
+        if(llKey2Name(id) == package_name)
         {
             package_key = id;
             listener = llListen(-42, "", package_key, "");
