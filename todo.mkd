@@ -38,8 +38,12 @@
     - [ ] Check avatar online status
     - [ ] Parcel details and flags
     - [ ] Laggy object finder (sensor)
+    - [ ] Todo list (rezzable reminders?)
     - [ ] Resize (rows, columns)
     - [ ] Sim monitor
+    - [ ] `avlist`:
+        - option to show keys
+        - option to show age
     - [ ] Wrapper for HTTP request (and response handling)
     - [ ] Wrapper for llEmail
     - [ ] Wrapper for llRegionSayTo
@@ -77,6 +81,7 @@
     - [ ] RLV things
     - [ ] Package manager
 
+- [ ] Refactor code
 - [ ] Print prompt after display has been restarted
 - [ ] Replace table with plaintext
 - [ ] Allow writing to previously printed line (for progress bars etc)
