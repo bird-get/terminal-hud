@@ -76,7 +76,15 @@ default
             
             integer index = llListFindList(params, ["-i"]);
             if(index != -1)
+            {
                 package_name = llList2String(params, index + 1);
+                if(llGetInventoryType(package_name) == INVENTORY_NONE)
+                {
+                    printText("error: invalid inventory name", TRUE);
+                    exit(1);
+                    return;
+                }
+            }
 
             // Give error if no permissions or impossible perms are given
             if((~perm_mask & PERM_COPY && ~perm_mask & PERM_MODIFY &&
