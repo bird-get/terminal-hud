@@ -8,6 +8,7 @@ optional arguments:
   -c            set copy permission
   -m            set modify permission
   -t            set transfer permission
+  -i INV_NAME   inventory item to use as package
   -h, --help    show help and exit"
 
 #include "terminal-hud/include/utility.lsl"
