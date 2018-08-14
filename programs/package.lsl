@@ -56,7 +56,7 @@ checkInventory()
     inventory_list = inv_list;
 }
 
-createPackage()
+integer createPackage()
 {
     integer inv_count = llGetInventoryNumber(INVENTORY_ALL);
     integer i;
@@ -88,13 +88,38 @@ createPackage()
             {
                 llRegionSayTo(rezzer, -42,
                     "error: \\'" + inv_name + "\\' is " + error);
-                return;
+                return 1;
             }
         }
     }
     
     llRegionSayTo(rezzer, -42, "done");
-    llRemoveInventory(llGetScriptName());
+    return 0;
+}
+
+unpack()
+{
+    list item_list;
+
+    integer i;
+    for(i = 0; i < llGetInventoryNumber(INVENTORY_ALL); i++)
+    {
+        string item_name = llGetInventoryName(INVENTORY_ALL, i);
+        if(item_name != llGetScriptName())
+        {
+            item_list += item_name;
+        }
+    }
+
+    if(item_list == [])
+    {
+        llOwnerSay("Error: No items to unpack.");
+    }
+    else
+    {
+        llGiveInventoryList(llGetOwner(), llGetObjectDesc(), item_list);
+        llDie();
+    }
 }
 
 default
@@ -130,7 +155,19 @@ default
         }
         else if(msg == "continue")
         {
-            createPackage();
+            if(createPackage() == 0)
+            {
+                state packaged;
+            }
         }
+    }
+}
+
+state packaged
+{
+    touch_start(integer num)
+    {
+        if(llDetectedKey(0) != llGetOwner()) return;
+        unpack();
     }
 }
