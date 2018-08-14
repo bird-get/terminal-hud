@@ -3,6 +3,8 @@
  
 Create an empty package. Checks if added inventory items have the 
 correct permission mask.
+Package will give a folder containing its inventory. Change the package's
+description to change the folder's name.
  
 optional arguments:
   -c            set copy permission
