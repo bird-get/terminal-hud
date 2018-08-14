@@ -30,7 +30,7 @@ default
 {
     state_entry()
     {
-        llSetMemoryLimit(12000);
+        llSetMemoryLimit(14000);
     }
 
     link_message(integer sender, integer num, string msg, key id)
