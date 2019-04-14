@@ -8,6 +8,7 @@ integer connected;
 float touch_start_time;
 vector last_touch_pos;
 integer link_drag_prim;
+integer link_title_bar_text;
 integer dragging;
 integer vocal = 0;
 
@@ -211,6 +212,12 @@ resize(float s)
         PRIM_SIZE, <0.01, width, height>]);
 }
 
+setTitleBarText(string text)
+{
+    llSetLinkPrimitiveParams(link_title_bar_text, [
+        PRIM_TEXT, text, <1,1,1>, 1.0]);
+}
+
 integer hidden;
 integer disabled;
 
@@ -249,6 +256,7 @@ default
     state_entry()
     {
         link_background = getLinkIndex("background");
+        link_title_bar_text = getLinkIndex("title_bar_text");
         link_drag_prim = getLinkIndex("drag_prim");
         llSetTimerEvent(.5);
 
@@ -370,6 +378,10 @@ default
             else if(param0 == "opacity")
             {
                 setOpacity((float)param1);
+            }
+            else if(param0 == "set_title_bar")
+            {
+                setTitleBarText(llGetSubString(msg, 13, -1));
             }
         }
     }

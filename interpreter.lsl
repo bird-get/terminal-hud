@@ -81,6 +81,9 @@ default
         
         // Print prompt
         printText(prompt(), FALSE);
+
+        // Set the title bar text
+        llMessageLinked(LINK_THIS, 0, "set_title_bar " + llGetObjectName(), "");
     }
 
     changed(integer change)
@@ -210,6 +213,8 @@ default
                         active_program = program;
                         llMessageLinked(LINK_THIS, 0, msg,
                             (key)active_program);
+                        llMessageLinked(LINK_THIS, 0, "set_title_bar " +
+                                        active_program, "");
                         return;
                     }
                 }
@@ -236,6 +241,8 @@ default
             active_program = "";
 
             printText(prompt(), FALSE);
+            llMessageLinked(LINK_THIS, 0, "set_title_bar " + llGetObjectName(),
+                            "");
         }
         else if(msg == "display started")
         {
