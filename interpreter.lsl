@@ -239,7 +239,9 @@ default
         }
         else if(msg == "display started")
         {
+            llMessageLinked(LINK_THIS, 0, "clear screen", "");
             printText("Display has been restarted.", TRUE);
+            printText(prompt(), FALSE);
         }
     }
 }
